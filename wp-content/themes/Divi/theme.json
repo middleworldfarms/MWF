@@ -1,0 +1,19 @@
+{
+	"version": 1,
+	"appearanceTools": true,
+	"settings": {
+		"layout": {
+			"contentSize": "823px",
+			"wideSize": "1080px"
+		}
+	},
+	"styles": {
+		"elements": {
+			"link": {
+				"typography": {
+					"textDecoration": false
+				}
+			}
+		}
+	}
+}

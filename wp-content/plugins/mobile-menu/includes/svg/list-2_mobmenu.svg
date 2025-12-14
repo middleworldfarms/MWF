@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="-11 0 1022 1000">
+   <path fill="currentColor"
+d="M143 732v107q0 7 -5 13t-13 5h-107q-7 0 -13 -5t-5 -13v-107q0 -7 5 -12t13 -6h107q7 0 13 6t5 12zM143 518v107q0 7 -5 13t-13 5h-107q-7 0 -13 -5t-5 -13v-107q0 -7 5 -13t13 -5h107q7 0 13 5t5 13zM143 304v107q0 7 -5 12t-13 6h-107q-7 0 -13 -6t-5 -12v-107
+q0 -8 5 -13t13 -5h107q7 0 13 5t5 13zM1000 732v107q0 7 -5 13t-13 5h-750q-7 0 -12 -5t-6 -13v-107q0 -7 6 -12t12 -6h750q7 0 13 6t5 12zM143 89v107q0 8 -5 13t-13 5h-107q-7 0 -13 -5t-5 -13v-107q0 -7 5 -12t13 -6h107q7 0 13 6t5 12zM1000 518v107q0 7 -5 13t-13 5
+h-750q-7 0 -12 -5t-6 -13v-107q0 -7 6 -13t12 -5h750q7 0 13 5t5 13zM1000 304v107q0 7 -5 12t-13 6h-750q-7 0 -12 -6t-6 -12v-107q0 -8 6 -13t12 -5h750q7 0 13 5t5 13zM1000 89v107q0 8 -5 13t-13 5h-750q-7 0 -12 -5t-6 -13v-107q0 -7 6 -12t12 -6h750q7 0 13 6t5 12z
+" />
+</svg>

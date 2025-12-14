@@ -1,0 +1,286 @@
+/**
+ * MWF Price Slider Styles
+ * Beautiful interactive slider to replace YITH's boring text input
+ */
+
+/* Hide YITH Name Your Price Premium's default text input */
+#ywcnp_suggest_price_single,
+input[name="ywcnp_amount"],
+input.ywcnp_sugg_price {
+    display: none !important;
+}
+
+/* Also hide YITH's currency symbol */
+.ywcnp_currency {
+    display: none !important;
+}
+
+/* Slider Container */
+.mwf-price-slider-wrapper {
+    margin: 20px 0;
+    padding: 25px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.mwf-price-slider-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.mwf-price-slider-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 5px 0;
+}
+
+.mwf-price-slider-subtitle {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    font-style: italic;
+}
+
+/* Current Price Display */
+.mwf-price-display {
+    text-align: center;
+    margin: 15px 0 25px;
+}
+
+.mwf-price-amount {
+    font-size: 42px;
+    font-weight: 700;
+    color: #2d3748;
+    line-height: 1;
+}
+
+.mwf-price-label {
+    display: block;
+    font-size: 16px;
+    color: #666;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+.mwf-price-label .zone-icon {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+/* Slider Track */
+.mwf-slider-container {
+    position: relative;
+    padding: 0 10px;
+    margin: 30px 0;
+}
+
+.mwf-price-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(to right, 
+        #48bb78 0%, 
+        #48bb78 30%, 
+        #38a169 30%, 
+        #38a169 50%, 
+        #2f855a 50%, 
+        #2f855a 70%, 
+        #2c7a7b 70%, 
+        #2c7a7b 100%
+    );
+    outline: none;
+    cursor: pointer;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Slider Thumb */
+.mwf-price-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #2d3748;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: all 0.2s ease;
+}
+
+.mwf-price-slider::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #2d3748;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: all 0.2s ease;
+}
+
+.mwf-price-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+}
+
+.mwf-price-slider::-moz-range-thumb:hover {
+    transform: scale(1.15);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+}
+
+/* Price Zone Labels */
+.mwf-slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+.mwf-slider-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    text-align: center;
+}
+
+.mwf-slider-label-icon {
+    font-size: 20px;
+    margin-bottom: 3px;
+}
+
+.mwf-slider-label-text {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 12px;
+}
+
+.mwf-slider-label-price {
+    font-size: 11px;
+    color: #666;
+    margin-top: 2px;
+}
+
+/* Zone-specific colors for price display */
+.mwf-price-amount.solidarity {
+    color: #e53e3e;
+}
+
+.mwf-price-amount.standard {
+    color: #38a169;
+}
+
+.mwf-price-amount.supporter {
+    color: #3182ce;
+}
+
+/* Impact Message */
+.mwf-price-impact {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.mwf-price-impact.solidarity {
+    background: #fff5f5;
+    border: 2px solid #feb2b2;
+    color: #c53030;
+}
+
+.mwf-price-impact.standard {
+    background: #f0fff4;
+    border: 2px solid #9ae6b4;
+    color: #276749;
+}
+
+.mwf-price-impact.supporter {
+    background: #ebf8ff;
+    border: 2px solid #90cdf4;
+    color: #2c5282;
+}
+
+.mwf-price-impact-icon {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+/* Quick Select Buttons */
+.mwf-quick-select {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.mwf-quick-btn {
+    padding: 8px 16px;
+    border: 2px solid #cbd5e0;
+    background: #fff;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #2d3748;
+}
+
+.mwf-quick-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.mwf-quick-btn.solidarity {
+    border-color: #fc8181;
+    color: #c53030;
+}
+
+.mwf-quick-btn.standard {
+    border-color: #68d391;
+    color: #276749;
+}
+
+.mwf-quick-btn.supporter {
+    border-color: #63b3ed;
+    color: #2c5282;
+}
+
+.mwf-quick-btn:active {
+    transform: translateY(0);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .mwf-price-slider-wrapper {
+        padding: 20px 15px;
+    }
+    
+    .mwf-price-amount {
+        font-size: 36px;
+    }
+    
+    .mwf-slider-labels {
+        font-size: 11px;
+    }
+    
+    .mwf-slider-label-icon {
+        font-size: 18px;
+    }
+    
+    .mwf-quick-select {
+        gap: 6px;
+    }
+    
+    .mwf-quick-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,11 @@
+	<div  data-class="product-tour" data-for="(item, index) in items" data-group-id="{{wbte-ds-attr-group_id}}" data-target-id="{{wbte-ds-attr-item.target_id}}" data-step="{{wbte-ds-attr-index+1}}">
+	    <div data-class="product-tour-content">
+	        <h3 data-class="product-tour-head h3-text">{{item.title}}</h3>
+	        <div data-class="product-tour-body input-text">{{item.description}}{{template:tour_item_content}}</div>
+	        <div data-class="product-tour-footer">
+	            <button data-class="product-tour-skip-btn button button-text button-small">{{skip_btn_text}}</button>
+	            <div data-class="product-tour-step-count">{{summary_text}}</div>
+	            <div data-class="product-tour-next-btn button button-tonal button-small">{{ index + 1 === items.length ? finish_text : next_text }}</div>
+	        </div>
+	    </div>
+	</div>

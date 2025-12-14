@@ -1,0 +1,189 @@
+#wt_iew_request_a_feature_popup {
+    width: 95%;
+    max-width: 722px;
+    z-index: 100000001;
+    transform: translate(-50%, -50%) !important;
+    top: 50%;
+    background: #f5fafe !important;
+    border-radius: 10px;
+}
+#wt_iew_request_a_feature_popup #wt_iew_request_a_feature_form{
+    /* padding: 10px 30px;
+    padding-bottom: 30px; */
+    text-align: left;
+}
+
+
+#wt_iew_request_a_feature_popup .wt_iew_popup_title {
+    width: 100%;
+    text-align: center;
+    color: #32373E;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px;
+    margin: 0;
+    padding-top: 40px;
+}
+
+
+
+#wt_iew_request_a_feature_popup .wt_iew_popup_title_caption {
+    width: 100%;
+    text-align: center;
+    color: #32373E;
+    font-size: 14px;
+    padding-top: 0px;
+    font-weight: 400;
+    line-height: 14px;
+    margin: 0;
+}
+
+#wt_iew_request_a_feature_popup .form_label {
+    display: block;
+    color: #32373E;
+    font-size: 13px;
+    width: 100%;
+    font-weight: 600;
+}
+
+#wt_iew_request_a_feature_popup .form_label_caption {
+    display: block;
+    color: #6d7277;
+    font-size: 13px;
+    width: 100%;
+}
+
+#wt_iew_request_a_feature_popup textarea {
+    border-radius: 6px;
+    background: #fff;
+    border: solid 1px #C7CBD1;
+    width: 100%;
+    height: 150px;
+    margin-top: 5px;
+}
+
+#wt_iew_request_a_feature_popup .wt_iew_request_a_feature_checkbox_container {
+    width: 100%;
+    margin-top: 7px;
+    color: #32373E;
+}
+
+#wt_iew_request_a_feature_popup .wt_iew_request_a_feature_btn_box {
+    margin-top: 25px;
+    padding-bottom: 30px;
+}
+
+#wt_iew_request_a_feature_popup .button-primary {
+    background: #3157a6;
+    margin-left: 10px !important;
+    margin-bottom: 5px;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: none;
+    float: right;
+    height: 40px;
+    font-size: 14px;
+    padding: 0px 30px !important;
+    border: solid 1px #3157a6 !important;
+}
+
+
+#wt_iew_request_a_feature_popup .button-secondary {
+    background: none;
+    color: #3157a6;
+    float: right;
+    height: 40px;
+    font-size: 14px;
+    padding: 0px 30px !important;
+    border: solid 1px #3157a6 !important;
+}
+
+#wt_iew_request_a_feature_popup .wt_iew_request_a_feature_popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #f5fafe;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+
+
+}
+
+#wt_iew_request_a_feature_popup .wt_iew_popup_hd {
+    text-align: center;
+    /* border-bottom: 1px solid #ddd; */
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    background: transparent;
+}
+
+#wt_iew_request_a_feature_popup .wt_iew_popup_close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+    background: none;
+    border: none;
+}
+
+#wt_iew_request_a_feature_popup .wt_iew_popup_body {
+    padding: 10px 30px;
+    padding-bottom: 45px;
+}
+#wt_iew_request_a_feature_popup .wt_iew_popup_body textarea {
+    border-radius: 6px;
+    background: #fff;
+    border: solid 1px #C7CBD1;
+    width: 100%;
+    height: 150px;
+    margin-top: 5px;
+}
+
+#wt_iew_request_a_feature_popup .wt_iew_request_a_feature_email_container {
+    display: none;
+    margin-top: 30px;
+}
+#wt_iew_request_a_feature_popup .wt_iew_request_a_feature_email_container label{
+    display: block;
+    color: #32373E;
+    font-size: 13px;
+    width: 100%;
+}
+#wt_iew_request_a_feature_popup .wt_iew_request_a_feature_email_container input{
+    border-radius: 6px;
+    background: #fff;
+    border: solid 1px #C7CBD1;
+    width: 100%;
+    max-width: 400px;
+    height: 40px;
+    margin-top: 5px;
+    }
+
+#wt_iew_request_a_feature_popup .wt_iew_request_a_feature_btn_box button {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#wt_iew_request_a_feature_popup .wt_iew_popup_close {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    margin-top: 15px;
+    right: 10px;
+    top: 0px;
+    background: none;
+    color: #32373e;
+    border: solid 2px #32373e;
+    border-radius: 20px;
+}

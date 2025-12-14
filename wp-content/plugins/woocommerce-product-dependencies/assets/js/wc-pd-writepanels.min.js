@@ -1,0 +1,1 @@
+jQuery(function(e){function d(){"product_ids"==c.val()?(n.show(),i.hide()):(i.show(),n.hide())}var c=e("#product_dependencies_dropdown"),n=e("#product_ids_dependencies_choice"),i=e("#category_ids_dependencies_choice");d(),c.change(function(){d()})});

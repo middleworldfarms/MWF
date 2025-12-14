@@ -1,0 +1,6 @@
+<div data-main="1" data-target-id="{{wbte-ds-attr-segment_id}}">
+	<a data-class="segment" data-for="segment_item in segments" data-bind-class="{ active: segment_item.is_active }" data-target-id="{{wbte-ds-attr-segment_item.target_id}}">{{wbte-ds-icon-((segment_item.icon))}} <span data-class="segment_text">{{segment_item.title}}</span></a>
+</div>
+<div data-if="is_generate_content" data-class="segment_content_main" data-id="{{wbte-ds-attr-segment_id}}">
+	<div data-class="segment_content" data-for="segment_item in segments" data-if="!segment_item.skip_content" data-id="{{wbte-ds-attr-segment_item.target_id}}">{{filter:segment_content segment_item}}</div>
+</div>

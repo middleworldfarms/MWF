@@ -1,0 +1,882 @@
+# Copyright (C) 2025 WebToffee
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Import Export WordPress Users and WooCommerce Customers 2.6.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/users-customers-import-export-for-wp-woocommerce\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-08-01T09:49:31+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: users-customers-import-export-for-wp-woocommerce\n"
+
+#. Plugin Name of the plugin
+#: users-customers-import-export-for-wp-woocommerce.php
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:58
+msgid "Import Export WordPress Users and WooCommerce Customers"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: users-customers-import-export-for-wp-woocommerce.php
+msgid "https://wordpress.org/plugins/users-customers-import-export-for-wp-woocommerce/"
+msgstr ""
+
+#. Description of the plugin
+#: users-customers-import-export-for-wp-woocommerce.php
+msgid "Export and Import User/Customers details From and To your WordPress/WooCommerce."
+msgstr ""
+
+#. Author of the plugin
+#: users-customers-import-export-for-wp-woocommerce.php
+msgid "WebToffee"
+msgstr ""
+
+#. Author URI of the plugin
+#: users-customers-import-export-for-wp-woocommerce.php
+msgid "https://www.webtoffee.com/product/wordpress-users-woocommerce-customers-import-export/"
+msgstr ""
+
+#: admin/banner/class-wt-p-iew-cta-banner.php:104
+#: admin/banner/class-wt-pklist-cta-banner.php:97
+msgid "Product Import Export"
+msgstr ""
+
+#: admin/banner/class-wt-p-iew-cta-banner.php:105
+msgid "Product Import Export for WooCommerce"
+msgstr ""
+
+#: admin/banner/class-wt-p-iew-cta-banner.php:109
+msgid "Import, export, or update WooCommerce products"
+msgstr ""
+
+#: admin/banner/class-wt-p-iew-cta-banner.php:110
+msgid "Supports all types of products (Simple, variable, subscription grouped, and external)"
+msgstr ""
+
+#: admin/banner/class-wt-p-iew-cta-banner.php:111
+msgid "Multiple file formats - CSV, XML, Excel, and TSV"
+msgstr ""
+
+#: admin/banner/class-wt-p-iew-cta-banner.php:112
+msgid "Advanced filters and customizations for better control"
+msgstr ""
+
+#: admin/banner/class-wt-p-iew-cta-banner.php:113
+msgid "Bulk update WooCommerce product data"
+msgstr ""
+
+#: admin/banner/class-wt-p-iew-cta-banner.php:114
+msgid "Import via FTP/SFTP and URL"
+msgstr ""
+
+#: admin/banner/class-wt-p-iew-cta-banner.php:115
+msgid "Schedule automated import & export"
+msgstr ""
+
+#: admin/banner/class-wt-p-iew-cta-banner.php:116
+msgid "Export and Import custom fields and third-party plugin fields"
+msgstr ""
+
+#: admin/banner/class-wt-p-iew-cta-banner.php:121
+#: admin/banner/class-wt-pklist-cta-banner.php:114
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:119
+msgid "View all premium features"
+msgstr ""
+
+#: admin/banner/class-wt-p-iew-cta-banner.php:121
+#: admin/banner/class-wt-pklist-cta-banner.php:114
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:119
+msgid "Show less"
+msgstr ""
+
+#: admin/banner/class-wt-p-iew-cta-banner.php:122
+#: admin/banner/class-wt-pklist-cta-banner.php:115
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:120
+msgid "Get the plugin"
+msgstr ""
+
+#: admin/banner/class-wt-p-iew-cta-banner.php:124
+#: admin/banner/class-wt-pklist-cta-banner.php:117
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:122
+msgid "Dismiss"
+msgstr ""
+
+#: admin/banner/class-wt-pklist-cta-banner.php:98
+#: admin/views/admin-settings-other-solutions.php:156
+msgid "WooCommerce PDF Invoices, Packing Slips and Credit Notes"
+msgstr ""
+
+#: admin/banner/class-wt-pklist-cta-banner.php:102
+msgid "Automatically generate PDF invoices, packing slips, and credit notes"
+msgstr ""
+
+#: admin/banner/class-wt-pklist-cta-banner.php:103
+msgid "Use ready-made, customizable templates to match your brand"
+msgstr ""
+
+#: admin/banner/class-wt-pklist-cta-banner.php:104
+msgid "Print or download invoices individually or in bulk"
+msgstr ""
+
+#: admin/banner/class-wt-pklist-cta-banner.php:105
+msgid "Set custom invoice numbering for better organization"
+msgstr ""
+
+#: admin/banner/class-wt-pklist-cta-banner.php:106
+msgid "Customize documents fully with visual or code editors"
+msgstr ""
+
+#: admin/banner/class-wt-pklist-cta-banner.php:107
+msgid "Include VAT, GST, ABN, and other tax details"
+msgstr ""
+
+#: admin/banner/class-wt-pklist-cta-banner.php:108
+msgid "Add \"Pay Now\" link on invoices"
+msgstr ""
+
+#: admin/banner/class-wt-pklist-cta-banner.php:109
+msgid "Add custom fields to any order document with ease"
+msgstr ""
+
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:93
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:98
+msgid "Smart Coupons for WooCommerce Pro"
+msgstr ""
+
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:94
+msgid "Create better coupon campaigns with advanced WooCommerce coupon features"
+msgstr ""
+
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:102
+msgid "Auto-apply coupons"
+msgstr ""
+
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:103
+msgid "Create attractive Buy X Get Y (BOGO) offers"
+msgstr ""
+
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:104
+msgid "Create product quantity/subtotal based discounts"
+msgstr ""
+
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:105
+msgid "Offer store credits and gift cards"
+msgstr ""
+
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:106
+msgid "Set up smart giveaway campaigns"
+msgstr ""
+
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:107
+msgid "Set advanced coupon rules and conditions"
+msgstr ""
+
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:108
+msgid "Bulk generate coupons"
+msgstr ""
+
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:109
+msgid "Shipping, purchase history, and payment method-based coupons"
+msgstr ""
+
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:110
+msgid "Sign up coupons"
+msgstr ""
+
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:111
+msgid "Cart abandonment coupons"
+msgstr ""
+
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:112
+msgid "Create day-specific deals"
+msgstr ""
+
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:113
+msgid "Display coupon banners and widgets"
+msgstr ""
+
+#: admin/banner/class-wt-smart-coupon-cta-banner.php:114
+msgid "Import coupons"
+msgstr ""
+
+#: admin/banner/class-wtier-bfcm-twenty-twenty-four.php:82
+msgid "Never Miss This Deal"
+msgstr ""
+
+#: admin/banner/class-wtier-bfcm-twenty-twenty-four.php:95
+msgid "Your Last Chance to Avail %1$s on<br>WebToffee Plugins. Grab the deal before it`s gone!"
+msgstr ""
+
+#: admin/banner/class-wtier-bfcm-twenty-twenty-four.php:96
+#: admin/banner/class-wtier-bfcm-twenty-twenty-four.php:102
+msgid "OFF"
+msgstr ""
+
+#: admin/banner/class-wtier-bfcm-twenty-twenty-four.php:101
+msgid "Your Last Chance to Avail %1$s on WebToffee Plugins. Grab the deal before it`s gone!"
+msgstr ""
+
+#: admin/banner/class-wtier-bfcm-twenty-twenty-four.php:109
+msgid "View plugins"
+msgstr ""
+
+#: admin/class-wt-import-export-for-woo-admin.php:146
+msgid "Settings updated."
+msgstr ""
+
+#: admin/class-wt-import-export-for-woo-admin.php:147
+msgid "All fields are mandatory"
+msgstr ""
+
+#: admin/class-wt-import-export-for-woo-admin.php:148
+msgid "Unable to update Settings."
+msgstr ""
+
+#: admin/class-wt-import-export-for-woo-admin.php:149
+msgid "Unable to delete template"
+msgstr ""
+
+#: admin/class-wt-import-export-for-woo-admin.php:150
+msgid "Deleting template..."
+msgstr ""
+
+#: admin/class-wt-import-export-for-woo-admin.php:151
+msgid "Value is empty."
+msgstr ""
+
+#: admin/class-wt-import-export-for-woo-admin.php:153
+msgid "Success."
+msgstr ""
+
+#: admin/class-wt-import-export-for-woo-admin.php:154
+msgid "Loading..."
+msgstr ""
+
+#: admin/class-wt-import-export-for-woo-admin.php:155
+msgid "No results found."
+msgstr ""
+
+#: admin/class-wt-import-export-for-woo-admin.php:156
+msgid "Are you sure?"
+msgstr ""
+
+#: admin/class-wt-import-export-for-woo-admin.php:157
+msgid "Apply"
+msgstr ""
+
+#: admin/class-wt-import-export-for-woo-admin.php:158
+#: admin/modules/request_feature/request_feature.php:158
+#: includes/class-wt-userimport-uninstall-feedback.php:108
+msgid "Cancel"
+msgstr ""
+
+#: admin/class-wt-import-export-for-woo-admin.php:159
+msgid "Hide features"
+msgstr ""
+
+#: admin/class-wt-import-export-for-woo-admin.php:160
+msgid "Show features"
+msgstr ""
+
+#: admin/class-wt-import-export-for-woo-admin.php:161
+msgid "Changes that you made may not be saved."
+msgstr ""
+
+#: admin/modules/export/export.php:398
+msgid "Only letters, numbers and hyphens are allowed"
+msgstr ""
+
+#: admin/modules/export/export.php:399
+msgid "Enter file name (letters, numbers, hyphens only)"
+msgstr ""
+
+#: admin/modules/export/views/_export_post_type_page.php:37
+#: admin/modules/import/views/_import_post_type_page.php:37
+msgid "Install now"
+msgstr ""
+
+#: admin/modules/export/views/_export_post_type_page.php:42
+#: admin/modules/import/views/_import_post_type_page.php:42
+msgid "Activate"
+msgstr ""
+
+#: admin/modules/export/views/_export_post_type_page.php:49
+#: admin/modules/import/views/_import_post_type_page.php:49
+msgid "Premium"
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:42
+msgid "Error"
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:56
+msgid "Please enter your message."
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:60
+#: admin/modules/request_feature/request_feature.php:107
+msgid "We need your email address to contact you back."
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:90
+msgid "Success"
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:106
+msgid "Please enter a message"
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:108
+msgid "Sending..."
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:109
+msgid "Unable to submit. Please try again later."
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:110
+msgid "Thank you for your valuable suggestion."
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:127
+msgid "Missing a feature?"
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:128
+msgid "Drop a message to let us know!"
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:139
+msgid "What would you like to add as a new feature?"
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:140
+msgid "More the details you share, the better."
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:141
+msgid "I would like..."
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:146
+msgid "Webtoffee can contact me about this feedback."
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:151
+msgid "Enter your email address."
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:152
+msgid "Enter email address"
+msgstr ""
+
+#: admin/modules/request_feature/request_feature.php:157
+msgid "Send feature request"
+msgstr ""
+
+#: admin/modules/user/user.php:229
+#: admin/modules/user/user.php:248
+msgid "User/Customer"
+msgstr ""
+
+#: admin/modules/user/user.php:232
+#: admin/modules/user/user.php:244
+msgid "Product"
+msgstr ""
+
+#: admin/modules/user/user.php:233
+#: admin/modules/user/user.php:245
+msgid "Product Review"
+msgstr ""
+
+#: admin/modules/user/user.php:234
+#: admin/modules/user/user.php:246
+msgid "Product Categories"
+msgstr ""
+
+#: admin/modules/user/user.php:235
+#: admin/modules/user/user.php:247
+msgid "Product Tags"
+msgstr ""
+
+#: admin/modules/user/user.php:238
+#: admin/modules/user/user.php:242
+msgid "Order"
+msgstr ""
+
+#: admin/modules/user/user.php:239
+#: admin/modules/user/user.php:243
+msgid "Coupon"
+msgstr ""
+
+#: admin/modules/user/user.php:249
+msgid "Subscription"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:39
+msgid "Automate Using Scheduled Imports and Exports"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:43
+msgid "Escape from the troubles of manually importing and exporting data on your WooCommerce Store and enjoy the power of scheduled "
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:44
+msgid "automation."
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:52
+msgid "User Import Export Plugin Icon"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:65
+msgid "wt_review_star"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:77
+msgid "Scheduled Job Icon"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:90
+msgid "Check Icon"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:96
+msgid "Automate regular import/export jobs with ease"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:97
+msgid "Run scheduled imports and exports in the background"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:98
+msgid "Choose your schedule: daily, weekly, monthly, or custom intervals"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:99
+msgid "Choose your ideal start time for maximum efficiency"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:100
+msgid "Supports both WordPress and Server Cron"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:113
+msgid "Checkout Plugin"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:122
+msgid "Headphone Icon"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:123
+msgid "Fast and Priority Support"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:131
+msgid "Dollar Icon"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:132
+msgid "30 Day Money Back Guarantee"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:140
+msgid "Heart Icon"
+msgstr ""
+
+#: admin/partials/wt-import-export-for-woo-admin-schedule-job.php:141
+msgid "99% Satisfaction rating"
+msgstr ""
+
+#: admin/views/admin-header-and-help.php:9
+msgid "WebToffee Import Export"
+msgstr ""
+
+#: admin/views/admin-header-and-help.php:10
+msgid "Developed by "
+msgstr ""
+
+#: admin/views/admin-header-and-help.php:18
+msgid "FAQ"
+msgstr ""
+
+#: admin/views/admin-header-and-help.php:19
+msgid "Setup guide"
+msgstr ""
+
+#: admin/views/admin-header-and-help.php:20
+msgid "Contact support"
+msgstr ""
+
+#: admin/views/admin-header-and-help.php:21
+msgid "Request a feature"
+msgstr ""
+
+#: admin/views/admin-header-and-help.php:23
+msgid "Help"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:32
+msgid "More Plugins To Make Your Store Stand Out"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:33
+msgid "Check out our other plugins that are perfectly suited for WooCommerce store needs."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:44
+msgid "WebToffee WooCommerce Product Feed & Sync Manager"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:45
+msgid "Generate WooCommerce product feeds for Google Merchant Center and Facebook Business Manager. Use the Facebook catalog sync manager to sync WooCommerce products with Facebook and Instagram shops."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:53
+msgid "WebToffee Woocommerce Request a Quote"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:54
+msgid "Configure a fully optimized WooCommerce quote request set up in your store. Allow customers to request quotes and store managers to respond to them. Hide product prices, set up email alerts, and more."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:62
+msgid "WebToffee WooCommerce Gift Cards"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:63
+msgid "Create and manage advanced gift cards for WooCommerce stores. Enable your customers to buy, redeem, and share gift cards from your store."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:71
+msgid "Frequently Bought Together for WooCommerce"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:72
+msgid "Boost the visibility of the products by displaying them as ‘Frequently bought together’ items in your store. You may also set up discounts for Frequently Bought Together bundles with this plugin."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:80
+msgid "GDPR Cookie Consent Plugin (CCPA Ready)"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:81
+msgid "The plugin helps you get compliant with GDPR, CCPA, and other major cookie laws. You can create and manage cookie consent banners, scan website cookies, and generate cookie policies with this plugin."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:89
+msgid "Product Import Export Plugin For WooCommerce"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:90
+msgid "Seamlessly import/export your WooCommerce products including simple, variable, custom products and subscriptions. You may also import and export product images, tags, categories, reviews, and ratings."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:98
+msgid "WordPress Users & WooCommerce Customers Import Export"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:99
+msgid "Easily import and export your WordPress users and WooCommerce customers using the Import Export plugin for WooCommerce. The plugin supports the use of CSV, XML, TSV, XLS, and XLSX file formats."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:107
+msgid "Order, Coupon, Subscription Export Import for WooCommerce"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:108
+msgid "Export and Import your WooCommerce orders, subscriptions, and discount coupons using a single Import Export plugin. You may customize the export and import files with advanced filters and settings."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:116
+msgid "Import Export Suite for WooCommerce"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:117
+msgid "An all-in-one plugin to import and export WooCommerce store data. You can import and export products, product reviews, orders, customers, discount coupons, and subscriptions using this single plugin."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:129
+msgid "Smart Coupons for WooCommerce"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:130
+msgid "Create coupons to offer discounts and free products to your customers with Smart Coupons for WooCommerce. You can set up BOGO coupons, giveaways, gift cards, store credits, and more with this plugin."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:138
+msgid "URL Coupons for WooCommerce"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:139
+msgid "Generate custom URLs and QR codes for every discount coupon in your WooCommerce store. These unique coupons are easy to share and can even be set to add new products to the cart upon application."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:147
+msgid "Sequential Order Numbers for WooCommerce"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:148
+msgid "Number your WooCommerce orders in a custom, sequential & manageable format. The Sequential Order Number plugin lets your orders follow a custom & unique numbering sequence suitable for your business."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:157
+msgid "Easily generate & print fully customized PDF Invoices, Packing Slips, and Credit Notes for your orders. Automatically send the documents to the recipients by attaching them to the order status emails."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:165
+msgid "WooCommerce Shipping Labels, Dispatch Labels and Delivery Notes"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:166
+msgid "Automatically generate WooCommerce Shipping Labels, Dispatch Labels, and Delivery Notes with custom settings and layouts. Customize the label sizes and add extra product or order fields as required."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:174
+msgid "WooCommerce Picklists"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:175
+msgid "Customize, generate and print WooCommerce picklists for all orders on your store and automatically attach them to the order status emails. Add product variation data and other fields to the document."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:183
+msgid "WooCommerce Proforma Invoices"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:184
+msgid "Automate the generation of WooCommerce proforma invoices when new orders are placed and send them to your customers via order emails. Customize the layout and content of the invoice as per your needs."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:192
+msgid "WooCommerce Address Labels"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:193
+msgid "Generate address labels for all orders in your store and easily print them in bulk. Customize the label layout and create labels of different types (shipping, billing, return, from address) with ease."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:201
+msgid "WordPress Backup and Migration"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:202
+msgid "A complete WordPress backup and migration plugin to easily back up and migrate your WordPress website and database. This fast and flexible backup solution makes creating and restoring backups easy."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:210
+msgid "WooCommerce Product Recommendations"
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:211
+msgid "Generate Intelligent Product Recommendations For Your WooCommerce Store. Offer WooCommerce smart product recommendations to your customers & maximize the average cart value."
+msgstr ""
+
+#: admin/views/admin-settings-other-solutions.php:268
+msgid "Installed"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:19
+msgid "Used it successfully. Don't need anymore."
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:21
+msgid "Have used it successfully and aint in need of it anymore"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:25
+msgid "Temporary deactivation"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:27
+msgid "Temporary de-activation. Will re-activate later."
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:31
+msgid "I couldn't understand how to make it work"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:33
+msgid "Would you like us to assist you?"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:37
+msgid "I found a better plugin"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:39
+msgid "Which plugin?"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:43
+msgid "The plugin is great, but I need specific feature that you don't support"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:45
+msgid "Could you tell us more about that feature?"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:49
+msgid "The plugin is not working"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:51
+msgid "Could you tell us a bit more whats not working?"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:55
+msgid "It's not what I was looking for"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:61
+msgid "The plugin didn't work as expected"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:63
+msgid "What did you expect?"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:67
+msgid "Other"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:69
+msgid "Could you tell us a bit more?"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:87
+msgid "If you have a moment, please let us know why you are deactivating:"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:98
+msgid "We do not collect any personal data when you submit this form. It's your feedback that we value."
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:99
+msgid "Privacy Policy"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:103
+msgid "I rather wouldn't say"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:106
+msgid "Get support"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:107
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:210
+msgid "Deactivate and leave a review"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:214
+msgid "Please go through the"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:214
+msgid "documentation"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:214
+msgid "or contact us via"
+msgstr ""
+
+#: includes/class-wt-userimport-uninstall-feedback.php:214
+msgid "support"
+msgstr ""
+
+#: user_import_export_review_request.php:95
+msgid "Remind me later"
+msgstr ""
+
+#: user_import_export_review_request.php:96
+msgid "Not interested"
+msgstr ""
+
+#: user_import_export_review_request.php:97
+msgid "Review now"
+msgstr ""
+
+#: user_import_export_review_request.php:98
+msgid "You deserve it"
+msgstr ""
+
+#: user_import_export_review_request.php:99
+msgid "Nope, maybe later"
+msgstr ""
+
+#: user_import_export_review_request.php:100
+msgid "I already did"
+msgstr ""
+
+#: user_import_export_review_request.php:253
+msgid "there"
+msgstr ""
+
+#: user_import_export_review_request.php:573
+msgid "Did You Know?"
+msgstr ""
+
+#: user_import_export_review_request.php:584
+msgid "You can now export WooCommerce order"
+msgstr ""
+
+#: user_import_export_review_request.php:584
+msgid "data with custom filters, custom metadata, FTP export, and scheduling options."
+msgstr ""
+
+#: user_import_export_review_request.php:584
+msgid "Bulk edit or update orders using CSV, XML, Excel, or TSV files in one go."
+msgstr ""
+
+#: user_import_export_review_request.php:595
+msgid "You can easily bulk export your customers’"
+msgstr ""
+
+#: user_import_export_review_request.php:595
+msgid "data to CSV, XML, Excel, or TSV files in just a few clicks."
+msgstr ""
+
+#: user_import_export_review_request.php:595
+msgid "Export custom user metadata of third-party plugins seamlessly."
+msgstr ""
+
+#: user_import_export_review_request.php:606
+msgid "Get your store products"
+msgstr ""
+
+#: user_import_export_review_request.php:606
+msgid "bulk exported for hassle-free migration, inventory management, and bookkeeping."
+msgstr ""
+
+#: user_import_export_review_request.php:606
+msgid "Import/export WooCommerce products with reviews, images, and custom metadata."
+msgstr ""
+
+#: user_import_export_review_request.php:617
+msgid "Get your subscription orders exported to a"
+msgstr ""
+
+#: user_import_export_review_request.php:617
+msgid "CSV, XML, Excel, or TSV file."
+msgstr ""
+
+#: user_import_export_review_request.php:617
+msgid "Featuring scheduled exports, advanced filters, custom metadata, and more."
+msgstr ""
+
+#: user_import_export_review_request.php:637
+msgid "Check out plugin ➔"
+msgstr ""
+
+#: user_import_export_review_request.php:638
+msgid "Maybe later"
+msgstr ""

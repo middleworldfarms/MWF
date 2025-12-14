@@ -1,0 +1,202 @@
+.wbte-cta-banner { background: #fff; }
+
+.wbte-cta-content { margin: -6px -12px -12px -12px; }
+
+.wbte-cta-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 12px;
+    border-bottom: 1px solid #e2e4e7;
+    background: #F9FCFF;
+}
+
+.wbte-cta-icon {
+    width: 47px;
+    height: 47px;
+    border-radius: 4px;
+}
+
+.wbte-smart-coupon-cta-icon {
+    width: 62px;
+    height: 61px;
+    border-radius: 4px;
+}
+
+.wbte-cta-header h3 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d2327;
+    line-height: 130%;
+    padding: 0;
+}
+
+.wbte-cta-features {
+    margin: 0;
+    padding: 12px 12px 0 12px;
+    list-style: none;
+}
+
+.wbte-cta-features li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: #212121;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.wbte-cta-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 10%;
+    width: 13px;
+    height: 13px;
+    background: #4CAF50;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    line-height: 1;
+}
+
+.wbte-cta-footer {
+    margin-top: 20px;
+    padding: 0 12px 12px;
+    text-align: center;
+}
+
+.wbte-cta-button {
+    display: block;
+    background: #2270B1;
+    color: #fff ;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.wbte-cta-button:hover,
+.wbte-cta-button:focus,
+.wbte-cta-button:active {
+    background: #135e96;
+    color: #fff ;
+    outline: none ;
+    box-shadow: none ;
+}
+
+/* .wt-cta-guarantees {
+    margin: 15px 0;
+}
+
+.guarantee-icon {
+    font-size: 14px;
+} */
+
+.wbte-cta-toggle{
+    display: inline-block;
+    color: #0500FF;
+    text-decoration: none;
+    font-size: 12px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.wbte-cta-toggle:hover {
+    color: #135e96;
+    text-decoration: underline;
+}
+
+.wbte-cta-features .hidden-feature {
+    display: none;
+}
+
+.wbte-cta-features.show-all .hidden-feature {
+    display: flex;
+}
+
+/* Remove postbox-header arrows since we're using meta box */
+#wbte_product_import_export_pro .handle-actions,
+#wbte_coupon_import_export_pro .handle-actions,
+#wt_pklist_cta_banner .handle-actions {
+    display: none;
+}
+
+/* #wbte_product_import_export_pro h2.hndle,
+#wbte_coupon_import_export_pro h2.hndle,
+#wbte_pdf_invoice_pro h2.hndle {
+    display: none !important;
+} */
+
+
+#wbte_product_import_export_pro .handlediv,
+#wbte_coupon_import_export_pro .handlediv,
+#wbte_pdf_invoice_pro .handlediv {
+    display: none !important;
+}
+
+/* Only hide postbox header for specific banner meta boxes, not all */
+/* #wbte_product_import_export_pro .postbox-header,
+#wbte_coupon_import_export_pro .postbox-header,
+#wbte_pdf_invoice_pro .postbox-header {
+    display: none !important;
+} */
+
+.wbte-cta-footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.wbte-cta-footer-links .wbte-cta-toggle{
+    color: #0500FF;
+    text-decoration: none;
+    font-size: 13px;
+    outline: none ;
+    box-shadow: none ;
+    background: transparent ;
+}
+
+.wbte-cta-footer-links .wbte-cta-toggle:focus,
+.wbte-cta-footer-links .wbte-cta-toggle:active {
+    outline: none ;
+    box-shadow: none ;
+    background: transparent ;
+}
+
+.wbte-cta-footer-links .wbte-cta-button {
+    margin-bottom: 0;
+}
+
+.wbte-cta-footer-links a:first-child {
+    color: #0500FF;
+    text-decoration: none;
+    font-size: 13px;
+    text-decoration: underline;
+    outline: none ;
+    box-shadow: none ;
+    background: transparent ;
+}
+
+.wbte-cta-footer-links a:first-child:focus,
+.wbte-cta-footer-links a:first-child:active {
+    outline: none ;
+    box-shadow: none ;
+    background: transparent ;
+} 
+
+#wbte_coupon_import_export_pro .postbox-header h2, #wbte_pdf_invoice_pro .postbox-header h2, #wbte_product_import_export_pro .postbox-header h2{ color: #000; font-size: 13px; font-weight: 600; }
+#wbte_coupon_import_export_pro .postbox-header .handle-actions, #wbte_pdf_invoice_pro .postbox-header .handle-actions, #wbte_product_import_export_pro .postbox-header .handle-actions{ display: none; }

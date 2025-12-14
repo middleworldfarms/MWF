@@ -1,0 +1,363 @@
+#yith-licences-panel-container .yith-licences-list form, #yith-licences-panel-container .yith-licences-list .yith-licence-activation, #yith-licences-panel-container .yith-licences-list .yith-licence-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 70px;
+  box-sizing: border-box;
+  padding: 0 20px;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  box-shadow: 0 2px 11px 0 rgba(200, 237, 254, 0.5);
+  margin-bottom: 15px;
+  overflow: hidden;
+  position: relative;
+}
+#yith-licences-panel-container .yith-licences-list form > span, #yith-licences-panel-container .yith-licences-list .yith-licence-activation > span, #yith-licences-panel-container .yith-licences-list .yith-licence-header > span {
+  flex: 0 0 25%;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+#yith-licences-panel-container .yith-licences-list form > span.yith-licence-activation-remaining, #yith-licences-panel-container .yith-licences-list .yith-licence-activation > span.yith-licence-activation-remaining, #yith-licences-panel-container .yith-licences-list .yith-licence-header > span.yith-licence-activation-remaining {
+  flex: 0 0 12%;
+}
+#yith-licences-panel-container .yith-licences-list form > span.yith-licence-expire-on, #yith-licences-panel-container .yith-licences-list .yith-licence-activation > span.yith-licence-expire-on, #yith-licences-panel-container .yith-licences-list .yith-licence-header > span.yith-licence-expire-on {
+  flex: 0 0 10%;
+}
+#yith-licences-panel-container .yith-licences-list form > span.yith-licence-action, #yith-licences-panel-container .yith-licences-list .yith-licence-activation > span.yith-licence-action, #yith-licences-panel-container .yith-licences-list .yith-licence-header > span.yith-licence-action {
+  flex: 1 1 auto;
+}
+
+.yith-plugins_page_yith_plugins_activation #wpcontent {
+  padding-left: 0;
+}
+
+#yith-licences-panel-container {
+  max-width: 1200px;
+  padding: 50px 50px;
+  font-size: 13px;
+}
+#yith-licences-panel-container .yith-licences-panel-header {
+  height: 150px;
+  background: linear-gradient(19deg, #005c7f, #93ab08 190%);
+  border-radius: 10px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  overflow: hidden;
+}
+#yith-licences-panel-container .yith-licences-panel-header .yith-licences-panel-header-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 15px;
+  background: #ffffff;
+  position: relative;
+}
+#yith-licences-panel-container .yith-licences-panel-header .yith-licences-panel-header-logo:before, #yith-licences-panel-container .yith-licences-panel-header .yith-licences-panel-header-logo:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+#yith-licences-panel-container .yith-licences-panel-header .yith-licences-panel-header-logo:before {
+  left: -150px;
+  border-left: 100px solid transparent;
+  border-right: 50px solid #ffffff;
+  border-bottom: 100px solid #ffffff;
+  border-top: 50px solid transparent;
+}
+#yith-licences-panel-container .yith-licences-panel-header .yith-licences-panel-header-logo:after {
+  right: -150px;
+  border-right: 100px solid transparent;
+  border-left: 50px solid #ffffff;
+  border-top: 100px solid #ffffff;
+  border-bottom: 50px solid transparent;
+}
+#yith-licences-panel-container .yith-licences-panel-header .yith-licences-panel-header-logo .yith-licences-panel-header-tagline {
+  color: #005b7c;
+  font-weight: bold;
+}
+#yith-licences-panel-container .yith-licences-panel-header .yith-licences-panel-header-logo .yith-licences-panel-header-tagline span {
+  color: #acc327;
+}
+#yith-licences-panel-container section {
+  background: #ffffff;
+  padding: 50px 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  margin-bottom: 25px;
+}
+#yith-licences-panel-container section h2 {
+  margin: 0;
+  color: #03789F;
+  font-weight: bold;
+  font-size: 1.6em;
+  text-align: center;
+}
+#yith-licences-panel-container section p {
+  margin: 0;
+  text-align: center;
+}
+#yith-licences-panel-container section .button-licence {
+  height: 40px;
+  vertical-align: initial;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 10px 25px;
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: #00799f;
+  color: #ffffff;
+  border: 1px solid #00799f;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+#yith-licences-panel-container section .button-licence:hover {
+  background: #0094c4;
+  color: #ffffff;
+  border: 1px solid #0094c4;
+}
+#yith-licences-panel-container .yith-licences-update-status {
+  background-color: rgb(255, 246, 232);
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  column-gap: 10px;
+}
+#yith-licences-panel-container .yith-licences-update-status strong {
+  color: #b56225;
+}
+#yith-licences-panel-container .yith-licences-update-status .licence-update-status {
+  flex: 1 0 auto;
+  text-align: right;
+}
+#yith-licences-panel-container .yith-licences-update-status .button-licence {
+  height: auto;
+  padding: 8px 20px;
+  border-color: #b56225;
+  background-color: #b56225;
+}
+#yith-licences-panel-container .yith-licences-update-status .button-licence:hover {
+  border-color: #9d551f;
+  background-color: #9d551f;
+}
+#yith-licences-panel-container .yith-licences-list {
+  padding: 20px 0;
+}
+#yith-licences-panel-container .yith-licences-list .yith-licence-header {
+  min-height: 0;
+  border: none;
+  box-shadow: none;
+  font-weight: bold;
+  align-items: flex-end;
+}
+#yith-licences-panel-container .yith-licences-list .yith-licence-activation.activated {
+  background-color: #f3fde7;
+  border-color: #dcdcba;
+  box-shadow: 0 2px 11px 0 rgba(212, 221, 176, 0.5);
+}
+#yith-licences-panel-container .yith-licences-list .yith-licence-activation .yith-licence-expire-on .banned, #yith-licences-panel-container .yith-licences-list .yith-licence-activation .yith-licence-expire-on .expired {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+#yith-licences-panel-container .yith-licences-list .yith-licence-activation .yith-licence-expire-on .expired {
+  color: #c41d04;
+}
+#yith-licences-panel-container .yith-licences-list .yith-licence-activation .yith-licence-action {
+  padding: 0;
+}
+#yith-licences-panel-container .yith-licences-list .yith-licence-activation .yith-plugin-fw__action-button {
+  margin: 0;
+}
+#yith-licences-panel-container .yith-licences-list form {
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #fcf2f2;
+  border-color: #fea2a2;
+  box-shadow: 0 2px 11px 0 rgba(254, 200, 200, 0.5);
+}
+#yith-licences-panel-container .yith-licences-list form .yith-licence-product {
+  display: flex;
+  column-gap: 15px;
+  align-items: flex-start;
+}
+#yith-licences-panel-container .yith-licences-list form .yith-licence-activation-alert, #yith-licences-panel-container .yith-licences-list form .yith-licence-error-message {
+  color: #c70303;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+#yith-licences-panel-container .yith-licences-list form .yith-licence-error-message {
+  padding-left: 3px;
+  margin-top: 5px;
+  display: inline-block;
+}
+#yith-licences-panel-container .yith-licences-list form input[type=text] {
+  padding: 0 15px;
+  width: 100%;
+  height: 40px;
+  font-size: 1em;
+  color: #444;
+  border: 1px solid #d8d8d8;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+#yith-licences-panel-container .yith-licences-list form input[type=text]:focus {
+  border-color: #00799f;
+  outline: none;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05), 0 0 0 1px #00799f;
+}
+#yith-licences-panel-container .yith-licences-list form input[type=submit]:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+#yith-licences-panel-container .yith-licences-upsell-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+#yith-licences-panel-container .yith-licences-upsell-wrapper .yith-licences-upsell-product {
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  box-shadow: 0 2px 11px 0 rgba(232, 232, 232, 0.5);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+#yith-licences-panel-container .yith-licences-upsell-wrapper .yith-licences-upsell-product-title {
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e8e8e8;
+  gap: 12px;
+  font-weight: 500;
+}
+#yith-licences-panel-container .yith-licences-upsell-wrapper .yith-licences-upsell-product-action {
+  text-align: right;
+  margin-top: auto;
+}
+#yith-licences-panel-container .yith-licences-upsell-wrapper .yith-licences-upsell-product-action .button-get-it {
+  padding: 12px 20px;
+  border-radius: 50px;
+  display: inline-block;
+  text-decoration: none;
+  background: #00799f;
+  color: #ffffff;
+  font-weight: 700;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+#yith-licences-panel-container .yith-licences-upsell-wrapper .yith-licences-upsell-product-action .button-get-it > svg {
+  position: absolute;
+  right: 1em;
+  stroke-width: 3;
+  width: 1em;
+  top: 50%;
+  margin-top: -0.5em;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+#yith-licences-panel-container .yith-licences-upsell-wrapper .yith-licences-upsell-product-action .button-get-it:hover {
+  padding: 12px 32px 12px 20px;
+  background: #0094c4;
+}
+#yith-licences-panel-container .yith-licences-upsell-wrapper .yith-licences-upsell-product-action .button-get-it:hover > svg {
+  opacity: 1;
+}
+
+/* === Modal === */
+.yith-plugin-fw__modal__wrap .yith-license-modal-title,
+.yith-plugin-fw__modal__wrap .yith-license-modal-content {
+  text-align: center;
+  line-height: 1.5em;
+}
+.yith-plugin-fw__modal__wrap .yith-license-modal-footer {
+  text-align: right;
+}
+.yith-plugin-fw__modal__wrap .yith-license-modal-description {
+  margin-bottom: 20px;
+}
+.yith-plugin-fw__modal__wrap .yith-license-modal-image {
+  text-align: center;
+  box-shadow: 0 0 10px 3px rgba(34, 59, 80, 0.1);
+}
+.yith-plugin-fw__modal__wrap .yith-license-modal-image img {
+  max-width: 900px;
+  width: 90%;
+}
+
+@media screen and (max-width: 782px) {
+  #yith-licences-panel-container .yith-licences-update-status {
+    flex-wrap: wrap;
+    row-gap: 15px;
+  }
+  #yith-licences-panel-container .yith-licences-update-status > span {
+    flex: 1 0;
+  }
+  #yith-licences-panel-container .yith-licences-update-status .licence-update-status {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  #yith-licences-panel-container .yith-licences-update-status .licence-update-status .button-licence {
+    width: 80%;
+  }
+  #yith-licences-panel-container .yith-licences-list .yith-licence-activation,
+  #yith-licences-panel-container .yith-licences-list .yith-licence-activation-form {
+    flex-direction: column;
+    align-items: stretch;
+    row-gap: 10px;
+    padding: 25px;
+  }
+  #yith-licences-panel-container .yith-licences-list .yith-licence-activation > span,
+  #yith-licences-panel-container .yith-licences-list .yith-licence-activation-form > span {
+    padding: 0;
+  }
+  #yith-licences-panel-container .yith-licences-list .yith-licence-activation > span.yith-licence-action,
+  #yith-licences-panel-container .yith-licences-list .yith-licence-activation-form > span.yith-licence-action {
+    flex: none;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    opacity: 1 !important;
+  }
+  #yith-licences-panel-container .yith-licences-list .yith-licence-activation > span:before,
+  #yith-licences-panel-container .yith-licences-list .yith-licence-activation-form > span:before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  #yith-licences-panel-container .yith-licences-list .yith-licence-activation input[type=submit],
+  #yith-licences-panel-container .yith-licences-list .yith-licence-activation-form input[type=submit] {
+    width: 100%;
+  }
+  #yith-licences-panel-container .yith-licences-list .yith-licence-header {
+    display: none;
+  }
+  #yith-licences-panel-container .yith-licences-upsell-wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .yith-plugin-fw__modal__wrap .yith-license-modal-image {
+    display: none;
+  }
+}
+@media screen and (max-width: 480px) {
+  #yith-licences-panel-container {
+    padding: 50px 15px 50px 5px;
+  }
+  #yith-licences-panel-container .yith-licences-panel-header-tagline {
+    display: none;
+  }
+  #yith-licences-panel-container .yith-licences-panel-list {
+    padding: 50px 20px;
+  }
+}
+
+/*# sourceMappingURL=panel.css.map */

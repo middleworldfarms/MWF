@@ -1,0 +1,22 @@
+
+.ywcnp_amount,.ywcnp_sugg_price{
+
+    width: 40%!important;
+    margin: 10px;
+}
+.group_table td.price{
+    display: none;
+}
+
+.ywcnp_suggest_price_single{
+    font-weight: bold;
+}
+.ywcnp_min_label,.ywcnp_max_label,.ywcnp_sugg_label{
+
+    font-size: 80%;
+    font-weight: bold;
+}
+
+.ywcnp_suggest_label .amount, .ywcnp_min_label .amount, .ywcnp_max_label .amount ,.ywcnp_sugg_label .amount {
+    margin-left: 5px;
+}

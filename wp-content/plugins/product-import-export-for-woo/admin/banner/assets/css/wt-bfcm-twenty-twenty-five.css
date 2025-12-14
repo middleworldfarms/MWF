@@ -1,0 +1,32 @@
+.wt-bfcm-banner-2025{ padding: 0; border-color: #000; background: #000; background-image: url('../images/black-friday-bg-lines.png') ; border-radius: 6px; background-repeat: no-repeat; background-size: cover; border-left: none; margin: 5px 15px 15px 15px; }
+.wt-bfcm-banner-2025 .notice-dismiss:before{ content: "\f335"; color: #fff;}
+.wt-bfcm-banner-body{ display: flex; }
+.wt-bfcm-banner-body-img-section{ width: 20%; display: flex; margin-right: 15px; }
+.wt-bfcm-banner-body-info{ width: 79%; display: flex; align-items: center; padding: 5px 0; gap: 20px; }
+.wt-bfcm-banner-body-img-section img{ width: 100%;}
+.wt-bfcm-never-miss-this-deal{ background: #D3FF24; border-radius: 80px; padding: 5px 10px; color: #000; }
+.wt-bfcm-never-miss-this-deal p{ margin:0; font-weight: bold; font-size: 13px; text-align: center;}
+.wt-bfcm-banner-body-info .info p{ font-style: normal; font-weight: 600; font-size: 13px; color: #FFFFFF; text-align: center; }
+.wt-bfcm-banner-body-info .info p span { font-size: 20px; font-weight: 900; color: #D3FF24; }
+.wt-bfcm-banner-body .info-button{ border: 2px solid #D3FF24; border-radius: 80px; padding: 6px 15px; font-style: normal; font-weight: 600; font-size: 13px; text-align: center; }
+.wt-bfcm-banner-body a{ color: #D3FF24; text-decoration: none; text-align: center; }
+.wt-bfcm-banner-body .info-button:hover a { color: #000; }
+.wt-bfcm-banner-body .info-button:hover { background: #D3FF24; }
+
+
+/* Smart Coupon Banner 2025 */
+
+.wbte_sc_promotion_banner_div{ position: relative; padding: 20px 10px; background: #E3E3FF; border-left: solid 3px #5454A5; margin: 10px 0px; }
+.wbte_sc_promotion_banner_title{ color: #5454A5; font-size: 16px; font-weight: 500; }
+.wbte_sc_promotion_banner_close_btn{ position: absolute; right: 8px; top: 8px; color: #505050; cursor: pointer; }
+
+/* Hide CTA banners on coupon edit page if coupons are not created yet */
+.wrap:has(.woocommerce-BlankState) .wbte_sc_promotion_banner_div, .wrap:has(.woocommerce-BlankState) #wbte_sc_gc_promo_banner, .wrap:has(.woocommerce-BlankState) .wt-gdpr-promotion-banner { display: none !important; }
+.wbte_sc_promotion_banner_content{ display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+.wbte_sc_promotion_banner_later{ height: 30px; background: #E3E3FF !important; color: #5454A5 !important; border: 1px solid #5454A5 !important; }
+.wbte_sc_promotion_banner_link_btn{ height: 30px; background: #5454A5 !important; color: #fff !important; border: none !important; display: flex !important; align-items: center; justify-content: space-between; }
+.wbte_sc_promotion_banner_actions{ display: flex; align-items: center; margin-left: 10px; }
+@media (max-width: 650px) {
+  .wbte_sc_promotion_banner_content{ flex-direction: column; align-items: flex-start; }
+  .wbte_sc_promotion_banner_actions{ width: 100%; margin-top: 10px; margin-left: 0px; }
+}

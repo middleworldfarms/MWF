@@ -1,0 +1,1202 @@
+/**
+ * Solidarity Pricing Modal Styles
+ * Mobile-first, visual-heavy design
+ */
+
+/* Modal Overlay */
+.mwf-solidarity-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 999999;
+    overflow-y: auto;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.mwf-solidarity-overlay.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Modal Container */
+.mwf-solidarity-modal {
+    background: #fff;
+    border-radius: 12px;
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    animation: slideUp 0.4s ease-out;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Compact version */
+.mwf-solidarity-modal.mwf-solidarity-compact {
+    max-width: 700px;
+}
+
+/* Background Image Section */
+.mwf-solidarity-hero {
+    position: relative;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    background-color: #2d5016;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+}
+
+/* Compact version - shorter hero */
+.mwf-solidarity-compact .mwf-solidarity-hero {
+    height: 200px;
+}
+
+.mwf-solidarity-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to top, rgba(255,255,255,1), transparent);
+}
+
+/* Close Button */
+.mwf-solidarity-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    z-index: 10;
+}
+
+.mwf-solidarity-close:hover {
+    background: #fff;
+    transform: rotate(90deg);
+}
+
+/* Background Image Section */
+.mwf-solidarity-hero {
+    position: relative;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    background-color: #2d5016;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+}
+
+.mwf-solidarity-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to top, rgba(255,255,255,1), transparent);
+}
+
+/* Close Button */
+.mwf-solidarity-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    z-index: 10;
+}
+
+.mwf-solidarity-close:hover {
+    background: #fff;
+    transform: rotate(90deg);
+}
+
+/* Content Section */
+.mwf-solidarity-content {
+    padding: 40px 30px;
+    text-align: center;
+}
+
+/* Compact version - tighter padding */
+.mwf-solidarity-compact .mwf-solidarity-content {
+    padding: 30px 30px 30px;
+}
+
+/* Headlines */
+.mwf-solidarity-headline {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2d5016;
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+}
+
+/* Compact version - smaller headline */
+.mwf-solidarity-compact .mwf-solidarity-headline {
+    font-size: 26px;
+    margin: 0 0 10px 0;
+}
+
+.mwf-solidarity-subheadline {
+    font-size: 18px;
+    color: #666;
+    margin: 0 0 40px 0;
+    line-height: 1.5;
+}
+
+/* Compact version - smaller subheadline */
+.mwf-solidarity-compact .mwf-solidarity-subheadline {
+    font-size: 15px;
+    margin: 0 0 25px 0;
+}
+
+/* Price Tiers */
+.mwf-solidarity-tiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* Compact version - tighter spacing */
+.mwf-solidarity-compact .mwf-solidarity-tiers {
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.mwf-solidarity-tier {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 25px 15px;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+/* Compact version - smaller padding */
+.mwf-solidarity-compact .mwf-solidarity-tier {
+    padding: 20px 12px;
+}
+
+.mwf-solidarity-tier:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.mwf-solidarity-tier.solidarity {
+    border-color: #7cb342;
+}
+
+.mwf-solidarity-tier.standard {
+    border-color: #2d5016;
+    background: #f5f9f0;
+}
+
+.mwf-solidarity-tier.supporter {
+    border-color: #1b5e20;
+}
+
+.mwf-tier-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Compact version - smaller icons */
+.mwf-solidarity-compact .mwf-tier-icon {
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+.mwf-tier-label {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2d5016;
+    margin: 0 0 5px 0;
+}
+
+/* Compact version - smaller labels */
+.mwf-solidarity-compact .mwf-tier-label {
+    font-size: 16px;
+}
+
+.mwf-tier-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin: 5px 0;
+}
+
+/* Compact version - smaller prices */
+.mwf-solidarity-compact .mwf-tier-price {
+    font-size: 20px;
+}
+
+.mwf-tier-desc {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0 0 0;
+}
+
+/* Compact version - smaller descriptions */
+.mwf-solidarity-compact .mwf-tier-desc {
+    font-size: 13px;
+}
+
+/* Stats Section */
+.mwf-solidarity-stats {
+    background: #f0f7e8;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: inline-block;
+}
+
+.mwf-solidarity-stats strong {
+    color: #2d5016;
+    font-size: 28px;
+}
+
+/* Learn More Section */
+.mwf-solidarity-learn-more {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 0;
+    margin: 20px 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+}
+
+.mwf-solidarity-learn-more.expanded {
+    max-height: 600px;
+    padding: 25px;
+}
+
+.mwf-solidarity-learn-more-content {
+    text-align: left;
+    color: #333;
+    line-height: 1.8;
+}
+
+.mwf-solidarity-learn-more-content p {
+    margin: 0 0 15px 0;
+}
+
+.mwf-solidarity-learn-more-content ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+/* Buttons */
+.mwf-solidarity-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.mwf-solidarity-btn {
+    padding: 15px 35px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.mwf-solidarity-btn-primary {
+    background: #2d5016;
+    color: #fff;
+}
+
+.mwf-solidarity-btn-primary:hover {
+    background: #1b5e20;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 80, 22, 0.3);
+}
+
+.mwf-solidarity-btn-secondary {
+    background: #fff;
+    color: #2d5016;
+    border: 2px solid #2d5016;
+}
+
+.mwf-solidarity-btn-secondary:hover {
+    background: #f5f9f0;
+}
+
+/* Don't Show Again Checkbox */
+.mwf-solidarity-checkbox {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.mwf-solidarity-checkbox label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+}
+
+.mwf-solidarity-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .mwf-solidarity-modal {
+        margin: 10px;
+    }
+    
+    .mwf-solidarity-hero {
+        height: 200px;
+    }
+    
+    .mwf-solidarity-content {
+        padding: 30px 20px;
+    }
+    
+    .mwf-solidarity-headline {
+        font-size: 24px;
+    }
+    
+    .mwf-solidarity-subheadline {
+        font-size: 16px;
+    }
+    
+    .mwf-solidarity-tiers {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .mwf-solidarity-tier {
+        padding: 20px;
+    }
+    
+    .mwf-solidarity-buttons {
+        flex-direction: column;
+    }
+    
+    .mwf-solidarity-btn {
+        width: 100%;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .mwf-solidarity-overlay {
+        padding: 10px;
+    }
+    
+    .mwf-solidarity-modal {
+        border-radius: 8px;
+    }
+    
+    .mwf-solidarity-content {
+        padding: 20px 15px;
+    }
+    
+    .mwf-solidarity-headline {
+        font-size: 20px;
+    }
+    
+    .mwf-tier-icon {
+        font-size: 36px;
+    }
+    
+    .mwf-tier-price {
+        font-size: 20px;
+    }
+}
+
+/* Clickable Tier Enhancements */
+.mwf-solidarity-tier.clickable {
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 45px;
+}
+
+.mwf-solidarity-tier.clickable:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.mwf-tier-click-hint {
+    display: block;
+    font-size: 12px;
+    color: #2d5016;
+    font-weight: 600;
+    margin-top: 10px;
+    opacity: 0.7;
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+}
+
+.mwf-solidarity-tier.clickable:hover .mwf-tier-click-hint {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Tier Detail Popups */
+.mwf-tier-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 9999999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.mwf-tier-popup.active {
+    display: flex;
+}
+
+.mwf-tier-popup-content {
+    background: #fff;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 40px 30px;
+    position: relative;
+    animation: slideUp 0.3s ease-out;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.mwf-popup-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #f0f0f0;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mwf-popup-close:hover {
+    background: #e0e0e0;
+    transform: rotate(90deg);
+}
+
+.mwf-tier-icon-large {
+    font-size: 64px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.mwf-tier-popup-content h3 {
+    font-size: 28px;
+    color: #2d5016;
+    margin: 0 0 20px 0;
+}
+
+.mwf-popup-body {
+    text-align: left;
+    color: #333;
+    line-height: 1.7;
+}
+
+.mwf-popup-body p {
+    margin: 15px 0;
+}
+
+.mwf-popup-body ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.mwf-popup-body li {
+    margin: 8px 0;
+}
+
+.mwf-popup-highlight {
+    background: #f0f7e8;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #7cb342;
+    margin: 20px 0;
+}
+
+.mwf-popup-highlight p {
+    margin: 8px 0;
+}
+
+.mwf-popup-note {
+    font-style: italic;
+    color: #666;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.mwf-popup-breakdown {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.mwf-popup-cost {
+    font-size: 15px;
+    margin: 8px 0;
+    padding: 5px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.mwf-popup-total {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2d5016;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid #2d5016;
+}
+
+.mwf-popup-impact {
+    margin: 20px 0;
+}
+
+.mwf-impact-item {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 12px 0;
+    border-left: 3px solid #1b5e20;
+}
+
+.mwf-impact-item strong {
+    display: block;
+    font-size: 18px;
+    color: #1b5e20;
+    margin-bottom: 5px;
+}
+
+.mwf-impact-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.mwf-popup-btn {
+    background: #7cb342;
+    color: #fff;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 25px;
+    width: 100%;
+    transition: all 0.3s;
+}
+
+.mwf-popup-btn:hover {
+    background: #689f38;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124, 179, 66, 0.3);
+}
+
+/* Mobile Responsive for Popups */
+@media (max-width: 768px) {
+    .mwf-tier-popup-content {
+        padding: 30px 20px;
+        max-height: 85vh;
+    }
+    
+    .mwf-tier-icon-large {
+        font-size: 48px;
+    }
+    
+    .mwf-tier-popup-content h3 {
+        font-size: 22px;
+    }
+    
+    .mwf-popup-body {
+        font-size: 15px;
+    }
+}
+
+/* Multi-Step Flow */
+.mwf-solidarity-step {
+    display: none;
+}
+
+.mwf-solidarity-step.active {
+    display: block;
+}
+
+/* Step 2 Scrollable Content */
+.mwf-content-scrollable {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Transparency Sections */
+.mwf-transparency-section {
+    margin: 25px 0;
+    text-align: left;
+}
+
+.mwf-transparency-section h3 {
+    font-size: 20px;
+    color: #2d5016;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Visual Cost Items */
+.mwf-visual-costs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.mwf-cost-item {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    gap: 12px;
+}
+
+.mwf-cost-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.mwf-cost-details {
+    flex: 1;
+}
+
+.mwf-cost-details strong {
+    display: block;
+    font-size: 14px;
+    color: #2d5016;
+    margin-bottom: 3px;
+}
+
+.mwf-cost-amount {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    margin: 3px 0;
+}
+
+.mwf-cost-details p {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+}
+
+.mwf-cost-total-box {
+    background: #2d5016;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.mwf-cost-total-box strong {
+    font-size: 16px;
+}
+
+.mwf-total-amount {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+/* Math Visual */
+.mwf-math-visual {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.mwf-math-step {
+    text-align: center;
+    flex: 1;
+    min-width: 100px;
+}
+
+.mwf-math-icon {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.mwf-math-content strong {
+    display: block;
+    font-size: 16px;
+    color: #2d5016;
+    margin-bottom: 3px;
+}
+
+.mwf-math-content p {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+}
+
+.mwf-math-arrow {
+    font-size: 24px;
+    color: #7cb342;
+    font-weight: 700;
+}
+
+.mwf-calculation-note {
+    background: #f0f7e8;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.mwf-calculation-note p {
+    margin: 5px 0;
+    font-size: 15px;
+}
+
+.mwf-note-small {
+    font-size: 13px !important;
+    color: #666;
+}
+
+/* Solidarity Explainer */
+.mwf-solidarity-explainer-visual {
+    margin: 15px 0;
+}
+
+.mwf-explainer-item {
+    display: flex;
+    align-items: flex-start;
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    gap: 12px;
+}
+
+.mwf-explainer-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.mwf-explainer-content strong {
+    display: block;
+    font-size: 15px;
+    color: #2d5016;
+    margin-bottom: 5px;
+}
+
+.mwf-explainer-content p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+/* Wage Reality Box */
+.mwf-wage-reality {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+.mwf-wage-reality p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Trust Box */
+.mwf-trust-box {
+    background: #f0f7e8;
+    border: 2px solid #7cb342;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.mwf-trust-box p {
+    font-size: 14px;
+    margin: 8px 0;
+    text-align: center;
+}
+
+/* Mobile Responsive for Step 2 */
+@media (max-width: 768px) {
+    .mwf-visual-costs {
+        grid-template-columns: 1fr;
+    }
+    
+    .mwf-math-visual {
+        flex-direction: column;
+    }
+    
+    .mwf-math-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .mwf-content-scrollable {
+        max-height: 65vh;
+    }
+}
+
+/* Print */
+@media print {
+    .mwf-solidarity-overlay {
+        display: none !important;
+    }
+}
+
+/* ========================================
+   STEP 2: FINANCIAL TRANSPARENCY STYLES
+   ======================================== */
+
+/* Multi-Step Flow */
+.mwf-solidarity-step {
+    display: none;
+}
+
+.mwf-solidarity-step.active {
+    display: block;
+}
+
+/* Step 2 Scrollable Content */
+.mwf-content-scrollable {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Transparency Sections */
+.mwf-transparency-section {
+    margin: 25px 0;
+    text-align: left;
+}
+
+.mwf-transparency-section h3 {
+    font-size: 20px;
+    color: #2d5016;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Visual Cost Items */
+.mwf-visual-costs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.mwf-cost-item {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    gap: 12px;
+}
+
+.mwf-cost-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.mwf-cost-details {
+    flex: 1;
+}
+
+.mwf-cost-details strong {
+    display: block;
+    font-size: 14px;
+    color: #2d5016;
+    margin-bottom: 3px;
+}
+
+.mwf-cost-amount {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    margin: 3px 0;
+}
+
+.mwf-cost-details p {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+}
+
+.mwf-cost-total-box {
+    background: #2d5016;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.mwf-cost-total-box strong {
+    font-size: 16px;
+}
+
+.mwf-total-amount {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+/* Math Visual */
+.mwf-math-visual {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.mwf-math-step {
+    text-align: center;
+    flex: 1;
+    min-width: 100px;
+}
+
+.mwf-math-icon {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.mwf-math-content strong {
+    display: block;
+    font-size: 16px;
+    color: #2d5016;
+    margin-bottom: 3px;
+}
+
+.mwf-math-content p {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+}
+
+.mwf-math-arrow {
+    font-size: 24px;
+    color: #7cb342;
+    font-weight: 700;
+}
+
+.mwf-calculation-note {
+    background: #f0f7e8;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.mwf-calculation-note p {
+    margin: 5px 0;
+    font-size: 15px;
+}
+
+.mwf-note-small {
+    font-size: 13px !important;
+    color: #666;
+}
+
+/* Solidarity Explainer */
+.mwf-solidarity-explainer-visual {
+    margin: 15px 0;
+}
+
+.mwf-explainer-item {
+    display: flex;
+    align-items: flex-start;
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    gap: 12px;
+}
+
+.mwf-explainer-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.mwf-explainer-content strong {
+    display: block;
+    font-size: 15px;
+    color: #2d5016;
+    margin-bottom: 5px;
+}
+
+.mwf-explainer-content p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+/* Wage Reality Box */
+.mwf-wage-reality {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+.mwf-wage-reality p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Trust Box */
+.mwf-trust-box {
+    background: #f0f7e8;
+    border: 2px solid #7cb342;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.mwf-trust-box p {
+    font-size: 14px;
+    margin: 8px 0;
+    text-align: center;
+}
+
+/* Next/Prev Button Styles */
+.mwf-solidarity-btn-next,
+.mwf-solidarity-btn-prev {
+    background: #7cb342;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.mwf-solidarity-btn-next:hover,
+.mwf-solidarity-btn-prev:hover {
+    background: #689f38;
+    transform: translateY(-2px);
+}
+
+.mwf-solidarity-btn-prev {
+    background: #999;
+}
+
+.mwf-solidarity-btn-prev:hover {
+    background: #777;
+}
+
+/* Mobile Responsive for Step 2 */
+@media (max-width: 768px) {
+    .mwf-visual-costs {
+        grid-template-columns: 1fr;
+    }
+    
+    .mwf-math-visual {
+        flex-direction: column;
+    }
+    
+    .mwf-math-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .mwf-content-scrollable {
+        max-height: 65vh;
+    }
+    
+    .mwf-cost-icon {
+        font-size: 28px;
+    }
+    
+    .mwf-explainer-icon {
+        font-size: 28px;
+    }
+}

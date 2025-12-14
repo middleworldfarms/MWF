@@ -1,0 +1,53 @@
+<div data-class="vertical_submenu_container" data-main="1">
+	<div data-class="vertical_submenu">
+		<ul data-class="submenu_main vertical_submenu_main" data-target-id="{{wbte-ds-attr-menu_id}}">
+			<li data-for="menu_item in menu" data-bind-data-class="{ vertical_submenu_section : menu_item.is_section }">
+				<span data-if="menu_item.is_section" data-class="submenu_section_text">{{menu_item.title}}</span>
+			
+				<a data-if="!menu_item.is_section" data-class="submenu_item vertical_submenu_item" data-bind-class="{ has_submenu: menu_item.submenu, has_icon: menu_item.icon, active: menu_item.is_active }" data-bind-href="menu_item.href" data-bind-target="menu_item.target" data-target-id="{{wbte-ds-attr-menu_item.target_id}}">
+					{{wbte-ds-icon-((menu_item.icon))}}
+					<span data-class="submenu_text">{{menu_item.title}}</span>
+					<span data-if="menu_item.submenu" data-class="submenu_arrow">
+						{{wbte-ds-icon-down-arrow-1}} 
+					</span>
+				</a>
+
+				<ul data-if="menu_item.submenu" data-class="subsubmenu vertical_subsubmenu">
+					<li data-for="sub_menu_item in menu_item.submenu">
+						<a data-class="submenu_item vertical_submenu_item" data-bind-class="{ has_submenu : sub_menu_item.submenu, active: sub_menu_item.is_active }" data-target-id="{{wbte-ds-attr-sub_menu_item.target_id}}" data-bind-href="sub_menu_item.href" data-bind-target="sub_menu_item.target">
+							<span data-class="submenu_text">{{sub_menu_item.title}}</span>
+							<span data-if="sub_menu_item.submenu" data-class="submenu_arrow">
+								{{wbte-ds-icon-down-arrow-1}} 
+							</span>
+						</a>
+						<ul data-if="sub_menu_item.submenu" data-class="subsubmenu vertical_subsubmenu">
+							<li data-for="subsub_menu_item in sub_menu_item.submenu">
+								<a data-class="submenu_item vertical_submenu_item" data-bind-class="{ active: subsub_menu_item.is_active }" data-target-id="{{wbte-ds-attr-subsub_menu_item.target_id}}" data-bind-href="subsub_menu_item.href" data-bind-target="subsub_menu_item.target">
+									<span data-class="submenu_text">{{subsub_menu_item.title}}</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+			</li>
+		</ul>
+	</div>
+	<!-- Content area:start -->
+	<div data-class="submenu_content_main" data-if="menu" data-id="{{wbte-ds-attr-menu_id}}">
+		<div data-for="menu_item in menu" data-if="!menu_item.is_section && !menu_item.href">
+			<div data-class="submenu_content" data-id="{{wbte-ds-attr-menu_item.target_id}}">
+				{{filter:tab_content menu_item}}
+			</div>
+			<div data-if="menu_item.submenu && !sub_menu_item.href" data-for="sub_menu_item in menu_item.submenu">
+				<div data-class="submenu_content" data-id="{{wbte-ds-attr-sub_menu_item.target_id}}">
+					{{filter:tab_content sub_menu_item}}
+				</div>
+				<div data-class="submenu_content" data-if="sub_menu_item.submenu && !subsub_menu_item.href" data-for="subsub_menu_item in sub_menu_item.submenu" data-id="{{wbte-ds-attr-subsub_menu_item.target_id}}">
+					{{filter:tab_content subsub_menu_item}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Content area:end -->
+</div>

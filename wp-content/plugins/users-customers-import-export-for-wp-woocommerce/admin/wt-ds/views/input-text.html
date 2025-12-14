@@ -1,0 +1,6 @@
+<div data-class="input-text-wrapper">
+    <span data-class="input-text-wrapper-label" data-if="html.left_label">{{html:left_label}}</span>
+        <textarea data-if="input_type==='textarea'" name="{{wbte-ds-attr-name}}" data-bind-id="id" data-bind-placeholder="placeholder" data-main="1">{{value}}</textarea>
+        <input data-if="input_type!=='textarea'" type="{{wbte-ds-attr-input_type ? input_type : 'text'}}" name="{{wbte-ds-attr-name}}" value="{{wbte-ds-attr-value}}" data-bind-id="id" data-bind-placeholder="placeholder" data-main="1"/>
+    <span data-class="input-text-wrapper-label" data-if="html.right_label">{{html:right_label}}</span>
+</div>

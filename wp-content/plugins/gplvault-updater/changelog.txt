@@ -1,0 +1,354 @@
+GPLVault Update Manager Changelog
+==================================
+
+Version 5.3.3 – 2025-11-07
+---------------------------
+- Fixed: Resolved WooCommerce screen options conflict by limiting global script/style enqueuing to GPLVault admin pages only.
+- Fixed: Admin menu styling JavaScript now only outputs on GPLVault pages, preventing potential conflicts with other plugins.
+- Improved: Consolidated three admin_init log management hooks into one optimized dispatcher for better performance.
+- Improved: All admin scripts and styles now only load on GPLVault pages, preventing conflicts with other plugins.
+- Improved: is_gplvault_area() helper now correctly identifies all six GPLVault admin pages instead of just three.
+- Improved: Enhanced WordPress Coding Standards compliance with proper input sanitization using wp_unslash().
+- Improved: Added comprehensive PHPCS suppressions for legitimate log file management operations.
+
+Version 5.3.2 – 2025-08-22
+---------------------------
+- Updated: Admin menu icon now uses a custom SVG icon instead of WordPress Dashicons for better brand consistency and visibility across all admin color schemes.
+- Updated: UI text consistency - Changed all references from 'Master Key' to 'User License Key' throughout the interface.
+- Updated: Changed tooltip references from 'API Keys section' to 'License Keys section' to match website terminology.
+- Updated: All placeholder text now uses 'user license key' instead of 'master key' for consistency.
+
+Version 5.3.1 – 2025-07-24
+---------------------------
+- Fixed: Confirmation dialogs for "Deactivate License" and "Clear Local Settings" buttons now use native browser confirm dialogs to ensure functionality.
+- Fixed: Resolved issue where Polipop notification library wasn't properly displaying interactive buttons in confirmation dialogs.
+- Fixed: CSS rendering issue after AJAX license operations - styles now persist correctly when updating license status.
+- Fixed: Progress bar and metric cards now display properly after Check License, Activate, and Deactivate operations.
+- Fixed: WordPress 6.7+ translation warning by removing translation calls from cron schedule registration.
+
+Version 5.3.0 – 2025-07-23
+---------------------------
+- Added: Complete Material Design-inspired UI refresh for all admin pages.
+- Added: Interactive search and filter functionality for plugin/theme exclusion lists.
+- Added: Bulk selection actions (Select All/Select None) for easier management.
+- Added: Real-time item counting and visual feedback.
+- Improved: Enhanced user experience with modern card-based layouts.
+- Improved: Better visual hierarchy and typography throughout the plugin.
+- Improved: Responsive design for mobile and tablet devices.
+- Improved: Smooth animations and transitions for better interactivity.
+- Fixed: Multiple phpcs warnings and code quality issues.
+- Fixed: Replaced deprecated PHP functions with WordPress-specific alternatives.
+
+Version 5.2.7 – 2025-05-30
+---------------------------
+- Fixed: Resolved WordPress 6.7+ compatibility issues with translation loading.
+- Improved: Updated code to use modern PHP standards (replaced dirname(__FILE__) with __DIR__).
+- Improved: Enhanced plugin initialization process for better performance.
+- Improved: Removed unnecessary translation calls in internal functions.
+
+Version 5.2.6 – 2025-05-05
+---------------------------
+- Improved: Enhanced text clarity and grammar in admin notices for better user experience.
+- Improved: Strengthened security for exception handling throughout the plugin.
+- Improved: Verified compatibility with WordPress version 6.8.1.
+
+Version 5.2.5 – 2025-04-21
+---------------------------
+- Added: Weekly full catalog refresh (includes all plugins, not just active ones) via WordPress cron.
+- Improved: Activation and deactivation logic now schedules/unschedules the weekly refresh event.
+- Changed: Restored updater code to clean state (removed WooCommerce debug code).
+- Improved: Enhanced the logs page UI by removing duplicate environment information.
+- Improved: Updated JavaScript to dynamically generate plain text from table data for clipboard and download operations.
+- Improved: Made the Environment tab cleaner and more visually appealing while maintaining all functionality.
+- Fixed: Corrected grammatical error in license activation message on the Disable Updates page.
+- Improved: Restyled the "Go to Settings" button on the Disable Updates page to match material design standards.
+- Improved: Enhanced English text in admin footer for better clarity.
+- Tested: Verified compatibility with WordPress version 6.8.
+
+Version 5.2.4.2 – 2025-02-05
+---------------------------
+- Added: Improved error suppression for WordPress 6.7+ textdomain JIT loading notices.
+
+Version 5.2.4.1 – 2025-02-04
+---------------------------
+- Fixed: Custom error handler implemented to suppress translation loading notices.
+- Fixed: Removal of HTML markup from the plugin description.
+- Added: Inclusion of the GPL v2 license file.
+
+Version 5.2.4 – 2024-12-12
+-------------------------
+- Fixed: Resolved an access control issue.
+- Fixed: Corrected a translation bug.
+
+Version 5.2.3 – 2024-11-30
+-------------------------
+- Updated: LifeTime promotional link updated.
+
+Version 5.2.2 – 2024-11-24
+-------------------------
+- Added: Integrated LifeTime promotional link as a sub-menu item.
+- Improved: Verified compatibility with WordPress version 6.7.1.
+
+Version 5.2.1 – 2024-09-30
+-------------------------
+- Fixed: Corrected function naming issue.
+- Improved: Verified compatibility with WordPress version 6.6.2.
+
+Version 5.2.0 – 2024-03-14
+-------------------------
+- Added: Separated the plugins and themes exclusion admin page.
+- Added: Implemented theme updates using the native WordPress upgrade system.
+- Improved: Verified compatibility with WordPress version 6.4.3.
+- Updated: PHP minimum version requirement set to 7.4.
+
+Version 5.1.2 – 2023-12-08
+-------------------------
+- Fixed: Resolved issue with log files cleanup process.
+- Improved: Verified compatibility with WordPress version 6.4.2.
+- Removed: Lifetime deal banner and notification removed.
+
+Version 5.1.1 – 2023-11-22
+-------------------------
+- Fixed: Adjusted Lifetime Deal display to show only for admin users.
+- Fixed: Addressed PHPCS code style issues.
+- Improved: Verified compatibility with WordPress Core version 6.4.1.
+- Updated: Minimum PHP version set to 7.4.
+- Improved: Integrated robust static analysis for enhanced code quality.
+
+Version 5.1.0 – 2023-10-20
+-------------------------
+- Added: Introduced Logs admin page for viewing, removing, and downloading log files.
+- Added: Implemented master key masking to enhance security.
+
+Version 5.0.5 – 2023-10-09
+-------------------------
+- Fixed: Corrected missing update information for other plugins.
+
+Version 5.0.4 – 2023-10-06
+-------------------------
+- Added: Concealed notice and settings CTA for lifetime users and when the license is deactivated.
+
+Version 5.0.3 – 2023-10-05
+-------------------------
+- Added: Introduced notification for the lifetime deal.
+- Fixed: Resolved styling issues and miscellaneous bugs.
+- Improved: Verified compatibility with WordPress version 6.3.1.
+
+Version 5.0.2 – 2023-08-09
+-------------------------
+- Improved: Verified compatibility with WordPress version 6.3.
+- Fixed: Upgraded cryptographic hash functions to SHA-256.
+
+Version 5.0.1 – 2023-06-10
+-------------------------
+- Fixed: Removed all custom plugins page links.
+
+Version 5.0.0 – 2023-05-19
+-------------------------
+- Breaking Change: Removed GPLVault custom page for plugin updates; all updates are now handled via the native WordPress plugins.php page.
+- Style Fix: Adjusted code styling to conform with PHP CodeSniffer standards.
+- Refactored: Eliminated unnecessary code from the codebase.
+
+Version 4.3.1 – 2023-05-07
+-------------------------
+- Fixed: Resolved pluggable.php functions duplication conflict.
+- Added: Integrated mock pluggable functions into plugin helper functions.
+- Fixed: Corrected select input box styling.
+- Fixed: Addressed admin page scrolling issue.
+
+Version 4.3.0 – 2023-05-04
+-------------------------
+- Added: Implemented log system for API communication and cron actions.
+- Added: Introduced API request mechanism for plugin and theme demo deliveries.
+- Added: Created log files cleanup system.
+
+Version 4.2.4 – 2023-04-10
+-------------------------
+- Added: Introduced http_request_args filter hook to bypass invalid API endpoint URLs.
+- Improved: Verified compatibility with WordPress version 6.2.
+
+Version 4.2.3 – 2023-02-03
+-------------------------
+- Fixed: Removed API pause system and corrected coding standards.
+- Fixed: Ensured compatibility with WordPress version 6.1.1.
+
+Version 4.2.2 – 2022-05-31
+-------------------------
+- Improved: Verified compatibility with WordPress version 6.0.
+
+Version 4.2.1 – 2022-03-13
+-------------------------
+- Added: Relocated schema fetch hooks to the main class.
+- Added: Scheduled new cron job to fetch client schema every 8 hours.
+- Added: Implemented error logging to the database for client schema fetch failures.
+- Added: Created helper method for logging API errors.
+
+Version 4.2.0 – 2022-03-09
+-------------------------
+- Added: Improved status notifications.
+- Added: Enhanced API client to detect various issues with the main server.
+- Added: Implemented measures to suspend requests during server downtime.
+- Added: Established background check for main server availability.
+- Removed: Discontinued use of init hooks in favor of admin_init.
+- Fixed: Resolved website blocking issues.
+
+Version 4.1.2 – 2022-03-01
+-------------------------
+- Fixed: Added missing JavaScript dependency (wp-i18n).
+- Refactored: Utilized wp_doing_ajax() for proper AJAX request detection.
+
+Version 4.1.1 – 2021-08-26
+-------------------------
+- Refactored: Replaced CDN-delivered JS plugins with locally hosted alternatives.
+- Fixed: Resolved issues loading JS and CSS files from CDNs.
+
+Version 4.1.0 – 2021-07-25
+-------------------------
+- Added: Integrated native WordPress upgrade for GPLVault items.
+- Added: Displayed installed and latest version numbers in the GPLVault > Plugins plugin row.
+- Added: Introduced Help tab on GPLVault's admin pages.
+- Added: Implemented major version update notification.
+- Fixed: Corrected settings page status bug.
+
+Version 4.0.3 – 2021-07-09
+-------------------------
+- Fixed: Resolved client plugin self-update issue.
+
+Version 4.0.2 – 2021-07-08
+-------------------------
+- Fixed: Corrected issues with settings page status display.
+
+Version 4.0.1 – 2021-07-01
+-------------------------
+- Fixed: Resolved menu position bug.
+
+Version 4.0.0 – 2021-06-28
+-------------------------
+- Fixed: Resolved license activation issues.
+- Added: Separated plugins upgrading system from the native WP upgrade.
+- Added: Implemented themes and plugins exclusion to prevent client plugin updates.
+- Improved: Introduced a new, clean UI interface.
+
+Version 3.4.1 – 2021-03-10
+-------------------------
+- Improved: Verified compatibility with WordPress version 5.7.
+
+Version 3.4.0 – 2021-01-18
+-------------------------
+- Improved: Enforced PHPCS code style standards for WordPress.
+- Updated: Added compatibility for PHP 8.
+- Fixed: Made various minor corrections.
+
+Version 3.3.3 – 2020-08-19
+-------------------------
+- Added: Ensured compatibility with WordPress version 5.5.
+
+Version 3.3.2 – 2020-07-08
+-------------------------
+- Fixed: Resolved issue with assigning properties to filter callback arguments to avoid "Creating default object from empty value" notice.
+
+Version 3.3.1 – 2020-05-10
+-------------------------
+- Fixed: Corrected typo in status notice template.
+- Fixed: Removed trailing comma issue from function invocation.
+
+Version 3.3.0 – 2020-05-09
+-------------------------
+- Fixed: Resolved frequent plugin deactivation issues.
+- Improved: Reduced API status check frequency to prevent deactivation on transient failures.
+- Added: Introduced report notifications for API status failures.
+- Improved: Enhanced compatibility with WordPress version 5.4.1.
+
+Version 3.2.1 – 2020-04-04
+-------------------------
+- Improved: Verified compatibility with WordPress version 5.4.
+- Fixed: Addressed issue with random_int().
+
+Version 3.2.0 – 2020-01-23
+-------------------------
+- Added: Implemented overrides to resolve license issues with certain vendors.
+- Added: Included index files to mitigate risks of file indexing attacks.
+
+Version 3.1.0 – 2020-01-21
+-------------------------
+- Added: Introduced new API request for the "schema" endpoint to fetch plugins and themes schema information in a single call.
+- Fixed: Corrected feedback message issues on the Settings page regarding deactivation and API status checks.
+
+Version 3.0.0 – 2020-01-17
+-------------------------
+- Updated: Migrated to an AJAX-based API activation system.
+
+Version 2.1.4 – 2019-11-26
+-------------------------
+- Fixed: Resolved count() error issue.
+
+Version 2.1.3 – 2019-11-18
+-------------------------
+- Fixed: Addressed debug logging for download error responses.
+
+Version 2.1.2 – 2019-11-15
+-------------------------
+- Fixed: Confirmed compatibility with WordPress version 5.3.
+
+Version 2.1.1 – 2019-11-15
+-------------------------
+- Fixed: Resolved Envato Updater conflict.
+- Fixed: Updated YITH plugins via upgrader_pre_download filter hook.
+- Improved: Lowered filter hook priorities to delay hook handler execution.
+- Updated: Modified admin menu icon for improved branding.
+
+Version 2.1.0 – 2019-09-27
+-------------------------
+- Added: Introduced debug logging system.
+- Added: Provided settings option to control the logging system.
+- Improved: Enhanced JSON decoding process for API success responses.
+
+Version 2.0.2 – 2019-09-09
+-------------------------
+- Fixed: Corrected issue with array_key_exists() when second parameter is not an array.
+
+Version 2.0.1 – 2019-09-07
+-------------------------
+- Removed: Eliminated plugin action links for themes and plugins.
+
+Version 2.0.0 – 2019-09-06
+-------------------------
+- Removed: Discontinued plugins and themes installation system to protect the server from mass download requests.
+
+Version 1.1.4 – 2019-09-04
+-------------------------
+- Fixed: Resolved update issues from the GPLVault server.
+- Fixed: Removed update notices when no items were updated.
+- Fixed: Corrected styling issues for theme installation error notifications.
+- Improved: Updated plugins/themes list to include links for available updates.
+- Improved: Deferred download links for install/update requests to reduce server load.
+
+Version 1.1.3 – 2019-09-04
+-------------------------
+- Fixed: Resolved WordPress repository plugin update notification issue.
+- Improved: Enhanced plugins.php page load times by deferring plugin download links and implementing upgrader_package_options filter hook.
+
+Version 1.1.2 – 2019-08-30
+-------------------------
+- Added: Created changelog file.
+- Fixed: Corrected typo in API URL.
+- Improved: Displayed latest version number on plugin and themes list page.
+- Improved: Adjusted styles for items on theme/plugins list page.
+- Fixed: Increased required filter count to resolve race condition.
+
+Version 1.1.1 – 2019-08-30
+-------------------------
+- Fixed: Addressed settings saving issue.
+
+Version 1.1.0 – 2019-08-28
+-------------------------
+- Fixed: Resolved wp_mail conflict.
+- Removed: Eliminated previous checkbox-based deactivation.
+- Added: Implemented license key status checking via the server.
+- Added: Enabled AJAX-based license deactivation.
+- Added: Introduced local settings cleaner to resolve conflicts.
+- Improved: Streamlined API settings save and activation processes.
+
+Version 1.0.1 – 2019-07-28
+-------------------------
+- Initial release.

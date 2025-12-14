@@ -1,0 +1,12 @@
+<label data-main="1" for="wt_ds_help-widget_hidden_checkbox">
+	<input type="checkbox" id="wt_ds_help-widget_hidden_checkbox">
+	<div data-class="help-widget_popupover help-widget_hover">{{hover_text}}</div>
+	<div data-class="help-widget_popupover help-widget_click">
+		<ul data-if="items">
+			<li data-for="item in items">
+                <a data-bind-href="item.href" data-bind-target="item.target">{{wbte-ds-icon-((item.icon))}} {{item.title}}</a>
+            </li>
+		</ul>
+	</div>
+	?	
+</label>

@@ -1,0 +1,14 @@
+<wpml-config>
+    <admin-texts>
+        <key name="ywcnp_suggest_price_label"/>
+        <key name="ywcnp_min_price_label"/>
+        <key name="ywcnp_max_price_label"/>
+        <key name="ywcnp_button_loop_label"/>
+        <key name="ywcnp_button_single_label"/>
+        <key name="ywcnp_name_your_price_label"/>
+        <key name="ywcnp_negative_price_label"/>
+        <key name="ywcnp_invalid_price_label"/>
+        <key name="ywcnp_min_price_error_label"/>
+        <key name="ywcnp_max_price_error_label"/>
+    </admin-texts>
+</wpml-config>

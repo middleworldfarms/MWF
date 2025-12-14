@@ -1,0 +1,1817 @@
+<?php
+/*
+Plugin Name: Middleworld Farms Integration
+Description: Provides custom REST API endpoints for Laravel admin and self-serve shop integration.
+Version: 1.0
+Author: Middleworld Farms
+Text Domain: mwf-integration
+*/
+
+// Exit if accessed directly
+if (!defined('ABSPATH')) exit;
+
+// Make sure WooCommerce is active
+if (!in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+    return;
+}
+
+// Define plugin constants
+define('MWF_INTEGRATION_VERSION', '1.0');
+define('MWF_INTEGRATION_PATH', plugin_dir_path(__FILE__));
+
+/**
+ * Debug logging function
+ */
+function mwf_log_debug($message, $data = array()) {
+    // Only log debug messages if WP_DEBUG is enabled
+    if (!defined('WP_DEBUG') || !WP_DEBUG) return;
+    
+    $log_enabled = get_option('mwf_funds_enable_logging', 'yes');
+    if ($log_enabled !== 'yes') return;
+    
+    $log_entry = array(
+        'time' => current_time('mysql'),
+        'message' => $message,
+        'data' => $data,
+        'type' => 'debug'
+    );
+    
+    $logs = get_option('mwf_funds_logs', array());
+    array_unshift($logs, $log_entry);
+    if (count($logs) > 100) $logs = array_slice($logs, 0, 100);
+    update_option('mwf_funds_logs', $logs);
+    
+    // Also log to PHP error log for debugging
+    if (defined('WP_DEBUG_LOG') && WP_DEBUG_LOG) {
+        error_log('[MWF Debug] ' . $message . ' ' . print_r($data, true));
+    }
+}
+
+/**
+ * Register the REST API endpoints
+ */
+add_action('rest_api_init', function () {
+    register_rest_route('mwf/v1', '/funds', [
+        'methods' => 'POST',
+        'callback' => 'mwf_process_funds_request',
+        'permission_callback' => '__return_true'
+    ]);
+    register_rest_route('mwf/v1', '/funds/add', [
+        'methods' => 'POST',
+        'callback' => 'mwf_add_funds_request',
+        'permission_callback' => 'mwf_api_permissions_check'
+    ]);
+    register_rest_route('mwf/v1', '/create-order', [
+        'methods' => 'POST',
+        'callback' => 'mwf_create_order_endpoint',
+        'permission_callback' => '__return_true'
+    ]);
+    register_rest_route('mwf/v1', '/subscription-payment-status', [
+        'methods' => 'GET',
+        'callback' => 'mwf_get_subscription_payment_status',
+        'permission_callback' => 'mwf_api_permissions_check'
+    ]);
+    register_rest_route('mwf/v1', '/subscription-payment/process', [
+        'methods' => 'POST',
+        'callback' => 'mwf_process_subscription_payment_api',
+        'permission_callback' => 'mwf_api_permissions_check'
+    ]);
+    
+    // User Management & Switching Endpoints (using WooCommerce User Switching plugin)
+    register_rest_route('mwf/v1', '/users/search', [
+        'methods' => 'GET',
+        'callback' => 'mwf_search_users_endpoint',
+        'permission_callback' => 'mwf_api_permissions_check'
+    ]);
+    register_rest_route('mwf/v1', '/users/(?P<id>\d+)', [
+        'methods' => 'GET',
+        'callback' => 'mwf_get_user_endpoint',
+        'permission_callback' => 'mwf_api_permissions_check'
+    ]);
+    register_rest_route('mwf/v1', '/users/switch', [
+        'methods' => 'POST',
+        'callback' => 'mwf_switch_user_endpoint',
+        'permission_callback' => 'mwf_api_permissions_check'
+    ]);
+    register_rest_route('mwf/v1', '/users/recent', [
+        'methods' => 'GET',
+        'callback' => 'mwf_get_recent_users_endpoint',
+        'permission_callback' => 'mwf_api_permissions_check'
+    ]);
+    register_rest_route('mwf/v1', '/users/clear-session', [
+        'methods' => 'POST',
+        'callback' => 'mwf_clear_session_endpoint',
+        'permission_callback' => 'mwf_api_permissions_check'
+    ]);
+    
+    // Dedicated Customer Action Endpoints - DISABLED due to issues
+    /*
+    register_rest_route('mwf/v1', '/customer/profile', [
+        'methods' => 'POST',
+        'callback' => 'mwf_customer_profile_endpoint',
+        'permission_callback' => 'mwf_api_permissions_check'
+    ]);
+    register_rest_route('mwf/v1', '/customer/subscriptions', [
+        'methods' => 'POST',
+        'callback' => 'mwf_customer_subscriptions_endpoint',
+        'permission_callback' => 'mwf_api_permissions_check'
+    ]);
+    register_rest_route('mwf/v1', '/customer/orders', [
+        'methods' => 'POST',
+        'callback' => 'mwf_customer_orders_endpoint',
+        'permission_callback' => 'mwf_api_permissions_check'
+    ]);
+    */
+    
+    // Register static map URL endpoint for admin suite integration
+    register_rest_route('mwf/v1', '/map-url', [
+        'methods' => 'GET',
+        'callback' => function () {
+            return [
+                'success' => true,
+                'map_url' => 'https://middleworldfarms.org/?wpgmza=1'
+            ];
+        },
+        'permission_callback' => '__return_true',
+    ]);
+
+    // New: Admin subscription redirect endpoint
+    register_rest_route('mwf/v1', '/admin/subscription-redirect', [
+        'methods' => 'POST',
+        'callback' => 'mwf_admin_subscription_redirect_endpoint',
+        'permission_callback' => 'mwf_api_permissions_check',
+    ]);
+/**
+ * Endpoint: /wp-json/mwf/v1/admin/subscription-redirect
+ * POST { email: string }
+ * Returns WooCommerce admin subscriptions URL filtered by customer
+ */
+function mwf_admin_subscription_redirect_endpoint($request) {
+    $params = $request->get_json_params();
+    $email = isset($params['email']) ? sanitize_email($params['email']) : '';
+    if (!$email) {
+        return new WP_Error('missing_email', 'Email is required', array('status' => 400));
+    }
+    $user = get_user_by('email', $email);
+    if (!$user) {
+        return new WP_Error('user_not_found', 'User not found', array('status' => 404));
+    }
+    // WooCommerce Subscriptions admin URL filtered by customer
+    $admin_url = add_query_arg([
+        's' => $user->user_email,
+        'post_type' => 'shop_subscription',
+        'page' => 'wc-subscriptions',
+    ], admin_url('edit.php'));
+    return [
+        'success' => true,
+        'url' => $admin_url,
+    ];
+}
+});
+
+/**
+ * Increase HTTP request timeout for external requests
+ */
+add_filter('http_request_timeout', function($timeout) {
+    return 30; // Increase to 30 seconds
+});
+
+add_filter('https_ssl_verify', '__return_false'); // Temporary fix for SSL issues
+
+/**
+ * Add custom error logging for HTTP requests
+ */
+add_action('http_api_debug', function($response, $context, $class, $args, $url) {
+    if (is_wp_error($response)) {
+        error_log('HTTP Request Failed: ' . $url . ' - ' . $response->get_error_message());
+    }
+}, 10, 5);
+
+/**
+ * API key permissions check for admin endpoints
+ */
+function mwf_api_permissions_check($request) {
+    $api_key = $request->get_header('X-WC-API-Key');
+    $stored_api_key = get_option('mwf_funds_api_key', 'Ffsh8yhsuZEGySvLrP0DihCDDwhPwk4h');
+    return $api_key === $stored_api_key;
+}
+
+/**
+ * Process funds API requests (check/deduct)
+ */
+function mwf_process_funds_request($request) {
+    $params = $request->get_json_params();
+    $action = $params['action'] ?? '';
+    $email = $params['email'] ?? '';
+    $amount = floatval($params['amount'] ?? 0);
+    $order_id = $params['order_id'] ?? '';
+    $description = $params['description'] ?? 'Self-serve shop purchase';
+
+    // API key authentication
+    $api_key = $request->get_header('X-WC-API-Key');
+    $stored_api_key = get_option('mwf_funds_api_key', 'Ffsh8yhsuZEGySvLrP0DihCDDwhPwk4h');
+    if ($api_key !== $stored_api_key) {
+        return ['success' => false, 'message' => 'Invalid API key'];
+    }
+
+    $user = get_user_by('email', $email);
+    if (!$user) {
+        return ['success' => false, 'message' => 'User not found'];
+    }
+
+    $current_balance = mwf_get_user_balance($user->ID);
+
+    if ($action === 'check') {
+        return [
+            'success' => true,
+            'has_funds' => ($current_balance >= $amount),
+            'current_balance' => $current_balance
+        ];
+    } elseif ($action === 'deduct' && $amount > 0) {
+        if ($current_balance < $amount) {
+            return [
+                'success' => false,
+                'message' => 'Insufficient funds',
+                'current_balance' => $current_balance
+            ];
+        }
+        $new_balance = $current_balance - $amount;
+        update_user_meta($user->ID, 'account_funds', $new_balance);
+        $transaction_id = mwf_record_transaction($user->ID, 'deduct', $amount, $order_id, $description);
+        return [
+            'success' => true,
+            'transaction_id' => $transaction_id,
+            'new_balance' => $new_balance
+        ];
+    }
+
+    return ['success' => false, 'message' => 'Invalid action'];
+}
+
+/**
+ * Add funds via API (admin only)
+ */
+function mwf_add_funds_request($request) {
+    $params = $request->get_json_params();
+    if (!isset($params['email']) || !isset($params['amount'])) {
+        return new WP_Error('missing_parameters', 'Required parameters are missing', array('status' => 400));
+    }
+    $email = sanitize_email($params['email']);
+    $amount = floatval($params['amount']);
+    if ($amount <= 0) {
+        return new WP_Error('invalid_amount', 'Amount must be greater than zero', array('status' => 400));
+    }
+    $order_id = isset($params['order_id']) ? sanitize_text_field($params['order_id']) : '';
+    $description = isset($params['description']) ? sanitize_text_field($params['description']) : 'Manual credit';
+
+    $user = get_user_by('email', $email);
+    if (!$user) {
+        return array('success' => false, 'error' => 'User not found');
+    }
+    $current_balance = mwf_get_user_balance($user->ID);
+    $new_balance = $current_balance + $amount;
+    update_user_meta($user->ID, 'account_funds', $new_balance);
+    $transaction_id = mwf_record_transaction($user->ID, 'credit', $amount, $order_id, $description);
+
+    return array(
+        'success' => true,
+        'transaction_id' => $transaction_id,
+        'previous_balance' => $current_balance,
+        'new_balance' => $new_balance
+    );
+}
+
+/**
+ * Get user balance with fallback for new users
+ */
+function mwf_get_user_balance($user_id) {
+    $balance = get_user_meta($user_id, 'account_funds', true);
+    if ($balance === '' || $balance === false) {
+        $balance = 0;
+        update_user_meta($user_id, 'account_funds', $balance);
+    }
+    return floatval($balance);
+}
+
+/**
+ * Record a funds transaction
+ */
+function mwf_record_transaction($user_id, $type, $amount, $order_id, $description) {
+    $transaction_id = $type . '-' . time() . '-' . rand(1000, 9999);
+    $transaction_data = array(
+        'transaction_id' => $transaction_id,
+        'type' => $type,
+        'amount' => $amount,
+        'order_id' => $order_id,
+        'description' => $description,
+        'date' => current_time('mysql')
+    );
+    add_user_meta($user_id, 'woo_funds_transaction', $transaction_data);
+    do_action('mwf_funds_transaction_recorded', $user_id, $transaction_data);
+    return $transaction_id;
+}
+
+/**
+ * Create order endpoint for self-serve shop
+ */
+function mwf_create_order_endpoint($request) {
+    $data = $request->get_params();
+    $secret_key = $data['secret_key'] ?? '';
+    if ($secret_key !== get_option('sss_secret_key', 'your-custom-secret-key')) {
+        return new WP_Error('unauthorized', 'Invalid secret key', ['status' => 401]);
+    }
+    $order = wc_create_order();
+    $order->set_billing_email($data['customer_email'] ?? '');
+    $order->set_billing_first_name($data['customer_name'] ?? 'Guest');
+    foreach ($data['items'] as $item) {
+        $product_id = $item['woo_product_id'] ?? 0;
+        if (!$product_id && !empty($item['sku'])) {
+            $product_id = wc_get_product_id_by_sku($item['sku']);
+        }
+        if ($product_id && $product = wc_get_product($product_id)) {
+            $order->add_product($product, $item['quantity']);
+        } else {
+            $order->add_item([
+                'name' => $item['name'],
+                'qty' => $item['quantity'],
+                'total' => $item['price'] * $item['quantity']
+            ]);
+        }
+    }
+    $order->set_payment_method('manual');
+    $order->set_payment_method_title('Self-Serve Shop Honor Box');
+    $order->update_status('completed');
+    $order->calculate_totals();
+    $order->add_order_note("Order created from Self-Serve Shop");
+    $order->save();
+    return [
+        'success' => true,
+        'order_id' => $order->get_id()
+    ];
+}
+
+/**
+ * Admin menu and settings page
+ */
+add_action('admin_menu', 'mwf_funds_admin_menu');
+function mwf_funds_admin_menu() {
+    add_submenu_page(
+        'woocommerce',
+        'MWF Integration',
+        'MWF Integration',
+        'manage_options',
+        'mwf-funds-settings',
+        'mwf_funds_settings_page'
+    );
+    add_submenu_page(
+        'woocommerce',
+        'MWF Logs',
+        'MWF Logs',
+        'manage_options',
+        'mwf-funds-logs',
+        'mwf_funds_logs_page'
+    );
+}
+
+function mwf_funds_settings_page() {
+    if (isset($_POST['mwf_funds_save_settings'])) {
+        check_admin_referer('mwf_funds_settings');
+        $api_key = sanitize_text_field($_POST['mwf_funds_api_key']);
+        update_option('mwf_funds_api_key', $api_key);
+        $enable_logging = sanitize_text_field($_POST['mwf_funds_enable_logging'] ?? 'no');
+        update_option('mwf_funds_enable_logging', $enable_logging);
+        echo '<div class="notice notice-success"><p>Settings saved successfully!</p></div>';
+    }
+    if (isset($_POST['mwf_funds_regenerate_key'])) {
+        check_admin_referer('mwf_funds_settings');
+        $api_key = wp_generate_password(32, false);
+        update_option('mwf_funds_api_key', $api_key);
+        echo '<div class="notice notice-success"><p>API key regenerated successfully!</p></div>';
+    }
+    $api_key = get_option('mwf_funds_api_key', '');
+    if (empty($api_key)) {
+        $api_key = wp_generate_password(32, false);
+        update_option('mwf_funds_api_key', $api_key);
+    }
+    $enable_logging = get_option('mwf_funds_enable_logging', 'yes');
+    update_option('sss_secret_key', 'your-custom-secret-key');
+    ?>
+    <div class="wrap">
+        <h1>MWF Integration Settings</h1>
+        <form method="post" action="">
+            <?php wp_nonce_field('mwf_funds_settings'); ?>
+            <table class="form-table">
+                <tr>
+                    <th scope="row">API Key</th>
+                    <td>
+                        <input type="text" size="40" name="mwf_funds_api_key" value="<?php echo esc_attr($api_key); ?>" />
+                        <p class="description">This key is used to authenticate API requests from your self-serve shop or Laravel admin.</p>
+                        <input type="submit" name="mwf_funds_regenerate_key" class="button" value="Regenerate Key" />
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Enable Logging</th>
+                    <td>
+                        <label>
+                            <input type="checkbox" name="mwf_funds_enable_logging" value="yes" <?php checked('yes', $enable_logging); ?> />
+                            Enable transaction and error logging
+                        </label>
+                    </td>
+                </tr>
+            </table>
+            <p>
+                <input type="submit" name="mwf_funds_save_settings" class="button button-primary" value="Save Settings" />
+            </p>
+        </form>
+    </div>
+    <?php
+}
+
+function mwf_funds_logs_page() {
+    if (isset($_POST['mwf_clear_logs']) && check_admin_referer('mwf_clear_logs')) {
+        update_option('mwf_funds_logs', array());
+        update_option('mwf_funds_error_logs', array());
+        echo '<div class="notice notice-success"><p>Logs cleared successfully!</p></div>';
+    }
+    $info_logs = get_option('mwf_funds_logs', array());
+    $error_logs = get_option('mwf_funds_error_logs', array());
+    ?>
+    <div class="wrap">
+        <h1>MWF Logs</h1>
+        <form method="post" action="">
+            <?php wp_nonce_field('mwf_clear_logs'); ?>
+            <p>
+                <input type="submit" name="mwf_clear_logs" class="button" value="Clear All Logs" onclick="return confirm('Are you sure you want to clear all logs?');" />
+            </p>
+        </form>
+        <h2>Error Logs</h2>
+        <?php if (empty($error_logs)): ?>
+            <p>No error logs found.</p>
+        <?php else: ?>
+            <table class="widefat striped">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Message</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($error_logs as $log): ?>
+                        <tr>
+                            <td><?php echo esc_html($log['time']); ?></td>
+                            <td><?php echo esc_html($log['message']); ?></td>
+                            <td><pre><?php echo esc_html(print_r($log['data'], true)); ?></pre></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
+        <h2>Transaction Logs</h2>
+        <?php if (empty($info_logs)): ?>
+            <p>No transaction logs found.</p>
+        <?php else: ?>
+            <table class="widefat striped">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Message</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($info_logs as $log): ?>
+                        <tr>
+                            <td><?php echo esc_html($log['time']); ?></td>
+                            <td><?php echo esc_html($log['message']); ?></td>
+                            <td><pre><?php echo esc_html(print_r($log['data'], true)); ?></pre></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
+    </div>
+    <?php
+}
+
+/**
+ * Logging functions (same as before)
+ */
+function mwf_log_error($message, $data = array()) {
+    $log_enabled = get_option('mwf_funds_enable_logging', 'yes');
+    if ($log_enabled !== 'yes') return;
+    $log_entry = array(
+        'time' => current_time('mysql'),
+        'message' => $message,
+        'data' => $data,
+        'type' => 'error'
+    );
+    $logs = get_option('mwf_funds_error_logs', array());
+    array_unshift($logs, $log_entry);
+    if (count($logs) > 100) $logs = array_slice($logs, 0, 100);
+    update_option('mwf_funds_error_logs', $logs);
+}
+function mwf_log($message, $data = array()) {
+    $log_enabled = get_option('mwf_funds_enable_logging', 'yes');
+    if ($log_enabled !== 'yes') return;
+    $log_entry = array(
+        'time' => current_time('mysql'),
+        'message' => $message,
+        'data' => $data,
+        'type' => 'info'
+    );
+    $logs = get_option('mwf_funds_logs', array());
+    array_unshift($logs, $log_entry);
+    if (count($logs) > 100) $logs = array_slice($logs, 0, 100);
+    update_option('mwf_funds_logs', $logs);
+}
+
+/**
+ * Shortcode for user funds
+ */
+add_shortcode('mwf_user_funds', 'mwf_user_funds_shortcode');
+function mwf_user_funds_shortcode($atts) {
+    if (!is_user_logged_in()) return '<p>Please log in to view your balance.</p>';
+    $user_id = get_current_user_id();
+    $balance = mwf_get_user_balance($user_id);
+    $output = '<div class="mwf-user-funds">';
+    $output .= '<h3>Your Current Balance</h3>';
+    $output .= '<p class="mwf-balance">' . wc_price($balance) . '</p>';
+    if (isset($atts['show_history']) && $atts['show_history'] == 'yes') {
+        $transactions = get_user_meta($user_id, 'woo_funds_transaction');
+        if (!empty($transactions)) {
+            $output .= '<h4>Transaction History</h4>';
+            $output .= '<table class="mwf-transactions">';
+            $output .= '<thead><tr><th>Date</th><th>Type</th><th>Description</th><th>Amount</th></tr></thead>';
+            $output .= '<tbody>';
+            usort($transactions, function($a, $b) {
+                return strtotime($b['date']) - strtotime($a['date']);
+            });
+            foreach ($transactions as $transaction) {
+                $output .= '<tr>';
+                $output .= '<td>' . date('Y-m-d H:i', strtotime($transaction['date'])) . '</td>';
+                $output .= '<td>' . ucfirst($transaction['type']) . '</td>';
+                $output .= '<td>' . esc_html($transaction['description']) . '</td>';
+                if ($transaction['type'] == 'credit') {
+                    $output .= '<td class="mwf-credit">+' . wc_price($transaction['amount']) . '</td>';
+                } else {
+                    $output .= '<td class="mwf-debit">-' . wc_price($transaction['amount']) . '</td>';
+                }
+                $output .= '</tr>';
+            }
+            $output .= '</tbody></table>';
+        } else {
+            $output .= '<p>No transactions found.</p>';
+        }
+    }
+    $output .= '</div>';
+    $output .= '<style>
+        .mwf-user-funds { margin: 20px 0; }
+        .mwf-balance { font-size: 1.5em; font-weight: bold; }
+        .mwf-transactions { width: 100%; border-collapse: collapse; }
+        .mwf-transactions th, .mwf-transactions td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+        .mwf-credit { color: green; }
+        .mwf-debit { color: red; }
+    </style>';
+    return $output;
+}
+
+/**
+ * WooCommerce My Account integration
+ */
+add_filter('woocommerce_account_menu_items', 'mwf_add_funds_menu_item');
+function mwf_add_funds_menu_item($menu_items) {
+    $menu_items['funds'] = 'My Funds';
+    return $menu_items;
+}
+add_action('init', 'mwf_add_funds_endpoint');
+function mwf_add_funds_endpoint() {
+    add_rewrite_endpoint('funds', EP_ROOT | EP_PAGES);
+}
+add_action('woocommerce_account_funds_endpoint', 'mwf_funds_endpoint_content');
+function mwf_funds_endpoint_content() {
+    echo do_shortcode('[mwf_user_funds show_history="yes"]');
+}
+
+/**
+ * Clean up on uninstall
+ */
+register_uninstall_hook(__FILE__, 'mwf_uninstall');
+function mwf_uninstall() {
+    if (get_option('mwf_funds_delete_data_on_uninstall') !== 'yes') return;
+    delete_option('mwf_funds_api_key');
+    delete_option('mwf_funds_enable_logging');
+    delete_option('mwf_funds_logs');
+    delete_option('mwf_funds_error_logs');
+    delete_option('mwf_funds_delete_data_on_uninstall');
+    global $wpdb;
+    $wpdb->delete($wpdb->usermeta, array('meta_key' => 'account_funds'));
+    $wpdb->delete($wpdb->usermeta, array('meta_key' => 'woo_funds_transaction'));
+}
+add_filter('woocommerce_payment_gateways', 'mwf_add_account_funds_gateway');
+function mwf_add_account_funds_gateway( $methods ) {
+    $methods[] = 'WC_Gateway_Account_Funds';
+    return $methods;
+}
+
+/**
+ * Initialize subscription funds management
+ */
+add_action('plugins_loaded', 'mwf_init_subscription_funds_management', 20);
+function mwf_init_subscription_funds_management() {
+    // Only proceed if WooCommerce Subscriptions is active
+    if (!class_exists('WC_Subscriptions') || !function_exists('wcs_get_subscription')) {
+        return;
+    }
+    
+    // Hook into subscription renewal payment process
+    add_action('woocommerce_scheduled_subscription_payment', 'mwf_check_account_funds_for_renewal', 5, 1);
+    
+    // Add account funds payment button to My Account page for failed renewals
+    add_action('woocommerce_my_account_my_subscriptions_actions', 'mwf_add_account_funds_payment_button', 10, 2);
+    
+    // Handle account funds payment for subscriptions
+    add_action('wp_ajax_mwf_pay_subscription_with_funds', 'mwf_handle_subscription_payment_with_funds');
+    add_action('wp_ajax_nopriv_mwf_pay_subscription_with_funds', 'mwf_handle_subscription_payment_with_funds');
+    
+    // Enqueue scripts for subscription payment buttons
+    add_action('wp_enqueue_scripts', 'mwf_enqueue_subscription_scripts');
+    
+    mwf_log('Subscription funds management initialized');
+}
+
+/**
+ * Check account funds for subscription renewal and attempt payment
+ */
+function mwf_check_account_funds_for_renewal($subscription_id) {
+    // Get the subscription object
+    $subscription = wcs_get_subscription($subscription_id);
+    if (!$subscription) {
+        mwf_log_error('Subscription not found for renewal', ['subscription_id' => $subscription_id]);
+        return;
+    }
+    
+    // Get the current renewal order
+    $order = $subscription->get_last_order('failed', 'any');
+    if (!$order) {
+        // If no failed order, try to get the most recent renewal order
+        $order = $subscription->get_last_order('any', 'renewal');
+        if (!$order) {
+            mwf_log_error('No renewal order found for subscription', ['subscription_id' => $subscription_id]);
+            return;
+        }
+    }
+    
+    // Get the renewal amount from the subscription total
+    $renewal_amount = floatval($subscription->get_total());
+    
+    // Get customer ID
+    $customer_id = $subscription->get_customer_id();
+    if (!$customer_id) {
+        mwf_log_error('No customer ID found for subscription', ['subscription_id' => $subscription_id]);
+        return;
+    }
+    
+    // Check if subscription payment method is already account funds - if so, let the regular gateway handle it
+    if ($subscription->get_payment_method() === 'accountfunds') {
+        mwf_log('Subscription already uses account funds gateway, skipping automatic check', [
+            'subscription_id' => $subscription_id,
+            'order_id' => $order->get_id()
+        ]);
+        return;
+    }
+    
+    // Get user's available funds
+    $available_funds = mwf_get_user_balance($customer_id);
+    
+    mwf_log('Checking account funds for renewal', [
+        'subscription_id' => $subscription_id,
+        'order_id' => $order->get_id(),
+        'customer_id' => $customer_id,
+        'renewal_amount' => $renewal_amount,
+        'available_funds' => $available_funds
+    ]);
+    
+    // If user has sufficient funds, process payment automatically
+    if ($available_funds >= $renewal_amount) {
+        $result = mwf_process_subscription_renewal_payment($order, $subscription, $renewal_amount, $customer_id);
+        
+        if ($result['success']) {
+            mwf_log('Automatic account funds payment successful for renewal', [
+                'subscription_id' => $subscription_id,
+                'order_id' => $order->get_id(),
+                'amount_charged' => $renewal_amount,
+                'new_balance' => $result['new_balance'],
+                'transaction_id' => $result['transaction_id']
+            ]);
+        } else {
+            mwf_log_error('Failed to process automatic account funds payment', [
+                'subscription_id' => $subscription_id,
+                'order_id' => $order->get_id(),
+                'error' => $result['error']
+            ]);
+        }
+    } else {
+        // Insufficient funds - log for manual intervention or payment collection
+        mwf_log('Insufficient account funds for automatic renewal', [
+            'subscription_id' => $subscription_id,
+            'order_id' => $order->get_id(),
+            'customer_id' => $customer_id,
+            'required_amount' => $renewal_amount,
+            'available_funds' => $available_funds,
+            'shortfall' => $renewal_amount - $available_funds
+        ]);
+        
+        // Add a note to the subscription about insufficient funds
+        $subscription->add_order_note(sprintf(
+            'Automatic account funds payment failed: Required £%.2f, but customer only has £%.2f available. Shortfall: £%.2f',
+            $renewal_amount,
+            $available_funds,
+            $renewal_amount - $available_funds
+        ));
+        
+        // Trigger email notification for insufficient funds
+        do_action('mwf_insufficient_funds_detected', $subscription, $customer_id, $available_funds, $renewal_amount);
+    }
+}
+
+/**
+ * Process subscription renewal payment with account funds
+ */
+function mwf_process_subscription_renewal_payment($order, $subscription, $amount, $customer_id) {
+    try {
+        // Double-check funds availability
+        $current_balance = mwf_get_user_balance($customer_id);
+        if ($current_balance < $amount) {
+            return [
+                'success' => false,
+                'error' => 'Insufficient funds at payment time'
+            ];
+        }
+        
+        // Deduct funds
+        $new_balance = $current_balance - $amount;
+        update_user_meta($customer_id, 'account_funds', $new_balance);
+        
+        // Record transaction
+        $transaction_id = mwf_record_transaction(
+            $customer_id,
+            'deduct',
+            $amount,
+            $order->get_id(),
+            'Automatic subscription renewal payment (Subscription #' . $subscription->get_id() . ')'
+        );
+        
+        // Mark order as paid
+        $order->payment_complete($transaction_id);
+        $order->add_order_note(sprintf(
+            'Payment completed automatically using account funds. Transaction ID: %s. New balance: £%.2f',
+            $transaction_id,
+            $new_balance
+        ));
+        
+        // Update subscription
+        $subscription->add_order_note(sprintf(
+            'Renewal payment automatically processed using account funds. Amount: £%.2f, Transaction: %s',
+            $amount,
+            $transaction_id
+        ));
+        
+        return [
+            'success' => true,
+            'transaction_id' => $transaction_id,
+            'new_balance' => $new_balance
+        ];
+        
+    } catch (Exception $e) {
+        mwf_log_error('Exception during subscription renewal payment', [
+            'order_id' => $order->get_id(),
+            'subscription_id' => $subscription->get_id(),
+            'error' => $e->getMessage()
+        ]);
+        
+        return [
+            'success' => false,
+            'error' => $e->getMessage()
+        ];
+    }
+}
+
+/**
+ * Add account funds payment button to subscription actions
+ */
+function mwf_add_account_funds_payment_button($actions, $subscription) {
+    // Only show for subscriptions that need payment and customer has funds
+    if (!$subscription->needs_payment() || !is_user_logged_in()) {
+        return $actions;
+    }
+    
+    $customer_id = get_current_user_id();
+    $available_funds = mwf_get_user_balance($customer_id);
+    $total_due = $subscription->get_total();
+    
+    // Only show if customer has any funds (even if insufficient for full payment)
+    if ($available_funds > 0) {
+        $button_text = 'Pay with Account Funds';
+        $button_class = 'button mwf-pay-with-funds';
+        
+        if ($available_funds < $total_due) {
+            $button_text = sprintf('Pay £%.2f with Funds (£%.2f available)', min($available_funds, $total_due), $available_funds);
+            $button_class .= ' partial-payment';
+        }
+        
+        $actions['pay_with_funds'] = [
+            'url' => '#',
+            'name' => $button_text,
+            'classes' => $button_class,
+            'data-subscription-id' => $subscription->get_id(),
+            'data-available-funds' => $available_funds,
+            'data-total-due' => $total_due
+        ];
+    }
+    
+    return $actions;
+}
+
+/**
+ * Handle AJAX request for subscription payment with funds
+ */
+function mwf_handle_subscription_payment_with_funds() {
+    // Verify nonce
+    if (!wp_verify_nonce($_POST['nonce'] ?? '', 'mwf_subscription_payment')) {
+        wp_die('Security check failed');
+    }
+    
+    if (!is_user_logged_in()) {
+        wp_send_json_error(['message' => 'User not logged in']);
+        return;
+    }
+    
+    $subscription_id = intval($_POST['subscription_id'] ?? 0);
+    $customer_id = get_current_user_id();
+    
+    if (!$subscription_id) {
+        wp_send_json_error(['message' => 'Invalid subscription ID']);
+        return;
+    }
+    
+    $subscription = wcs_get_subscription($subscription_id);
+    if (!$subscription || $subscription->get_customer_id() !== $customer_id) {
+        wp_send_json_error(['message' => 'Subscription not found or access denied']);
+        return;
+    }
+    
+    if (!$subscription->needs_payment()) {
+        wp_send_json_error(['message' => 'Subscription does not need payment']);
+        return;
+    }
+    
+    $available_funds = mwf_get_user_balance($customer_id);
+    $total_due = floatval($subscription->get_total());
+    
+    if ($available_funds <= 0) {
+        wp_send_json_error(['message' => 'No funds available']);
+        return;
+    }
+    
+    // Determine payment amount (full or partial)
+    $payment_amount = min($available_funds, $total_due);
+    
+    try {
+        // Get the latest renewal order
+        $renewal_orders = $subscription->get_related_orders('all', 'renewal');
+        $latest_renewal_order = null;
+        
+        if (!empty($renewal_orders)) {
+            // Get the most recent renewal order
+            usort($renewal_orders, function($a, $b) {
+                return $b->get_date_created()->getTimestamp() - $a->get_date_created()->getTimestamp();
+            });
+            $latest_renewal_order = reset($renewal_orders);
+        }
+        
+        // If no renewal order exists or it's already paid, create a new one
+        if (!$latest_renewal_order || $latest_renewal_order->is_paid()) {
+            $latest_renewal_order = wcs_create_renewal_order($subscription);
+            
+            if (is_wp_error($latest_renewal_order)) {
+                throw new Exception('Failed to create renewal order: ' . $latest_renewal_order->get_error_message());
+            }
+        }
+        
+        // Process payment
+        $result = mwf_process_subscription_renewal_payment($latest_renewal_order, $subscription, $payment_amount, $customer_id);
+        
+        if (!$result['success']) {
+            throw new Exception($result['error']);
+        }
+        
+        // If partial payment, update order total and status
+        if ($payment_amount < $total_due) {
+            $remaining_due = $total_due - $payment_amount;
+            $latest_renewal_order->set_total($remaining_due);
+            $latest_renewal_order->update_status('pending', sprintf(
+                'Partial payment of £%.2f received via account funds. Remaining due: £%.2f',
+                $payment_amount,
+                $remaining_due
+            ));
+            $latest_renewal_order->save();
+            
+            $message = sprintf(
+                'Partial payment of £%.2f successfully processed. Remaining balance: £%.2f. Order total reduced to £%.2f.',
+                $payment_amount,
+                $result['new_balance'],
+                $remaining_due
+            );
+        } else {
+            $message = sprintf(
+                'Payment of £%.2f successfully processed. New account balance: £%.2f.',
+                $payment_amount,
+                $result['new_balance']
+            );
+        }
+        
+        wp_send_json_success([
+            'message' => $message,
+            'payment_amount' => $payment_amount,
+            'new_balance' => $result['new_balance'],
+            'transaction_id' => $result['transaction_id'],
+            'redirect_url' => $subscription->get_view_order_url()
+        ]);
+        
+    } catch (Exception $e) {
+        mwf_log_error('Failed to process subscription payment with funds', [
+            'subscription_id' => $subscription_id,
+            'customer_id' => $customer_id,
+            'error' => $e->getMessage()
+        ]);
+        
+        wp_send_json_error(['message' => 'Payment failed: ' . $e->getMessage()]);
+    }
+}
+
+/**
+ * Enqueue scripts for subscription payment functionality
+ */
+function mwf_enqueue_subscription_scripts() {
+    if (is_account_page()) {
+        wp_enqueue_script('jquery');
+        
+        // Inline script for handling payment buttons
+        $script = "
+        jQuery(document).ready(function($) {
+            $('.mwf-pay-with-funds').on('click', function(e) {
+                e.preventDefault();
+                
+                var button = $(this);
+                var subscriptionId = button.data('subscription-id');
+                var availableFunds = parseFloat(button.data('available-funds'));
+                var totalDue = parseFloat(button.data('total-due'));
+                
+                if (!subscriptionId) {
+                    alert('Invalid subscription ID');
+                    return;
+                }
+                
+                var paymentAmount = Math.min(availableFunds, totalDue);
+                var isPartialPayment = paymentAmount < totalDue;
+                
+                var confirmMessage = 'Pay £' + paymentAmount.toFixed(2) + ' with account funds?';
+                if (isPartialPayment) {
+                    confirmMessage += '\\n\\nThis is a partial payment. Remaining due: £' + (totalDue - paymentAmount).toFixed(2);
+                }
+                
+                if (!confirm(confirmMessage)) {
+                    return;
+                }
+                
+                button.prop('disabled', true).text('Processing...');
+                
+                $.ajax({
+                    url: '" . admin_url('admin-ajax.php') . "',
+                    type: 'POST',
+                    data: {
+                        action: 'mwf_pay_subscription_with_funds',
+                        subscription_id: subscriptionId,
+                        nonce: '" . wp_create_nonce('mwf_subscription_payment') . "'
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            alert(response.data.message);
+                            if (response.data.redirect_url) {
+                                window.location.href = response.data.redirect_url;
+                            } else {
+                                location.reload();
+                            }
+                        } else {
+                            alert('Error: ' + (response.data.message || 'Unknown error'));
+                            button.prop('disabled', false).text(button.data('original-text') || 'Pay with Account Funds');
+                        }
+                    },
+                    error: function() {
+                        alert('Network error occurred. Please try again.');
+                        button.prop('disabled', false).text(button.data('original-text') || 'Pay with Account Funds');
+                    }
+                });
+            });
+            
+            // Store original button text
+            $('.mwf-pay-with-funds').each(function() {
+                $(this).data('original-text', $(this).text());
+            });
+        });
+        ";
+        
+        wp_add_inline_script('jquery', $script);
+        
+        // Add some basic styling
+        $style = "
+        .mwf-pay-with-funds {
+            background-color: #2271b1 !important;
+            color: white !important;
+            margin-left: 5px;
+        }
+        .mwf-pay-with-funds.partial-payment {
+            background-color: #d63638 !important;
+        }
+        .mwf-pay-with-funds:hover {
+            background-color: #135e96 !important;
+        }
+        .mwf-pay-with-funds.partial-payment:hover {
+            background-color: #b32d2e !important;
+        }
+        ";
+        
+        wp_add_inline_style('woocommerce-general', $style);
+    }
+}
+
+/**
+ * Get subscription payment status via API
+ */
+function mwf_get_subscription_payment_status($request) {
+    $email = $request->get_param('email');
+    $subscription_id = $request->get_param('subscription_id');
+    
+    if (!$email && !$subscription_id) {
+        return new WP_Error('missing_parameters', 'Either email or subscription_id is required', ['status' => 400]);
+    }
+    
+    $subscriptions = [];
+    
+    if ($subscription_id) {
+        $subscription = wcs_get_subscription($subscription_id);
+        if ($subscription) {
+            $subscriptions = [$subscription];
+        }
+    } else {
+        $user = get_user_by('email', $email);
+        if (!$user) {
+            return new WP_Error('user_not_found', 'User not found', ['status' => 404]);
+        }
+        $subscriptions = wcs_get_users_subscriptions($user->ID);
+    }
+    
+    $result = [];
+    
+    foreach ($subscriptions as $subscription) {
+        $customer_id = $subscription->get_customer_id();
+        $available_funds = mwf_get_user_balance($customer_id);
+        
+        $result[] = [
+            'subscription_id' => $subscription->get_id(),
+            'customer_id' => $customer_id,
+            'customer_email' => $subscription->get_billing_email(),
+            'status' => $subscription->get_status(),
+            'needs_payment' => $subscription->needs_payment(),
+            'total_due' => $total_due,
+            'available_funds' => $available_funds,
+            'payment_status' => $payment_status,
+            'next_payment_date' => $subscription->get_date('next_payment'),
+            'last_payment_date' => $subscription->get_date('last_order_date_created'),
+            'can_auto_pay' => $available_funds >= $total_due && $total_due > 0
+        ];
+    }
+    
+    return rest_ensure_response([
+        'success' => true,
+        'subscriptions' => $result
+    ]);
+}
+
+/**
+ * Process subscription payment via API
+ */
+function mwf_process_subscription_payment_api($request) {
+    $params = $request->get_json_params();
+    $subscription_id = $params['subscription_id'] ?? 0;
+    $force_payment = $params['force_payment'] ?? false;
+    
+    if (!$subscription_id) {
+        return new WP_Error('missing_subscription_id', 'Subscription ID is required', ['status' => 400]);
+    }
+    
+    $subscription = wcs_get_subscription($subscription_id);
+    if (!$subscription) {
+        return new WP_Error('subscription_not_found', 'Subscription not found', ['status' => 404]);
+    }
+    
+    if (!$subscription->needs_payment() && !$force_payment) {
+        return rest_ensure_response([
+            'success' => false,
+            'message' => 'Subscription does not need payment',
+            'subscription_status' => $subscription->get_status()
+        ]);
+    }
+    
+    $customer_id = $subscription->get_customer_id();
+    $available_funds = mwf_get_user_balance($customer_id);
+    $total_due = floatval($subscription->get_total());
+    
+    if ($available_funds < $total_due) {
+        return rest_ensure_response([
+            'success' => false,
+            'message' => 'Insufficient funds',
+            'available_funds' => $available_funds,
+            'required_amount' => $total_due,
+            'shortfall' => $total_due - $available_funds
+        ]);
+    }
+    
+    try {
+        // Create renewal order if needed
+        $renewal_orders = $subscription->get_related_orders('all', 'renewal');
+        $latest_renewal_order = null;
+        
+        if (!empty($renewal_orders)) {
+            usort($renewal_orders, function($a, $b) {
+                return $b->get_date_created()->getTimestamp() - $a->get_date_created()->getTimestamp();
+            });
+            $latest_renewal_order = reset($renewal_orders);
+        }
+        
+        if (!$latest_renewal_order || $latest_renewal_order->is_paid()) {
+            $latest_renewal_order = wcs_create_renewal_order($subscription);
+            
+            if (is_wp_error($latest_renewal_order)) {
+                throw new Exception('Failed to create renewal order: ' . $latest_renewal_order->get_error_message());
+            }
+        }
+        
+        // Process payment
+        $result = mwf_process_subscription_renewal_payment($latest_renewal_order, $subscription, $total_due, $customer_id);
+        
+        if (!$result['success']) {
+            throw new Exception($result['error']);
+        }
+        
+        mwf_log('API subscription payment processed', [
+            'subscription_id' => $subscription_id,
+            'customer_id' => $customer_id,
+            'amount' => $total_due,
+            'transaction_id' => $result['transaction_id']
+        ]);
+        
+        return rest_ensure_response([
+            'success' => true,
+            'message' => 'Payment processed successfully',
+            'transaction_id' => $result['transaction_id'],
+            'amount_charged' => $total_due,
+            'new_balance' => $result['new_balance'],
+            'order_id' => $latest_renewal_order->get_id()
+        ]);
+        
+    } catch (Exception $e) {
+        mwf_log_error('API subscription payment failed', [
+            'subscription_id' => $subscription_id,
+            'customer_id' => $customer_id,
+            'error' => $e->getMessage()
+        ]);
+        
+        return new WP_Error('payment_failed', $e->getMessage(), ['status' => 500]);
+    }
+}
+
+/**
+ * =============================================================================
+ * USER SWITCHING & MANAGEMENT FUNCTIONALITY
+ * Integrates with WooCommerce User Switching plugin
+ * =============================================================================
+ */
+
+/**
+ * Search Users API Endpoint
+ * GET /wp-json/mwf/v1/users/search?q={search_term}&limit={limit}&role={role}
+ */
+function mwf_search_users_endpoint($request) {
+    $search_term = sanitize_text_field($request->get_param('q') ?: '');
+    $limit = intval($request->get_param('limit') ?: 20);
+    $role = sanitize_text_field($request->get_param('role'));
+    
+    // Validate parameters
+    if (empty($search_term)) {
+        return new WP_Error('missing_search_term', 'Search term is required', ['status' => 400]);
+    }
+    
+    $args = [
+        'search' => '*' . $search_term . '*',
+        'search_columns' => ['user_login', 'user_email', 'display_name'],
+        'number' => min($limit, 100), // Cap at 100
+        'orderby' => 'display_name',
+        'order' => 'ASC'
+    ];
+    
+    if (!empty($role)) {
+        $args['role'] = $role;
+    }
+    
+    $users = get_users($args);
+    $formatted_users = [];
+    
+    foreach ($users as $user) {
+        $wc_customer = new WC_Customer($user->ID);
+        
+        $formatted_users[] = [
+            'id' => $user->ID,
+            'display_name' => $user->display_name,
+            'email' => $user->user_email,
+            'username' => $user->user_login,
+            'avatar_url' => get_avatar_url($user->ID, ['size' => 64]),
+            'roles' => $user->roles,
+            'wc_data' => [
+                'total_spent' => number_format((float)$wc_customer->get_total_spent(), 2),
+                'order_count' => $wc_customer->get_order_count(),
+                'billing_first_name' => $wc_customer->get_billing_first_name(),
+                'billing_last_name' => $wc_customer->get_billing_last_name(),
+                'billing_city' => $wc_customer->get_billing_city(),
+                'account_funds' => number_format((float)mwf_get_user_balance($user->ID), 2)
+            ],
+            'last_login' => get_user_meta($user->ID, '_last_login', true)
+        ];
+    }
+    
+    return rest_ensure_response([
+        'success' => true,
+        'users' => $formatted_users,
+        'total_found' => count($formatted_users)
+    ]);
+}
+
+/**
+ * Get User Details API Endpoint
+ * GET /wp-json/mwf/v1/users/{id}
+ */
+function mwf_get_user_endpoint($request) {
+    $user_id = intval($request['id']);
+    
+    if (!$user_id) {
+        return new WP_Error('invalid_user_id', 'Valid user ID is required', ['status' => 400]);
+    }
+    
+    $user = get_user_by('ID', $user_id);
+    if (!$user) {
+        return new WP_Error('user_not_found', 'User not found', ['status' => 404]);
+    }
+    
+    $wc_customer = new WC_Customer($user_id);
+    
+    // Get recent orders
+    $recent_orders = wc_get_orders([
+        'customer_id' => $user_id,
+        'limit' => 5,
+        'orderby' => 'date',
+        'order' => 'DESC'
+    ]);
+    
+    $orders_data = [];
+    foreach ($recent_orders as $order) {
+        $orders_data[] = [
+            'id' => $order->get_id(),
+            'date' => $order->get_date_created()->format('Y-m-d H:i:s'),
+            'status' => $order->get_status(),
+            'total' => number_format((float)$order->get_total(), 2),
+            'items_count' => $order->get_item_count()
+        ];
+    }
+    
+    // Get subscriptions if available
+    $subscriptions_data = [];
+    if (function_exists('wcs_get_users_subscriptions')) {
+        $subscriptions = wcs_get_users_subscriptions($user_id);
+        foreach ($subscriptions as $subscription) {
+            $subscriptions_data[] = [
+                'id' => $subscription->get_id(),
+                'status' => $subscription->get_status(),
+                'total' => number_format((float)$subscription->get_total(), 2),
+                'next_payment' => $subscription->get_date('next_payment'),
+                'needs_payment' => $subscription->needs_payment()
+            ];
+        }
+    }
+    
+    return rest_ensure_response([
+        'success' => true,
+        'user' => [
+            'id' => $user->ID,
+            'display_name' => $user->display_name,
+            'email' => $user->user_email,
+            'username' => $user->user_login,
+            'avatar_url' => get_avatar_url($user->ID, ['size' => 128]),
+            'roles' => $user->roles,
+            'registration_date' => $user->user_registered,
+            'wc_data' => [
+                'total_spent' => number_format((float)$wc_customer->get_total_spent(), 2),
+                'order_count' => $wc_customer->get_order_count(),
+                'billing_first_name' => $wc_customer->get_billing_first_name(),
+                'billing_last_name' => $wc_customer->get_billing_last_name(),
+                'billing_company' => $wc_customer->get_billing_company(),
+                'billing_address_1' => $wc_customer->get_billing_address_1(),
+                'billing_address_2' => $wc_customer->get_billing_address_2(),
+                'billing_city' => $wc_customer->get_billing_city(),
+                'billing_state' => $wc_customer->get_billing_state(),
+                'billing_postcode' => $wc_customer->get_billing_postcode(),
+                'billing_country' => $wc_customer->get_billing_country(),
+                'billing_phone' => $wc_customer->get_billing_phone(),
+                'account_funds' => number_format((float)mwf_get_user_balance($user->ID), 2)
+            ],
+            'recent_orders' => $orders_data,
+            'subscriptions' => $subscriptions_data,
+            'last_login' => get_user_meta($user->ID, '_last_login', true)
+        ]
+    ]);
+}
+
+/**
+ * Switch User API Endpoint
+ * POST /wp-json/mwf/v1/users/switch
+ * Body: {"user_id": 123, "redirect_to": "/my-account/", "admin_context": "customer_support"}
+ */
+function mwf_switch_user_endpoint($request) {
+    $params = $request->get_json_params();
+    $user_id = intval($params['user_id'] ?? 0);
+    $redirect_to = sanitize_text_field($params['redirect_to'] ?? '/my-account/');
+    $admin_context = sanitize_text_field($params['admin_context'] ?? 'customer_support');
+    $clear_session = $params['clear_session'] ?? false;
+    $auto_logout = $params['auto_logout'] ?? false;
+    
+    if (!$user_id) {
+        return new WP_Error('missing_user_id', 'User ID is required', ['status' => 400]);
+    }
+    
+    $user = get_user_by('ID', $user_id);
+    if (!$user) {
+        return new WP_Error('user_not_found', 'User not found', ['status' => 404]);
+    }
+    
+    // Check if User Switching plugin is active
+    if (!class_exists('user_switching')) {
+        return new WP_Error('plugin_not_active', 'User Switching plugin is not active', ['status' => 500]);
+    }
+    
+    try {
+        // Handle session cleanup if requested
+        if ($clear_session || $auto_logout) {
+            mwf_clear_existing_user_switches();
+        }
+        
+        // Generate a secure preview token
+        $preview_token = wp_generate_uuid4();
+        $token_data = [
+            'user_id' => $user_id,
+            'redirect_to' => $redirect_to,
+            'admin_context' => $admin_context,
+            'clear_session' => $clear_session,
+            'auto_logout' => $auto_logout,
+            'created_at' => time(),
+            'expires_at' => time() + (15 * 60) // 15 minutes
+        ];
+        
+        // Store the token temporarily (15 minutes)
+        set_transient('mwf_user_switch_' . $preview_token, $token_data, 15 * 60);
+        
+        // Create preview URL that will handle the actual switching
+        $preview_url = add_query_arg([
+            'mwf_preview_token' => $preview_token
+        ], home_url($redirect_to));
+        
+        mwf_log('User switch token generated', [
+            'target_user_id' => $user_id,
+            'target_email' => $user->user_email,
+            'redirect_to' => $redirect_to,
+            'admin_context' => $admin_context,
+            'token_preview' => substr($preview_token, 0, 8) . '...'
+        ]);
+        
+        return rest_ensure_response([
+            'success' => true,
+            'preview_url' => $preview_url,
+            'preview_token' => $preview_token,
+            'user' => [
+                'id' => $user->ID,
+                'display_name' => $user->display_name,
+                'email' => $user->user_email,
+                'username' => $user->user_login
+            ],
+            'expires_in' => 15 * 60, // seconds
+            'message' => 'User switch token generated - open preview_url in new tab'
+        ]);
+        
+    } catch (Exception $e) {
+        mwf_log_error('User switch failed', [
+            'user_id' => $user_id,
+            'error' => $e->getMessage()
+        ]);
+        
+        return new WP_Error('switch_error', 'Failed to switch user: ' . $e->getMessage(), ['status' => 500]);
+    }
+}
+
+/**
+ * Clear existing user switching sessions to prevent conflicts
+ */
+function mwf_clear_existing_user_switches() {
+    mwf_log('Starting session cleanup process');
+    
+    // Clear any existing user switching cookies
+    if (function_exists('user_switching_clear_olduser_cookie')) {
+        user_switching_clear_olduser_cookie();
+        mwf_log('Cleared User Switching cookies');
+    } else {
+        mwf_log('User Switching cookie clear function not available');
+    }
+    
+    // Clear WordPress auth cookies to reset session
+    wp_clear_auth_cookie();
+    mwf_log('Cleared WordPress auth cookies');
+    
+    // Clear any MWF-specific transients for user switching
+    global $wpdb;
+    $deleted_transients = $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_mwf_user_switch_%'");
+    $deleted_timeouts = $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_timeout_mwf_user_switch_%'");
+    
+    mwf_log('Cleared existing user switching sessions and transients', [
+        'deleted_transients' => $deleted_transients,
+        'deleted_timeouts' => $deleted_timeouts
+    ]);
+}
+
+/**
+ * Handle preview token for user switching
+ * This runs after WordPress is fully loaded to avoid conflicts
+ */
+add_action('template_redirect', 'mwf_handle_user_switch_token', 1);
+function mwf_handle_user_switch_token() {
+    if (is_admin() || wp_doing_ajax() || (defined('REST_REQUEST') && REST_REQUEST)) {
+        return;
+    }
+    if (!isset($_GET['mwf_preview_token'])) {
+        return;
+    }
+    
+    $debug_file = '/var/www/vhosts/middleworldfarms.org/httpdocs/mwf-switch-debug.log';
+    $token = sanitize_text_field($_GET['mwf_preview_token']);
+    $token_data = get_transient('mwf_user_switch_' . $token);
+    
+    if (!$token_data) {
+        file_put_contents($debug_file, date('Y-m-d H:i:s') . " - Token data not found or expired\n", FILE_APPEND | LOCK_EX);
+        wp_die('Preview token expired or invalid. Please generate a new switch URL from the admin panel.', 'Invalid Token', ['response' => 403]);
+        return;
+    }
+    
+    $user_id = $token_data['user_id'];
+    $user = get_user_by('ID', $user_id);
+    
+    if (!$user) {
+        file_put_contents($debug_file, date('Y-m-d H:i:s') . " - Target user not found\n", FILE_APPEND | LOCK_EX);
+        delete_transient('mwf_user_switch_' . $token);
+        wp_die('User not found.', 'User Not Found', ['response' => 404]);
+        return;
+    }
+    
+    file_put_contents($debug_file, date('Y-m-d H:i:s') . " - Creating auto-login token for {$user->user_email}\n", FILE_APPEND | LOCK_EX);
+    
+    // Use the WORKING auto-login approach from functions.php
+    // Create a secure auto-login token
+    $auto_login_token = wp_generate_password(32, false);
+    $token_expiry = time() + 300; // 5 minutes
+    
+    // Store the token in database temporarily
+    $auto_token_data = array(
+        'user_id' => $user_id,
+        'redirect_to' => $token_data['redirect_to'] ?? '/my-account/',
+        'created' => time(),
+        'expires' => $token_expiry
+    );
+    
+    update_option("mwf_auto_login_token_{$auto_login_token}", $auto_token_data, false);
+    
+    // Delete the original token
+    delete_transient('mwf_user_switch_' . $token);
+    
+    // Generate auto-login URL
+    $auto_login_url = add_query_arg(array(
+        'mwf_auto_login' => $auto_login_token
+    ), home_url('/'));
+    
+    file_put_contents($debug_file, date('Y-m-d H:i:s') . " - Redirecting to auto-login URL\n", FILE_APPEND | LOCK_EX);
+    
+    wp_redirect($auto_login_url);
+    exit;
+}
+
+// Auto-login handler (copied from working functions.php)
+add_action('init', 'mwf_handle_auto_login', 1);
+function mwf_handle_auto_login() {
+    if (isset($_GET['mwf_auto_login'])) {
+        $debug_file = '/var/www/vhosts/middleworldfarms.org/httpdocs/mwf-switch-debug.log';
+        $token = sanitize_text_field($_GET['mwf_auto_login']);
+        $token_data = get_option("mwf_auto_login_token_{$token}");
+        
+        if ($token_data && is_array($token_data)) {
+            // Check if token is still valid
+            if (time() <= $token_data['expires']) {
+                $user_id = intval($token_data['user_id']);
+                $redirect_to = $token_data['redirect_to'];
+                
+                // Delete the token to prevent reuse
+                delete_option("mwf_auto_login_token_{$token}");
+                
+                file_put_contents($debug_file, date('Y-m-d H:i:s') . " - Auto-login processing for user ID: {$user_id}\n", FILE_APPEND | LOCK_EX);
+                
+                // Log the user in using the WORKING method
+                wp_clear_auth_cookie();
+                wp_set_current_user($user_id);
+                wp_set_auth_cookie($user_id, true);
+                
+                file_put_contents($debug_file, date('Y-m-d H:i:s') . " - Auto-login successful for user ID: {$user_id}\n", FILE_APPEND | LOCK_EX);
+                
+                // Get the proper redirect URL
+                if ($redirect_to === '/my-account/' || $redirect_to === 'my-account') {
+                    // Use WooCommerce my-account page URL
+                    $myaccount_page_id = get_option('woocommerce_myaccount_page_id');
+                    file_put_contents($debug_file, date('Y-m-d H:i:s') . " - WC My Account Page ID: {$myaccount_page_id}\n", FILE_APPEND | LOCK_EX);
+                    
+                    if ($myaccount_page_id) {
+                        $redirect_url = get_permalink($myaccount_page_id);
+                        file_put_contents($debug_file, date('Y-m-d H:i:s') . " - get_permalink result: {$redirect_url}\n", FILE_APPEND | LOCK_EX);
+                    } else {
+                        $redirect_url = home_url('/my-account/');
+                        file_put_contents($debug_file, date('Y-m-d H:i:s') . " - Using fallback URL: {$redirect_url}\n", FILE_APPEND | LOCK_EX);
+                    }
+                    
+                    // Try WooCommerce function if available
+                    if (function_exists('wc_get_page_permalink')) {
+                        $wc_url = wc_get_page_permalink('myaccount');
+                        file_put_contents($debug_file, date('Y-m-d H:i:s') . " - wc_get_page_permalink result: {$wc_url}\n", FILE_APPEND | LOCK_EX);
+                        if ($wc_url && $wc_url !== home_url()) {
+                            $redirect_url = $wc_url;
+                        }
+                    }
+                } else {
+                    $redirect_url = home_url($redirect_to);
+                }
+                
+                // Add parameters to show successful user switch
+                $user_obj = get_userdata($user_id);
+                $redirect_url = add_query_arg([
+                    'switched_user' => 'true',
+                    'target_user' => $user_obj->user_login,
+                    'user_id' => $user_id,
+                    'switch_time' => time(),
+                    'mwf_switched' => '1'
+                ], $redirect_url);
+                
+                file_put_contents($debug_file, date('Y-m-d H:i:s') . " - Final redirect to: {$redirect_url}\n", FILE_APPEND | LOCK_EX);
+                
+                wp_redirect($redirect_url);
+                exit;
+            } else {
+                file_put_contents($debug_file, date('Y-m-d H:i:s') . " - Auto-login token expired\n", FILE_APPEND | LOCK_EX);
+                delete_option("mwf_auto_login_token_{$token}");
+            }
+        } else {
+            file_put_contents($debug_file, date('Y-m-d H:i:s') . " - Invalid auto-login token\n", FILE_APPEND | LOCK_EX);
+        }
+        
+        // If we get here, login failed
+        file_put_contents($debug_file, date('Y-m-d H:i:s') . " - Auto-login failed, redirecting to home\n", FILE_APPEND | LOCK_EX);
+        wp_redirect(home_url('/'));
+        exit;
+    }
+}
+
+// Admin warning banner for user switching
+add_action('wp_head', 'mwf_admin_warning_banner_styles');
+function mwf_admin_warning_banner_styles() {
+    if (isset($_GET['mwf_switched']) && $_GET['mwf_switched'] == '1') {
+        ?>
+        <style>
+        .mwf-admin-warning {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #dc3232;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            z-index: 999999;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .mwf-admin-warning a {
+            color: #fff;
+            text-decoration: underline;
+            margin-left: 10px;
+        }
+        .mwf-admin-warning a:hover {
+            color: #f0f0f0;
+        }
+        body {
+            margin-top: 50px !important;
+        }
+        .admin-bar body {
+            margin-top: 82px !important;
+        }
+        </style>
+        <?php
+    }
+}
+
+add_action('wp_footer', 'mwf_admin_warning_banner');
+function mwf_admin_warning_banner() {
+    if (isset($_GET['mwf_switched']) && $_GET['mwf_switched'] == '1') {
+        $target_user = sanitize_text_field($_GET['target_user'] ?? 'Unknown User');
+        $switch_time = isset($_GET['switch_time']) ? date('Y-m-d H:i:s', intval($_GET['switch_time'])) : 'Unknown';
+        ?>
+        <div class="mwf-admin-warning">
+            🔄 <strong>ADMIN MODE:</strong> You are currently viewing as customer "<strong><?php echo esc_html($target_user); ?></strong>" 
+            (switched at <?php echo esc_html($switch_time); ?>)
+            <a href="<?php echo esc_url(remove_query_arg(['mwf_switched', 'switched_user', 'target_user', 'user_id', 'switch_time'])); ?>">
+                Clear Session
+            </a>
+        </div>
+        <?php
+    }
+}
+
+/**
+ * Fix for YITH Name Your Price plugin interfering with subscription renewals
+ * Disable name-your-price validation for subscription products
+ */
+add_filter('ywcnp_product_has_nyp', 'mwf_disable_nyp_for_subscriptions', 10, 2);
+function mwf_disable_nyp_for_subscriptions($has_nyp, $product) {
+    // Disable name-your-price for subscription products
+    if (class_exists('WC_Subscriptions_Product') && WC_Subscriptions_Product::is_subscription($product)) {
+        return false;
+    }
+    
+    // Also disable during subscription renewal process
+    if (function_exists('wcs_order_contains_renewal') && !empty(WC()->session)) {
+        $cart_contains_renewal = false;
+        foreach (WC()->cart->get_cart() as $cart_item) {
+            if (isset($cart_item['subscription_renewal'])) {
+                $cart_contains_renewal = true;
+                break;
+            }
+        }
+        if ($cart_contains_renewal) {
+            return false;
+        }
+    }
+    
+    return $has_nyp;
+}
+
+/**
+ * Additional fix to bypass YITH validation during checkout for renewals
+ */
+add_action('woocommerce_checkout_process', 'mwf_bypass_nyp_validation_for_renewals', 5);
+function mwf_bypass_nyp_validation_for_renewals() {
+    // Check if this is a subscription renewal
+    if (!empty(WC()->cart)) {
+        foreach (WC()->cart->get_cart() as $cart_item) {
+            if (isset($cart_item['subscription_renewal'])) {
+                // Remove YITH validation hooks temporarily during renewal checkout
+                remove_action('woocommerce_checkout_process', array('YITH_WC_Name_Your_Price_Frontend', 'validate_nyp_price_on_checkout'));
+                mwf_log_debug("Bypassed YITH Name Your Price validation for subscription renewal");
+                break;
+            }
+        }
+    }
+}
+
+// Render map directly if ?wpgmza=1 is present in the URL
+add_action('template_redirect', function() {
+    if (isset($_GET['wpgmza']) && $_GET['wpgmza'] == '1') {
+        // Set up fake post context for scripts/styles
+        global $wp, $wp_query, $post;
+        $post = (object) [
+            'ID' => -9999,
+            'post_title' => 'MWF Dynamic Map',
+            'post_content' => '',
+            'post_type' => 'page',
+            'post_status' => 'publish',
+        ];
+        $wp_query->is_page = true;
+        $wp_query->is_singular = true;
+        $wp_query->is_home = false;
+        $wp_query->is_archive = false;
+        $wp_query->is_category = false;
+        $wp_query->queried_object = $post;
+
+        // Parse waypoints from URL
+        $waypoints = [];
+        if (!empty($_GET['waypoints'])) {
+            $pairs = explode('|', $_GET['waypoints']);
+            foreach ($pairs as $pair) {
+                $coords = explode(',', $pair);
+                if (count($coords) == 2 && is_numeric($coords[0]) && is_numeric($coords[1])) {
+                    $waypoints[] = [floatval($coords[0]), floatval($coords[1])];
+                }
+            }
+        }
+
+        // Output minimal HTML
+        ?><!DOCTYPE html>
+        <html <?php language_attributes(); ?>>
+        <head>
+            <meta charset="<?php bloginfo('charset'); ?>">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>MWF Dynamic Map</title>
+            <?php wp_head(); ?>
+            <style>
+                body { background: #f9f9f9; margin: 0; }
+                .mwf-map-banner { background: #2271b1; color: #fff; padding: 8px 16px; font-size: 1.1em; }
+                .wpgmza_map { margin: 0 auto; }
+            </style>
+        </head>
+        <body>
+            <div class="mwf-map-banner">MWF Dynamic Map Proof of Concept</div>
+            <div style="max-width:900px;margin:24px auto;">
+                <?php echo do_shortcode('[wpgmza id="1"]'); ?>
+            </div>
+            <script>
+            // Pass waypoints from PHP to JS
+            window.mwf_dynamic_waypoints = <?php echo json_encode($waypoints); ?>;
+            </script>
+            <script>
+            // Wait for WP Go Maps to load, then add markers/route
+            function mwfAddDynamicWaypoints() {
+                if (typeof window.WPGMZA === 'undefined' || typeof WPGMZA.maps === 'undefined') {
+                    setTimeout(mwfAddDynamicWaypoints, 300);
+                    return;
+                }
+                var waypoints = window.mwf_dynamic_waypoints || [];
+                if (!waypoints.length) return;
+                var map = WPGMZA.maps[1];
+                if (!map) return;
+                // Remove existing dynamic markers if any
+                if (!window.mwf_dynamic_markers) window.mwf_dynamic_markers = [];
+                window.mwf_dynamic_markers.forEach(function(m){ m.setMap(null); });
+                window.mwf_dynamic_markers = [];
+                // Add markers
+                waypoints.forEach(function(coords, idx) {
+                    var marker = new WPGMZA.Marker({
+                        position: {lat: coords[0], lng: coords[1]},
+                        map: map.googleMap || map.map,
+                        title: 'Waypoint ' + (idx+1)
+                    });
+                    window.mwf_dynamic_markers.push(marker);
+                });
+                // Draw polyline/route
+                if (window.mwf_dynamic_polyline) {
+                    window.mwf_dynamic_polyline.setMap(null);
+                }
+                var path = waypoints.map(function(c){ return {lat: c[0], lng: c[1]}; });
+                if (path.length > 1) {
+                    window.mwf_dynamic_polyline = new google.maps.Polyline({
+                        path: path,
+                        geodesic: true,
+                        strokeColor: '#d63638',
+                        strokeOpacity: 0.9,
+                        strokeWeight: 4
+                    });
+                    window.mwf_dynamic_polyline.setMap(map.googleMap || map.map);
+                }
+                // Optionally, fit bounds
+                var bounds = new google.maps.LatLngBounds();
+                path.forEach(function(p){ bounds.extend(p); });
+                if (!bounds.isEmpty()) {
+                    map.googleMap.fitBounds(bounds);
+                }
+            }
+            document.addEventListener('DOMContentLoaded', mwfAddDynamicWaypoints);
+            // Also run after map init (for WP Go Maps)
+            document.addEventListener('wpgmza_map_initialized', mwfAddDynamicWaypoints);
+            </script>
+            <?php wp_footer(); ?>
+        </body>
+        </html><?php
+        exit;
+    }
+});
+
+// END MWF CUSTOM CODE

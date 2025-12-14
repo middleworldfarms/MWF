@@ -1,0 +1,17 @@
+<table data-main="1">
+	<thead>
+		<tr>
+		 	<th data-for="(head_data, head_key) in header">{{head_data.title}}</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr data-if="rows" data-for="(row_data, index) in rows">
+			<td data-for="(col_data, col_key) in row_data.values" data-label="{{wbte-ds-attr-header.((col_key)).title}}">{{filter:col_content col_data col_key row_data index}}</td>
+		</tr>
+		<tr data-if="!rows">
+			<td colspan="{{wbte-ds-attr-header.length}}">
+				{{html:no_records}}
+			</td>
+		</tr>
+	</tbody>
+</table>

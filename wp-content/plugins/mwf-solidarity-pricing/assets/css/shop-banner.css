@@ -1,0 +1,93 @@
+/**
+ * Shop Page Banner Styles
+ * Minimal, visual banner for solidarity pricing
+ */
+
+.mwf-solidarity-shop-banner {
+    background: linear-gradient(135deg, #2d5016 0%, #4a7c2f 100%);
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.mwf-solidarity-shop-banner h3 {
+    font-size: 28px;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+    color: #fff;
+}
+
+.mwf-solidarity-shop-banner p {
+    font-size: 16px;
+    margin: 0 0 20px 0;
+    opacity: 0.95;
+}
+
+.mwf-solidarity-shop-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.mwf-solidarity-shop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 120px;
+}
+
+.mwf-solidarity-shop-icon-emoji {
+    font-size: 36px;
+}
+
+.mwf-solidarity-shop-icon-label {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mwf-solidarity-learn-link {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.mwf-solidarity-learn-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    color: #fff;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .mwf-solidarity-shop-banner h3 {
+        font-size: 22px;
+    }
+    
+    .mwf-solidarity-shop-banner p {
+        font-size: 14px;
+    }
+    
+    .mwf-solidarity-shop-icons {
+        gap: 20px;
+    }
+    
+    .mwf-solidarity-shop-icon-emoji {
+        font-size: 28px;
+    }
+}

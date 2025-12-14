@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "qyrr-code/qr",
+  "icon": "<svg xmlns='http://www.w3.org/2000/svg' fillrule='evenodd' cliprule='evenodd' strokelinejoin='round' strokemiterlimit='2' viewBox='0 0 16.08 16.08'><path transform='scale(.03139)' d='M51.2 51.2H102.4V102.4H51.2z'></path>     <path d='M358.4 0v25.6h-25.6v25.6h25.6v102.4H384v25.6h-25.6v25.6h51.2v-51.2h76.8v25.6H512V0H358.4Zm128 128H384V25.6h102.4V128Z' fillrule='nonzero' transform='scale(.03139)'></path>     <path transform='scale(.03139)' d='M409.6 51.2H460.8V102.4H409.6z'></path>     <path transform='scale(.03139)' d='M51.2 409.6H102.4V460.8H51.2z'></path>     <path transform='scale(.03139)' d='M358.4 358.4H384V384H358.4z'></path>     <path transform='scale(.03139)' d='M230.4 486.4H256V512H230.4z'></path>     <path transform='scale(.03139)' d='M256 384H281.6V409.6H256z'></path>     <path transform='scale(.03139)' d='M256 435.2H281.6V460.8H256z'></path>     <path transform='scale(.03139)' d='M486.4 307.2H512V332.8H486.4z'></path>     <path transform='scale(.03139)' d='M0 307.2H25.6V332.8H0z'></path>     <path transform='scale(.03139)' d='M0 179.2H25.6V204.8H0z'></path>     <path d='M281.6 25.6v25.6h-51.2v25.6h76.8V25.6h-25.6ZM486.4 204.8v25.6h-51.2V256h-76.8v-25.6h-25.6V256h-51.2v25.6h76.8v25.6h-76.8v-25.6H256v25.6h-25.6v-25.6h-25.6v25.6h-25.6v25.6h51.2v25.6H256v-25.6h51.2v25.6h-25.6V384h25.6v51.2h25.6v25.6h25.6v-25.6h76.8V384h25.6v-25.6h-25.6v-51.2H384v-25.6h51.2v25.6h25.6v-25.6h25.6V256H512v-51.2h-25.6Zm-76.8 128v76.8h-76.8v-76.8h76.8ZM358.4 153.6h-51.2v25.6h-25.6v51.2h25.6v-25.6h25.6v-25.6h25.6v-25.6Z' fillrule='nonzero' transform='scale(.03139)'></path>     <path transform='scale(.03139)' d='M281.6 486.4H332.8V512H281.6z'></path>     <path transform='scale(.03139)' d='M204.8 25.6H230.4V51.2H204.8z'></path>     <path transform='scale(.03139)' d='M409.6 204.8H435.2V230.4H409.6z'></path>     <path transform='scale(.03139)' d='M435.2 179.2H460.8V204.8H435.2z'></path>     <path transform='scale(.03139)' d='M102.4 307.2H128V332.8H102.4z'></path>     <path d='M153.6 486.4V384h25.6v-51.2h-25.6v25.6H76.8v-25.6H25.6v25.6H0V512h204.8v-25.6h-51.2Zm-25.6 0H25.6V384H128v102.4Z' fillrule='nonzero' transform='scale(.03139)'></path>     <path transform='scale(.03139)' d='M153.6 153.6H179.2V179.2H153.6z'></path>     <path d='M204.8 0H0v153.6h25.6v25.6h25.6v-25.6h25.6v25.6h25.6v-25.6h51.2v-51.2h25.6V76.8h-25.6V25.6h51.2V0ZM128 128H25.6V25.6H128V128Z' fillrule='nonzero' transform='scale(.03139)'></path>     <path transform='scale(.03139)' d='M307.2 76.8H332.8V102.4H307.2z'></path>     <path transform='scale(.03139)' d='M256 0H281.6V25.6H256z'></path>     <path d='M307.2 153.6V128h-25.6v-25.6H256V128h-51.2v-25.6h-25.6v51.2h25.6v51.2H128v-25.6h-25.6v25.6H25.6v25.6h51.2V256H0v25.6h76.8v25.6h25.6v-25.6H128v25.6h25.6v-25.6h51.2V256h-25.6v-25.6h51.2V256h51.2v-25.6H256v-25.6h-25.6v-51.2h76.8ZM153.6 256h-51.2v-25.6h51.2V256ZM230.4 409.6v-51.2h-25.6V384h-25.6v25.6h25.6v25.6h-25.6v25.6h51.2v-25.6H256v-25.6h-25.6ZM460.8 460.8v-25.6h-25.6v25.6h-76.8v25.6h51.2V512h25.6v-25.6h51.2V512H512v-51.2h-51.2ZM486.4 358.4V384h-25.6v25.6H512v-51.2h-25.6Z' fillrule='nonzero' transform='scale(.03139)'></path></svg>",
+  "version": "1.2.0",
+  "title": "QR Code",
+  "category": "widgets",
+  "description": "A powerful QR Code block.",
+  "supports": {
+    "html": false,
+    "customClassName": false
+  },
+  "textdomain": "qyrr-code",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.scss",
+  "style": "file:./style.scss"
+}

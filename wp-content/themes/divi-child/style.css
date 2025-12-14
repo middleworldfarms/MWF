@@ -1,0 +1,436 @@
+/*
+Theme Name:     Divi Child
+Theme URI:      https://middleworld.farm/
+Description:    Divi Child Theme
+Author:         Martin
+Author URI:     https://middleworld.farm/
+Template:       Divi
+Version:        1.0.0
+*/
+
+/* WooCommerce Social Login Integration */
+.woocommerce-form-login {
+    margin-top: 20px;
+}
+
+.social-divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.social-divider:before,
+.social-divider:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+}
+
+.social-divider:before { left: 0; }
+.social-divider:after { right: 0; }
+
+.social-divider span {
+    background: #fff;
+    padding: 0 15px;
+    color: #666;
+    position: relative;
+    z-index: 1;
+}
+
+/* Nextend Social Login Customization */
+#customer_login .nsl-container {
+    margin-bottom: 20px;
+}
+
+#customer_login .nsl-button {
+    width: 100%;
+    max-width: none !important;
+}
+
+/* Global input style reset */
+input[type="number"],
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    background-color: white !important;
+    color: #333 !important;
+    border: 1px solid #ccc !important;
+}
+
+/* Label Styles */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+body .woocommerce-form label,
+body label {
+    color: #333 !important;
+}
+
+.account-funds-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Ensure the slider is horizontal */
+.mwf-product-slider {
+    display: block; /* Ensure the slider container is block-level */
+    width: 100%;
+    max-width: 1200px; /* Optional: Limit the slider width */
+    margin: 0 auto; /* Center the slider horizontally */
+    text-align: center; /* Center-align the content inside */
+    overflow: hidden;
+}
+
+/* Individual slides */
+.mwf-product-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Style for the quick slide */
+.mwf-product-slide.quick-slide {
+    background-color: #f9f9f9; /* Light background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.mwf-product-slide.quick-slide h3 {
+    font-size: 28px;
+    color: #213b2e;
+    margin-bottom: 10px;
+}
+
+.mwf-product-slide.quick-slide p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.mwf-product-slide.quick-slide .view_category_button {
+    padding: 10px 20px;
+    background-color: #213b2e;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.mwf-product-slide.quick-slide .view_category_button:hover {
+    background-color: #1a2f24;
+}
+
+/* Images inside the slides */
+.mwf-product-image img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Style for the slide titles */
+.mwf-product-info h3 {
+    font-size: 18px;
+    color: #213b2e;
+    margin-bottom: 5px;
+}
+
+/* Style for the slide descriptions */
+.mwf-product-info p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+/* Style for the product count */
+.mwf-product-count {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+/* Center-align the "View Products" button */
+.mwf-product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center;
+    height: 100%; /* Ensure it takes up the full height of the slide */
+}
+
+/* Add spacing around the button */
+.mwf-product-info .view_category_button {
+    padding: 8px 15px;
+    background-color: #213b2e;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.mwf-product-info .view_category_button:hover {
+    background-color: #1a2f24;
+}
+
+/* Dots styling */
+.slick-dots {
+    position: relative;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.slick-dots li button {
+    width: 10px;
+    height: 10px;
+    border: none;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.slick-dots li.slick-active button {
+    background-color: #213b2e;
+}
+
+/* Product Category Search Styles */
+.mwf-product-search-container {
+    margin: 20px 0;
+    position: relative;
+    width: 100%;
+}
+
+.mwf-search-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.mwf-search-input {
+    flex: 3;
+    min-width: 200px;
+}
+
+.mwf-search-input input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.mwf-category-dropdown {
+    flex: 2;
+    min-width: 180px;
+}
+
+.mwf-category-dropdown select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.mwf-search-button button {
+    padding: 10px 20px;
+    background-color: #213b2e; /* Match your theme color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.mwf-search-button button:hover {
+    background-color: #1a2f24; /* Darker shade for hover */
+}
+
+/* Search Results Styling */
+.mwf-search-results {
+    position: absolute;
+    z-index: 9999;
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-top: 5px;
+    display: none;
+}
+
+.mwf-searching {
+    padding: 15px;
+    text-align: center;
+}
+
+.mwf-products-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.mwf-product-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.mwf-product-item:last-child {
+    border-bottom: none;
+}
+
+.mwf-product-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+
+.mwf-product-image {
+    width: 60px;
+    flex-shrink: 0;
+}
+
+.mwf-product-image img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.mwf-product-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
+.mwf-product-title {
+    font-weight: 500;
+    color: #333;
+}
+
+.mwf-product-price {
+    color: #213b2e; /* Match your theme color */
+    font-weight: bold;
+}
+
+.mwf-view-all {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #eee;
+}
+
+.mwf-view-all a {
+    color: #213b2e; /* Match your theme color */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.mwf-no-results, .mwf-error {
+    padding: 15px;
+    text-align: center;
+    color: #666;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .mwf-search-fields {
+        flex-direction: column;
+    }
+    .mwf-search-input, .mwf-category-dropdown, .mwf-search-button {
+        width: 100%;
+    }
+    .mwf-search-button button {
+        width: 100%;
+    }
+}
+
+/* Hide the default WooCommerce product search widget in sidebar */
+.woocommerce.widget_product_search {
+    display: none !important;
+}
+
+/* If you want to keep other WooCommerce widgets but just hide this particular search */
+.woocommerce-product-search:not(.mwf-product-search) {
+    display: none !important;
+}
+
+/* Super aggressive hiding for WooCommerce search widgets */
+#sidebar .widget_product_search,
+.widget_product_search,
+.woocommerce-product-search:not(.mwf-product-search),
+body #sidebar .woocommerce-product-search,
+body .et_pb_widget_area .widget_product_search,
+body.woocommerce #sidebar .widget_product_search,
+body.woocommerce-page #sidebar .widget_product_search,
+#sidebar form.woocommerce-product-search,
+.woocommerce .widget_product_search,
+#sidebar input.search-field[type="search"],
+.et_right_sidebar #sidebar .widget_product_search,
+.widget_search input[type="search"],
+#main-content #sidebar .widget_product_search,
+.wc-block-product-search,
+body #secondary .widget_product_search {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+    pointer-events: none !important;
+}
+/* Checkout Page Width Customization */
+/* Desktop: 80% width, Mobile: 100% width */
+@media (min-width: 981px) {
+    body.woocommerce-checkout .container,
+    body.woocommerce-checkout #main-content .container,
+    body.woocommerce-checkout .woocommerce {
+        max-width: 80% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+/* Mobile devices: Full width */
+@media (max-width: 980px) {
+    body.woocommerce-checkout .container,
+    body.woocommerce-checkout #main-content .container,
+    body.woocommerce-checkout .woocommerce {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+}

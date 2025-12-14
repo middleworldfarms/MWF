@@ -1,0 +1,3342 @@
+{
+   "domain": "qyrr-code",
+   "locale_data": {
+      "qyrr-code": {
+         "": {
+            "domain": "qyrr-code",
+            "plural_forms": "nplurals=2; plural=(n != 1);",
+            "lang": "de_DE"
+         },
+         "Auto-generated QR Code": [
+            "QR-Code automatisch generieren"
+         ],
+         "QR-Code": [
+            "QR-Code"
+         ],
+         "Select QR-Code": [
+            "QR-Codes auswählen"
+         ],
+         "Click on the QR Code to customize it.": [
+            "Klicke auf den QR-Code um ihn zu bearbeiten."
+         ],
+         "No campaign": [
+            "Keine Kampagne"
+         ],
+         "Bulk Generation": [
+            "Stapelverarbeitung"
+         ],
+         "Type": [
+            "Typ"
+         ],
+         "Choose type of bulk processing you like to use. Use Unique ID for multiple QR-Codes with the same URL, otherwise use Add data per line.": [
+            "Wähle den Typ der Stapelverarbeitung. Nutze eine \"Einzigartige ID\" für mehrere QR-Codes mit der selben URL, andernfalls gebe die URLs je Zeile an."
+         ],
+         "Unique ID": [
+            "Einzigartige ID"
+         ],
+         "Add data per line": [
+            "Füge URLs je Zeile hinzu"
+         ],
+         "Campaign": [
+            "Kampagne"
+         ],
+         "Assign all generated QR-Codes to a campain for a better overview.": [
+            "Füge alle generierten QR-Codes einer Kampagne zu für eine bessere Übersicht."
+         ],
+         "How many QR-Codes should be generated?": [
+            "Wie viele QR-Codes möchtest du generieren?"
+         ],
+         "Add source data - one entry per line.": [
+            "Füge deine URLs hin - ein Eintrag pro Zeile."
+         ],
+         "Use a new line for each entry you like to create a QR-Code for.": [
+            "Nutze eine neue Zeile für jede URL aus der ein QR-Code generiert werden soll."
+         ],
+         "Generate QR-Codes": [
+            "QR-Codes generieren"
+         ],
+         "Download": [
+            "Download"
+         ],
+         "Download Format": [
+            "Download-Format"
+         ],
+         "General Settings": [
+            "Allgemeine Einstellungen"
+         ],
+         "Size (in px)": [
+            "Größe (in px)"
+         ],
+         "Background Color": [
+            "Hintergrundfarbe"
+         ],
+         "Fill Color": [
+            "Füllfarbe"
+         ],
+         "Min Version": [
+            "Minimale Version"
+         ],
+         "Quiet Zone": [
+            "Ruhe-Zone"
+         ],
+         "Corner Radius": [
+            "Abrundung"
+         ],
+         "Error Handling Level": [
+            "Fehler-Level"
+         ],
+         "Plain": [
+            "Nur QR-Code"
+         ],
+         "Label": [
+            "Label"
+         ],
+         "Logo": [
+            "Logo"
+         ],
+         "Logo or Label": [
+            "Logo oder Text"
+         ],
+         "Label Text": [
+            "Text"
+         ],
+         "Logo Upload": [
+            "Logo hochladen"
+         ],
+         "Render Mode": [
+            "Darstellungs-Modus"
+         ],
+         "Label / Logo Size (%)": [
+            "Text / Logogröße (%)"
+         ],
+         "Position X (%)": [
+            "Position X-Achse (%)"
+         ],
+         "Position Y (%)": [
+            "Position Y-Achse (%)"
+         ],
+         "Select Font": [
+            "Schriftart auswählen"
+         ],
+         "You need to configure your Google Fonts API key in the settings to use other fonts.": [
+            "Du musst einen Google Fonts API Schlüssel in den Einstellungen hinterlegen um Schriftarten benutzen zu können."
+         ],
+         "Font Color": [
+            "Schriftfarbe"
+         ],
+         "Shortcode": [
+            "Shortcode"
+         ],
+         "Copy the Shortcode": [
+            "Shortcode kopieren"
+         ],
+         "Copied!": [
+            "Kopiert!"
+         ],
+         "Post": [
+            "Beitrag"
+         ],
+         "Page": [
+            "Seite"
+         ],
+         "Post/Page/CPT": [
+            "Beitrag/Seite/CPT"
+         ],
+         "External URL": [
+            "Externe URL"
+         ],
+         "Text": [
+            "Text"
+         ],
+         "E-Mail": [
+            "E-Mail Adresse"
+         ],
+         "Phone": [
+            "Telefon"
+         ],
+         "SMS": [
+            "SMS"
+         ],
+         "WhatsApp": [
+            "WhatsApp"
+         ],
+         "GEO URI (Location)": [
+            "GEO URI (Standort)"
+         ],
+         "WiFi": [
+            "WiFi"
+         ],
+         "vCard": [
+            "vCard"
+         ],
+         "Post/Page": [
+            "Beitrag/Seite"
+         ],
+         "Source": [
+            "Quelle"
+         ],
+         "Dynamic QR-Code": [
+            "Dynamischer QR-Code"
+         ],
+         "Use a dynamic QR code where the source can be changed without changing the QR-Code. This also enables tracking.": [
+            "Das Ziel eines dynamischen QR-Codes kann geändert werden ohne den QR-Code zu ändern. Dies aktiviert auch das Tracking."
+         ],
+         "Use a traditional QR code where the source can not be changed without changing the QR-Code.": [
+            "Ein normaler QR-Code ändert sich sobald das Ziel geändert wird."
+         ],
+         "Select Post-Type": [
+            "Post-Type auswählen"
+         ],
+         "Select Post": [
+            "Beitrag auswählen"
+         ],
+         "Phone Number": [
+            "Telefon-Nummer"
+         ],
+         "WhatsApp Number": [
+            "WhatsApp Nummer"
+         ],
+         "Message": [
+            "Nachricht"
+         ],
+         "Latitude": [
+            "Latitude"
+         ],
+         "Longitude": [
+            "Longitude"
+         ],
+         "Select WiFi Type": [
+            "Wähle dem WiFi Typ"
+         ],
+         "SSID": [
+            "SSID"
+         ],
+         "Password": [
+            "Passwort"
+         ],
+         "First name": [
+            "Vorname"
+         ],
+         "Last name": [
+            "Nachname"
+         ],
+         "Company": [
+            "Firma"
+         ],
+         "Address": [
+            "Adresse"
+         ],
+         "URL": [
+            "URL"
+         ],
+         "Template": [
+            "Vorlage"
+         ],
+         "Save as Template": [
+            "Als Vorlage speichern"
+         ],
+         "Saves the current QR code as a template. You can select a global template for new QR codes in Qyrr->Settings->Global Template.": [
+            "Speichere den aktuellen QR-Code als Vorlage. Du kannst eine globale Vorlage in Qyrr->Einstellungen->Globale Vorlage auswählen."
+         ],
+         "Load from Global Template": [
+            "Aus globaler Vorlage laden"
+         ],
+         "Global Template styles successfully imported.": [
+            "Stile aus globaler Vorlage importiert."
+         ],
+         "Replace Image": [
+            "Bild ersetzen"
+         ],
+         "Remove Image": [
+            "Bild entfernen"
+         ],
+         "No template selected": [
+            "Keine Vorlage ausgewählt"
+         ],
+         "Global Template": [
+            "Globale Vorlage"
+         ],
+         "Select a QR-Code": [
+            "QR-Codes auswählen"
+         ],
+         "Use an existing QR Code as a template to automatically generate new QR Codes based on the settings defined in the template.": [
+            "Wähle einen existierenden QR-Code als globales Template. Jeder neue QR-Code wird die konfigurierten Einstellungen benutzen."
+         ],
+         "Auto-Generate": [
+            "Automatisches Generieren"
+         ],
+         "Search for post types like post, page..": [
+            "Suche nach Post-Typen wie Seite, Beitrag.."
+         ],
+         "Automatically generates QR-Codes for the selected custom post types. If the custom post type isn't public, the QR Code will link to the admin edit page of the particular post.": [
+            "Generiert QR-Codes automatisch für die ausgewählten Post-Typen. Wenn der Post-Typ nicht öffentlich ist, verlinkt der QR-Code auf die Bearbeitungsseite (Admin) des jeweiligen Beitrags."
+         ],
+         "Google Fonts API Key": [
+            "Google Fonts API Schlüssel"
+         ],
+         "Add your Google Fonts API Key here": [
+            "Füge deinen Google Fonts API Schlüssel hier ein"
+         ],
+         "You need to add your Google Fonts API key if you want to use Google Fonts for the Label when creating QR-Codes.": [
+            "Du musst einen Google Fonts API Schlüssel hinzufügen wenn du Google Fonts innerhalb deines QR-Codes verwenden möchtest."
+         ],
+         "You can get your Google Fonts API key ": [
+            "Du bekommst deinen Google Fonts API Schlüssel "
+         ],
+         "here": [
+            "hier"
+         ],
+         "Settings saved successfully.": [
+            "Einstellungen erfolgreich gespeichert."
+         ],
+         "Save Settings": [
+            "Einstellungen speichern"
+         ],
+         "Settings": [
+            "Einstellungen"
+         ],
+         "Positionals:": [
+            ""
+         ],
+         "command": [
+            ""
+         ],
+         "Commands:": [
+            ""
+         ],
+         "default": [
+            ""
+         ],
+         "aliases:": [
+            ""
+         ],
+         "deprecated: %s": [
+            ""
+         ],
+         "deprecated": [
+            ""
+         ],
+         "Options:": [
+            ""
+         ],
+         "boolean": [
+            ""
+         ],
+         "count": [
+            ""
+         ],
+         "string": [
+            ""
+         ],
+         "array": [
+            ""
+         ],
+         "number": [
+            ""
+         ],
+         "required": [
+            ""
+         ],
+         "choices:": [
+            ""
+         ],
+         "Examples:": [
+            ""
+         ],
+         "generated-value": [
+            ""
+         ],
+         "default:": [
+            ""
+         ],
+         "Invalid values:": [
+            ""
+         ],
+         "Argument: %s, Given: %s, Choices: %s": [
+            ""
+         ],
+         "Implications failed:": [
+            ""
+         ],
+         "Arguments %s and %s are mutually exclusive": [
+            ""
+         ],
+         "Did you mean %s?": [
+            ""
+         ],
+         "Argument check failed: %s": [
+            ""
+         ],
+         "Notifications": [
+            ""
+         ],
+         "You are probably offline.": [
+            ""
+         ],
+         "Media upload failed. If this is a photo or a large image, please scale it down and try again.": [
+            ""
+         ],
+         "The response is not a valid JSON response.": [
+            ""
+         ],
+         "An unknown error occurred.": [
+            ""
+         ],
+         "Alignment Matrix Control": [
+            ""
+         ],
+         "Top Left": [
+            ""
+         ],
+         "Top Center": [
+            ""
+         ],
+         "Top Right": [
+            ""
+         ],
+         "Center Left": [
+            ""
+         ],
+         "Center": [
+            ""
+         ],
+         "Center Right": [
+            ""
+         ],
+         "Bottom Left": [
+            ""
+         ],
+         "Bottom Center": [
+            ""
+         ],
+         "Bottom Right": [
+            ""
+         ],
+         "Angle": [
+            ""
+         ],
+         "%d result found, use up and down arrow keys to navigate.": [
+            "",
+            "%d results found, use up and down arrow keys to navigate."
+         ],
+         "Initial %d result loaded. Type to filter all available results. Use up and down arrow keys to navigate.": [
+            "",
+            "Initial %d results loaded. Type to filter all available results. Use up and down arrow keys to navigate."
+         ],
+         "No results.": [
+            ""
+         ],
+         "Slash inserter results": [
+            ""
+         ],
+         "%s block": [
+            ""
+         ],
+         "Unlink sides": [
+            ""
+         ],
+         "Link sides": [
+            ""
+         ],
+         "Top border": [
+            ""
+         ],
+         "Left border": [
+            ""
+         ],
+         "Right border": [
+            ""
+         ],
+         "Bottom border": [
+            ""
+         ],
+         "Mixed": [
+            ""
+         ],
+         "Border color and style picker.": [
+            ""
+         ],
+         "Border color picker.": [
+            ""
+         ],
+         "Border color and style picker": [
+            ""
+         ],
+         "Border color": [
+            ""
+         ],
+         "Close border color": [
+            ""
+         ],
+         "Style": [
+            ""
+         ],
+         "Reset": [
+            ""
+         ],
+         "Solid": [
+            ""
+         ],
+         "Dashed": [
+            ""
+         ],
+         "Dotted": [
+            ""
+         ],
+         "Border width": [
+            ""
+         ],
+         "Box Control": [
+            ""
+         ],
+         "All": [
+            ""
+         ],
+         "Top": [
+            ""
+         ],
+         "Bottom": [
+            ""
+         ],
+         "Left": [
+            ""
+         ],
+         "Right": [
+            ""
+         ],
+         "Vertical": [
+            ""
+         ],
+         "Horizontal": [
+            ""
+         ],
+         "Color code: %s": [
+            ""
+         ],
+         "Color: %s": [
+            ""
+         ],
+         "Custom color picker. The currently selected color is called \"%1$s\" and has a value of \"%2$s\".": [
+            ""
+         ],
+         "Custom color picker.": [
+            ""
+         ],
+         "Clear": [
+            ""
+         ],
+         "No color selected": [
+            ""
+         ],
+         "Navigates to customize the gradient": [
+            ""
+         ],
+         "Navigates to custom color picker": [
+            ""
+         ],
+         "Custom": [
+            ""
+         ],
+         "Unlabeled color. %s": [
+            ""
+         ],
+         "Copy": [
+            ""
+         ],
+         "Color format": [
+            ""
+         ],
+         "Hex color": [
+            ""
+         ],
+         "Cancel": [
+            ""
+         ],
+         "Apply": [
+            ""
+         ],
+         "Item selected.": [
+            ""
+         ],
+         "OK": [
+            ""
+         ],
+         "Linear": [
+            ""
+         ],
+         "Radial": [
+            ""
+         ],
+         "Gradient control point at position %1$s%% with color code %2$s.": [
+            ""
+         ],
+         "Use your left or right arrow keys or drag and drop with the mouse to change the gradient position. Press the button to change the color or remove the control point.": [
+            ""
+         ],
+         "Remove Control Point": [
+            ""
+         ],
+         "Gradient Type": [
+            ""
+         ],
+         "Select an item": [
+            ""
+         ],
+         "%s items selected": [
+            ""
+         ],
+         "No selection": [
+            ""
+         ],
+         "Currently selected: %s": [
+            ""
+         ],
+         "Calendar": [
+            ""
+         ],
+         "View previous month": [
+            ""
+         ],
+         "View next month": [
+            ""
+         ],
+         "%1$s. Selected. There is %2$d event": [
+            "",
+            "%1$s. Selected. There are %2$d events"
+         ],
+         "%1$s. Selected": [
+            ""
+         ],
+         "%1$s. There is %2$d event": [
+            "",
+            "%1$s. There are %2$d events"
+         ],
+         "Day": [
+            ""
+         ],
+         "Month": [
+            ""
+         ],
+         "January": [
+            ""
+         ],
+         "February": [
+            ""
+         ],
+         "March": [
+            ""
+         ],
+         "April": [
+            ""
+         ],
+         "May": [
+            ""
+         ],
+         "June": [
+            ""
+         ],
+         "July": [
+            ""
+         ],
+         "August": [
+            ""
+         ],
+         "September": [
+            ""
+         ],
+         "October": [
+            ""
+         ],
+         "November": [
+            ""
+         ],
+         "December": [
+            ""
+         ],
+         "Time": [
+            ""
+         ],
+         "Hours": [
+            ""
+         ],
+         "Minutes": [
+            ""
+         ],
+         "AM": [
+            ""
+         ],
+         "PM": [
+            ""
+         ],
+         "Date": [
+            ""
+         ],
+         "Year": [
+            ""
+         ],
+         "Coordinated Universal Time": [
+            ""
+         ],
+         "Default": [
+            ""
+         ],
+         "Drop files to upload": [
+            ""
+         ],
+         "Color options": [
+            ""
+         ],
+         "Unset": [
+            ""
+         ],
+         "Duotone code: %s": [
+            ""
+         ],
+         "Duotone: %s": [
+            ""
+         ],
+         "Shadows": [
+            ""
+         ],
+         "Highlights": [
+            ""
+         ],
+         "(opens in a new tab)": [
+            ""
+         ],
+         "Open link in a browser": [
+            ""
+         ],
+         "Focal point left position": [
+            ""
+         ],
+         "Focal point top position": [
+            ""
+         ],
+         "Media preview": [
+            ""
+         ],
+         "Drag to adjust focal point": [
+            ""
+         ],
+         "X-Axis Position": [
+            ""
+         ],
+         "Y-Axis Position": [
+            ""
+         ],
+         "S": [
+            ""
+         ],
+         "M": [
+            ""
+         ],
+         "L": [
+            ""
+         ],
+         "XL": [
+            ""
+         ],
+         "XXL": [
+            ""
+         ],
+         "Small": [
+            ""
+         ],
+         "Medium": [
+            ""
+         ],
+         "Large": [
+            ""
+         ],
+         "Extra Large": [
+            ""
+         ],
+         "Extra Extra Large": [
+            ""
+         ],
+         "Font size": [
+            ""
+         ],
+         "Currently selected font size: %s": [
+            ""
+         ],
+         "Size": [
+            ""
+         ],
+         "Use size preset": [
+            ""
+         ],
+         "Set custom size": [
+            ""
+         ],
+         "Custom Size": [
+            ""
+         ],
+         "Font Size": [
+            ""
+         ],
+         "%1$s (%2$s)": [
+            ""
+         ],
+         "Navigates to select %s": [
+            ""
+         ],
+         "Selected: Default": [
+            ""
+         ],
+         "Double tap to select default font size": [
+            ""
+         ],
+         "Selected: %s": [
+            ""
+         ],
+         "Double tap to select font size": [
+            ""
+         ],
+         "Item added.": [
+            ""
+         ],
+         "Item removed.": [
+            ""
+         ],
+         "Remove item": [
+            ""
+         ],
+         "Invalid item": [
+            ""
+         ],
+         "Separate with commas, spaces, or the Enter key.": [
+            ""
+         ],
+         "Separate with commas or the Enter key.": [
+            ""
+         ],
+         "%1$s (%2$s of %3$s)": [
+            ""
+         ],
+         "Gradient code: %s": [
+            ""
+         ],
+         "Gradient: %s": [
+            ""
+         ],
+         "Finish": [
+            ""
+         ],
+         "Previous": [
+            ""
+         ],
+         "Next": [
+            ""
+         ],
+         "Guide controls": [
+            ""
+         ],
+         "Page %1$d of %2$d": [
+            ""
+         ],
+         "Problem opening the audio": [
+            ""
+         ],
+         "No application can handle this request.": [
+            ""
+         ],
+         "An unknown error occurred. Please try again.": [
+            ""
+         ],
+         "Uploading…": [
+            ""
+         ],
+         "Failed to insert audio file. Please tap for options.": [
+            ""
+         ],
+         "audio file": [
+            ""
+         ],
+         "Audio Player": [
+            ""
+         ],
+         "Double tap to listen the audio file": [
+            ""
+         ],
+         "OPEN": [
+            ""
+         ],
+         "%1$s. Currently selected: %2$s": [
+            ""
+         ],
+         "Double tap to select": [
+            ""
+         ],
+         "Double tap to edit this value": [
+            ""
+         ],
+         "Double tap to go to color settings": [
+            ""
+         ],
+         "Link to": [
+            ""
+         ],
+         "Search or type URL": [
+            ""
+         ],
+         "From clipboard": [
+            ""
+         ],
+         "Add this email link": [
+            ""
+         ],
+         "Add this telephone link": [
+            ""
+         ],
+         "Add this link": [
+            ""
+         ],
+         "Applies the setting": [
+            ""
+         ],
+         "Go back": [
+            ""
+         ],
+         "Navigates to the previous content sheet": [
+            ""
+         ],
+         "Back": [
+            ""
+         ],
+         "Double tap to select the option": [
+            ""
+         ],
+         "double-tap to change unit": [
+            ""
+         ],
+         "%1$s. %2$s is %3$s %4$s.": [
+            ""
+         ],
+         "Current value is %s": [
+            ""
+         ],
+         "Double tap to toggle setting": [
+            ""
+         ],
+         "Customize Gradient": [
+            ""
+         ],
+         "Select a color above": [
+            ""
+         ],
+         "Gradient": [
+            ""
+         ],
+         "Edit focal point": [
+            ""
+         ],
+         "Add title": [
+            ""
+         ],
+         "Start writing…": [
+            ""
+         ],
+         "Double tap to open Action Sheet to edit, replace, or clear the image": [
+            ""
+         ],
+         "Double tap to open Bottom Sheet to edit, replace, or clear the image": [
+            ""
+         ],
+         "Edit image": [
+            ""
+         ],
+         "Double tap and hold to edit": [
+            ""
+         ],
+         "Copy URL from the clipboard, %s": [
+            ""
+         ],
+         "Edit": [
+            ""
+         ],
+         "Replace": [
+            ""
+         ],
+         "Media options": [
+            ""
+         ],
+         "Scrollable section": [
+            ""
+         ],
+         "Close": [
+            ""
+         ],
+         "%d result found.": [
+            "",
+            "%d results found."
+         ],
+         "Warning notice": [
+            ""
+         ],
+         "Information notice": [
+            ""
+         ],
+         "Error notice": [
+            ""
+         ],
+         "Notice": [
+            ""
+         ],
+         "Increment": [
+            ""
+         ],
+         "Decrement": [
+            ""
+         ],
+         "Color %s": [
+            ""
+         ],
+         "Remove color": [
+            ""
+         ],
+         "Done": [
+            ""
+         ],
+         "Add gradient": [
+            ""
+         ],
+         "Add color": [
+            ""
+         ],
+         "Gradient options": [
+            ""
+         ],
+         "Show details": [
+            ""
+         ],
+         "Remove all colors": [
+            ""
+         ],
+         "Reset colors": [
+            ""
+         ],
+         "Loading …": [
+            ""
+         ],
+         "Order by": [
+            ""
+         ],
+         "Newest to oldest": [
+            ""
+         ],
+         "Oldest to newest": [
+            ""
+         ],
+         "A → Z": [
+            ""
+         ],
+         "Z → A": [
+            ""
+         ],
+         "Category": [
+            ""
+         ],
+         "Categories": [
+            ""
+         ],
+         "Author": [
+            ""
+         ],
+         "Number of items": [
+            ""
+         ],
+         "Search": [
+            ""
+         ],
+         "Close search": [
+            ""
+         ],
+         "Reset search": [
+            ""
+         ],
+         "Cancel search": [
+            ""
+         ],
+         "Clear search": [
+            ""
+         ],
+         "Dismiss this notice": [
+            ""
+         ],
+         "Defaults": [
+            ""
+         ],
+         "Reset %s": [
+            ""
+         ],
+         "%s reset to default": [
+            ""
+         ],
+         "Tools": [
+            ""
+         ],
+         "Hide and reset %s": [
+            ""
+         ],
+         "Show %s": [
+            ""
+         ],
+         "%s hidden and reset to default": [
+            ""
+         ],
+         "%s is now visible": [
+            ""
+         ],
+         "All options are currently hidden": [
+            ""
+         ],
+         "All options reset": [
+            ""
+         ],
+         "Reset all": [
+            ""
+         ],
+         "Current unit is %s": [
+            ""
+         ],
+         "Double tap to open Action Sheet with available options": [
+            ""
+         ],
+         "Double tap to open Bottom Sheet with available options": [
+            ""
+         ],
+         "Pixels (px)": [
+            ""
+         ],
+         "Percentage (%)": [
+            ""
+         ],
+         "Percent (%)": [
+            ""
+         ],
+         "Relative to parent font size (em)": [
+            ""
+         ],
+         "Relative to root font size (rem)": [
+            ""
+         ],
+         "Viewport width (vw)": [
+            ""
+         ],
+         "Viewport height (vh)": [
+            ""
+         ],
+         "Viewport smallest dimension (vmin)": [
+            ""
+         ],
+         "Viewport largest dimension (vmax)": [
+            ""
+         ],
+         "Width of the zero (0) character (ch)": [
+            ""
+         ],
+         "x-height of the font (ex)": [
+            ""
+         ],
+         "Centimeters (cm)": [
+            ""
+         ],
+         "Millimeters (mm)": [
+            ""
+         ],
+         "Inches (in)": [
+            ""
+         ],
+         "Picas (pc)": [
+            ""
+         ],
+         "Points (pt)": [
+            ""
+         ],
+         "Small viewport width (svw)": [
+            ""
+         ],
+         "Small viewport height (svh)": [
+            ""
+         ],
+         "Viewport smallest size in the inline direction (svi)": [
+            ""
+         ],
+         "Small viewport width or height (svi)": [
+            ""
+         ],
+         "Viewport smallest size in the block direction (svb)": [
+            ""
+         ],
+         "Small viewport width or height (svb)": [
+            ""
+         ],
+         "Small viewport smallest dimension (svmin)": [
+            ""
+         ],
+         "Large viewport width (lvw)": [
+            ""
+         ],
+         "Large viewport height (lvh)": [
+            ""
+         ],
+         "Large viewport width or height (lvi)": [
+            ""
+         ],
+         "Large viewport width or height (lvb)": [
+            ""
+         ],
+         "Large viewport smallest dimension (lvmin)": [
+            ""
+         ],
+         "Dynamic viewport width (dvw)": [
+            ""
+         ],
+         "Dynamic viewport height (dvh)": [
+            ""
+         ],
+         "Dynamic viewport width or height (dvi)": [
+            ""
+         ],
+         "Dynamic viewport width or height (dvb)": [
+            ""
+         ],
+         "Dynamic viewport smallest dimension (dvmin)": [
+            ""
+         ],
+         "Dynamic viewport largest dimension (dvmax)": [
+            ""
+         ],
+         "Small viewport largest dimension (svmax)": [
+            ""
+         ],
+         "Large viewport largest dimension (lvmax)": [
+            ""
+         ],
+         "Translate": [
+            ""
+         ],
+         "hello": [
+            "",
+            "hellos"
+         ],
+         "%d banana": [
+            "",
+            "%d bananas"
+         ],
+         "cheeseburger": [
+            ""
+         ],
+         "%d cat": [
+            "",
+            "%d cats"
+         ],
+         "singular": [
+            "",
+            "plural"
+         ],
+         "original": [
+            ""
+         ],
+         "Comma": [
+            ""
+         ],
+         "Period": [
+            ""
+         ],
+         "Backtick": [
+            ""
+         ],
+         "Tilde": [
+            ""
+         ],
+         "%s removed.": [
+            ""
+         ],
+         "%s applied.": [
+            ""
+         ],
+         "Argument unexpected for: %s": [
+            ""
+         ],
+         "Not enough arguments following: %s": [
+            ""
+         ],
+         "Invalid JSON config file: %s": [
+            ""
+         ],
+         "Invalid configuration: %s, opts.count excludes opts.array.": [
+            ""
+         ],
+         "Invalid configuration: %s, opts.count excludes opts.narg.": [
+            ""
+         ],
+         "{": [
+            ""
+         ],
+         "div": [
+            ""
+         ],
+         "dialog": [
+            ""
+         ],
+         "{{": [
+            ""
+         ],
+         "Add New": [
+            "Hinzufügen"
+         ],
+         "Add New QR Code": [
+            "Neuen QR-Code hinzufügen"
+         ],
+         "New QR Code": [
+            "Neuer QR-Code"
+         ],
+         "Edit QR Code": [
+            "QR-Code bearbeiten"
+         ],
+         "View QR Code": [
+            "QR-Code anzeigen"
+         ],
+         "All QR Codes": [
+            "Alle QR-Codes"
+         ],
+         "Search QR Codes": [
+            "QR-Codes durchsuchen"
+         ],
+         "Parent QR Codes:": [
+            "Eltern-QR-Codes:"
+         ],
+         "No QR codes found.": [
+            "Keine QR-Codes gefunden."
+         ],
+         "No QR codes found in Trash.": [
+            "Keine QR-Codes im Papierkorb gefunden."
+         ],
+         "Search Campaigns": [
+            "Durchsuche Kampagnen"
+         ],
+         "Popular Campaigns": [
+            "Beliebte Kampagnen"
+         ],
+         "All Campaigns": [
+            "Alle Kampagnen"
+         ],
+         "Edit Campaign": [
+            "Kampagne bearbeiten"
+         ],
+         "Update Campaign": [
+            "Kampagne aktualisieren"
+         ],
+         "Add New Campaign": [
+            "Neue Kampagne hinzufügen"
+         ],
+         "New Campaign Name": [
+            "Neuer Kampagnen Name"
+         ],
+         "Separate campaigns with commas": [
+            "Trenne Kampagnen mit Komma"
+         ],
+         "Add or remove campaigns": [
+            "Hinzufügen oder Entfernen von Kampagnen"
+         ],
+         "Choose from the most used campaigns": [
+            "Wähle aus den meist genutzten Kampagnen"
+         ],
+         "No campaigns found.": [
+            "Keine Kampagnen gefunden."
+         ],
+         "Campaigns": [
+            "Kampagnen"
+         ],
+         "Analytics": [
+            "Analyse"
+         ],
+         "Download QR-Code": [
+            "QR-Code herunterladen"
+         ],
+         "No preview available.": [
+            "Keine Vorschau verfügbar."
+         ],
+         "Clicks": [
+            "Klicks"
+         ],
+         "Click": [
+            "Klick"
+         ],
+         "No Clicks": [
+            "Keine Klicks"
+         ],
+         "Download QR-Codes": [
+            "QR-Code herunterladen"
+         ],
+         "Download the ZIP file %s (Contains %d QR-Codes)": [
+            "Zip-Datei %s herunterladen (Enthält %d QR-Codes)"
+         ],
+         "Align text left": [
+            ""
+         ],
+         "Align text center": [
+            ""
+         ],
+         "Align text right": [
+            ""
+         ],
+         "Align text": [
+            ""
+         ],
+         "Change text alignment": [
+            ""
+         ],
+         "Align left": [
+            ""
+         ],
+         "Align center": [
+            ""
+         ],
+         "Align right": [
+            ""
+         ],
+         "Wide width": [
+            ""
+         ],
+         "Full width": [
+            ""
+         ],
+         "Align": [
+            ""
+         ],
+         "Change matrix alignment": [
+            ""
+         ],
+         "Block breadcrumb": [
+            ""
+         ],
+         "Go to parent Navigation block": [
+            ""
+         ],
+         "Current": [
+            ""
+         ],
+         "Convert to HTML": [
+            ""
+         ],
+         "After Conversion": [
+            ""
+         ],
+         "Pattern": [
+            ""
+         ],
+         "%d block": [
+            "",
+            "%d blocks"
+         ],
+         "Edit visually": [
+            ""
+         ],
+         "Toggle full height": [
+            ""
+         ],
+         "Paragraph": [
+            ""
+         ],
+         "Heading %d": [
+            ""
+         ],
+         "Content": [
+            ""
+         ],
+         "Typography": [
+            ""
+         ],
+         "Dimensions": [
+            ""
+         ],
+         "Border": [
+            ""
+         ],
+         "No block selected.": [
+            ""
+         ],
+         "Styles": [
+            ""
+         ],
+         "This block has encountered an error and cannot be previewed.": [
+            ""
+         ],
+         "Convert to Classic Block": [
+            ""
+         ],
+         "Attempt Block Recovery": [
+            ""
+         ],
+         "This block contains unexpected or invalid content.": [
+            ""
+         ],
+         "Resolve Block": [
+            ""
+         ],
+         "Convert to Blocks": [
+            ""
+         ],
+         "%s block. This block has invalid content": [
+            ""
+         ],
+         "Problem displaying block. \nTap to attempt block recovery.": [
+            ""
+         ],
+         "Add paragraph block": [
+            ""
+         ],
+         "ADD BLOCK HERE": [
+            ""
+         ],
+         "Block: %s": [
+            ""
+         ],
+         "Unlock": [
+            ""
+         ],
+         "Lock": [
+            ""
+         ],
+         "Lock %s": [
+            ""
+         ],
+         "Choose specific attributes to restrict or lock all available options.": [
+            ""
+         ],
+         "Lock all": [
+            ""
+         ],
+         "Restrict editing": [
+            ""
+         ],
+         "Disable movement": [
+            ""
+         ],
+         "Prevent removal": [
+            ""
+         ],
+         "Apply to all blocks inside": [
+            ""
+         ],
+         "Failed to save files.\nPlease tap for options.": [
+            ""
+         ],
+         "Failed to upload files.\nPlease tap for options.": [
+            ""
+         ],
+         "Move right": [
+            ""
+         ],
+         "Move left": [
+            ""
+         ],
+         "Move up": [
+            ""
+         ],
+         "Move down": [
+            ""
+         ],
+         "Drag": [
+            ""
+         ],
+         "Move to top": [
+            ""
+         ],
+         "Move to bottom": [
+            ""
+         ],
+         "Change block position": [
+            ""
+         ],
+         "Block %s is the only block, and cannot be moved": [
+            ""
+         ],
+         "Move %1$s block from position %2$d down to position %3$d": [
+            ""
+         ],
+         "Move %1$s block from position %2$d left to position %3$d": [
+            ""
+         ],
+         "Move %1$s block from position %2$d right to position %3$d": [
+            ""
+         ],
+         "Block %1$s is at the end of the content and can’t be moved down": [
+            ""
+         ],
+         "Block %1$s is at the end of the content and can’t be moved left": [
+            ""
+         ],
+         "Block %1$s is at the end of the content and can’t be moved right": [
+            ""
+         ],
+         "Move %1$s block from position %2$d up to position %3$d": [
+            ""
+         ],
+         "Block %1$s is at the beginning of the content and can’t be moved up": [
+            ""
+         ],
+         "Block %1$s is at the beginning of the content and can’t be moved left": [
+            ""
+         ],
+         "Block %1$s is at the beginning of the content and can’t be moved right": [
+            ""
+         ],
+         "All blocks are selected, and cannot be moved": [
+            ""
+         ],
+         "Move %1$d blocks from position %2$d down by one place": [
+            ""
+         ],
+         "Move %1$d blocks from position %2$d left by one place": [
+            ""
+         ],
+         "Move %1$d blocks from position %2$d right by one place": [
+            ""
+         ],
+         "Blocks cannot be moved down as they are already at the bottom": [
+            ""
+         ],
+         "Blocks cannot be moved left as they are already are at the leftmost position": [
+            ""
+         ],
+         "Blocks cannot be moved right as they are already are at the rightmost position": [
+            ""
+         ],
+         "Move %1$d blocks from position %2$d up by one place": [
+            ""
+         ],
+         "Blocks cannot be moved up as they are already at the top": [
+            ""
+         ],
+         "Double tap to move the block to the left": [
+            ""
+         ],
+         "Double tap to move the block to the right": [
+            ""
+         ],
+         "Move block left": [
+            ""
+         ],
+         "Move block right": [
+            ""
+         ],
+         "Move block left from position %1$s to position %2$s": [
+            ""
+         ],
+         "Move block right from position %1$s to position %2$s": [
+            ""
+         ],
+         "Double tap to move the block up": [
+            ""
+         ],
+         "Double tap to move the block down": [
+            ""
+         ],
+         "Move block up": [
+            ""
+         ],
+         "Move block down": [
+            ""
+         ],
+         "Move block up from row %1$s to row %2$s": [
+            ""
+         ],
+         "Move block down from row %1$s to row %2$s": [
+            ""
+         ],
+         "List view": [
+            ""
+         ],
+         "Select parent block: %s": [
+            ""
+         ],
+         "Patterns list": [
+            ""
+         ],
+         "Choose": [
+            ""
+         ],
+         "Previous pattern": [
+            ""
+         ],
+         "Next pattern": [
+            ""
+         ],
+         "Carousel view": [
+            ""
+         ],
+         "Grid view": [
+            ""
+         ],
+         "Block patterns": [
+            ""
+         ],
+         "%s item": [
+            "",
+            "%s items"
+         ],
+         "Previous page": [
+            ""
+         ],
+         "Next page": [
+            ""
+         ],
+         "Be careful!": [
+            ""
+         ],
+         "Post or page content will not be displayed if you delete this block.": [
+            "",
+            "Post or page content will not be displayed if you delete these blocks."
+         ],
+         "Delete": [
+            ""
+         ],
+         "Block name reset to: \"%s\".": [
+            ""
+         ],
+         "Block name changed to: \"%s\".": [
+            ""
+         ],
+         "Rename": [
+            ""
+         ],
+         "Enter a custom name for this block.": [
+            ""
+         ],
+         "Block name": [
+            ""
+         ],
+         "Save": [
+            ""
+         ],
+         "Move to": [
+            ""
+         ],
+         "Edit as HTML": [
+            ""
+         ],
+         "Copy blocks": [
+            ""
+         ],
+         "Select parent block (%s)": [
+            ""
+         ],
+         "Delete blocks": [
+            ""
+         ],
+         "Options": [
+            ""
+         ],
+         "Duplicate": [
+            ""
+         ],
+         "Add before": [
+            ""
+         ],
+         "Copy styles": [
+            ""
+         ],
+         "Paste styles": [
+            ""
+         ],
+         "Transform to": [
+            ""
+         ],
+         "%1$s transformed to %2$s": [
+            ""
+         ],
+         "Transform %s to": [
+            ""
+         ],
+         "Multiple blocks selected": [
+            ""
+         ],
+         "Change block type or style": [
+            ""
+         ],
+         "Change type of %d block": [
+            "",
+            "Change type of %d blocks"
+         ],
+         "Patterns": [
+            ""
+         ],
+         "Preview": [
+            ""
+         ],
+         "Remove block": [
+            ""
+         ],
+         "Block removed": [
+            ""
+         ],
+         "Transform block…": [
+            ""
+         ],
+         "Block copied": [
+            ""
+         ],
+         "Cut block": [
+            ""
+         ],
+         "Block cut": [
+            ""
+         ],
+         "Paste block after": [
+            ""
+         ],
+         "Block pasted": [
+            ""
+         ],
+         "Duplicate block": [
+            ""
+         ],
+         "Block duplicated": [
+            ""
+         ],
+         "Detach": [
+            ""
+         ],
+         "%s detached": [
+            ""
+         ],
+         "Open Block Actions Menu": [
+            ""
+         ],
+         "%s block options": [
+            ""
+         ],
+         "Block tools": [
+            ""
+         ],
+         "Choose variation": [
+            ""
+         ],
+         "Select a variation to start with.": [
+            ""
+         ],
+         "Skip": [
+            ""
+         ],
+         "Note: Column layout may vary between themes and screen sizes": [
+            ""
+         ],
+         "Transform to variation": [
+            ""
+         ],
+         "Transform to %s": [
+            ""
+         ],
+         "Top left": [
+            ""
+         ],
+         "Top right": [
+            ""
+         ],
+         "Bottom left": [
+            ""
+         ],
+         "Bottom right": [
+            ""
+         ],
+         "Unlink radii": [
+            ""
+         ],
+         "Link radii": [
+            ""
+         ],
+         "Add caption": [
+            ""
+         ],
+         "Stretch to fill available space.": [
+            ""
+         ],
+         "Specify a fixed width.": [
+            ""
+         ],
+         "Specify a fixed height.": [
+            ""
+         ],
+         "Fit contents.": [
+            ""
+         ],
+         "Fit": [
+            ""
+         ],
+         "Fill": [
+            ""
+         ],
+         "Fixed": [
+            ""
+         ],
+         "Width": [
+            ""
+         ],
+         "Height": [
+            ""
+         ],
+         "This color combination may be hard for people to read. Try using a darker background color and/or a brighter %s.": [
+            ""
+         ],
+         "This color combination may be hard for people to read. Try using a brighter background color and/or a darker %s.": [
+            ""
+         ],
+         "This color combination may be hard for people to read.": [
+            ""
+         ],
+         "Transparent text may be hard for people to read.": [
+            ""
+         ],
+         "This color combination may be hard for people to read. Try using a darker background color and/or a brighter text color.": [
+            ""
+         ],
+         "This color combination may be hard for people to read. Try using a brighter background color and/or a darker text color.": [
+            ""
+         ],
+         "Block grouped": [
+            ""
+         ],
+         "Block ungrouped": [
+            ""
+         ],
+         "Default format": [
+            ""
+         ],
+         "Example:": [
+            ""
+         ],
+         "Enter your own date format": [
+            ""
+         ],
+         "Custom format": [
+            ""
+         ],
+         "Enter a date or time <Link>format string</Link>.": [
+            ""
+         ],
+         "https://wordpress.org/documentation/article/customize-date-and-time-format/": [
+            ""
+         ],
+         "Type / to choose a block": [
+            ""
+         ],
+         "Add default block": [
+            ""
+         ],
+         "Not set": [
+            ""
+         ],
+         "Default Style": [
+            ""
+         ],
+         "Aspect ratio": [
+            ""
+         ],
+         "Fill the space by stretching the content.": [
+            ""
+         ],
+         "Fit the content to the space without clipping.": [
+            ""
+         ],
+         "Fill the space by clipping what doesn't fit.": [
+            ""
+         ],
+         "Do not adjust the sizing of the content. Content that is too large will be clipped, and content that is too small will have additional padding.": [
+            ""
+         ],
+         "Scale down the content to fit the space if it is too big. Content that is too small will have additional padding.": [
+            ""
+         ],
+         "Scale": [
+            ""
+         ],
+         "Auto": [
+            ""
+         ],
+         "Apply duotone filter": [
+            ""
+         ],
+         "Duotone": [
+            ""
+         ],
+         "Create a two-tone color effect without losing your original image.": [
+            ""
+         ],
+         "Navigate Up": [
+            ""
+         ],
+         "Font weight": [
+            ""
+         ],
+         "Appearance": [
+            ""
+         ],
+         "%1$s %2$s": [
+            ""
+         ],
+         "No selected font appearance": [
+            ""
+         ],
+         "Currently selected font weight: %s": [
+            ""
+         ],
+         "Currently selected font style: %s": [
+            ""
+         ],
+         "Currently selected font appearance: %s": [
+            ""
+         ],
+         "Font": [
+            ""
+         ],
+         "There is an error with your CSS structure.": [
+            ""
+         ],
+         "Additional CSS": [
+            ""
+         ],
+         "Color %s styles": [
+            ""
+         ],
+         "Captions": [
+            ""
+         ],
+         "Button": [
+            ""
+         ],
+         "Heading": [
+            ""
+         ],
+         "H1": [
+            ""
+         ],
+         "H2": [
+            ""
+         ],
+         "H3": [
+            ""
+         ],
+         "H4": [
+            ""
+         ],
+         "H5": [
+            ""
+         ],
+         "H6": [
+            ""
+         ],
+         "Link": [
+            ""
+         ],
+         "Hover": [
+            ""
+         ],
+         "Set the width of the main content area.": [
+            ""
+         ],
+         "Content size": [
+            ""
+         ],
+         "Wide size": [
+            ""
+         ],
+         "Wide": [
+            ""
+         ],
+         "Padding": [
+            ""
+         ],
+         "Margin": [
+            ""
+         ],
+         "Block spacing": [
+            ""
+         ],
+         "Min. height": [
+            ""
+         ],
+         "Effects": [
+            ""
+         ],
+         "Shadow": [
+            ""
+         ],
+         "Expand on click": [
+            ""
+         ],
+         "Font family": [
+            ""
+         ],
+         "Line height": [
+            ""
+         ],
+         "Letter spacing": [
+            ""
+         ],
+         "Text columns": [
+            ""
+         ],
+         "Text decoration": [
+            ""
+         ],
+         "Letter case": [
+            ""
+         ],
+         "Editor canvas": [
+            ""
+         ],
+         "Aspect Ratio": [
+            ""
+         ],
+         "Original": [
+            ""
+         ],
+         "Square": [
+            ""
+         ],
+         "Landscape": [
+            ""
+         ],
+         "16:9": [
+            ""
+         ],
+         "4:3": [
+            ""
+         ],
+         "3:2": [
+            ""
+         ],
+         "Portrait": [
+            ""
+         ],
+         "9:16": [
+            ""
+         ],
+         "3:4": [
+            ""
+         ],
+         "2:3": [
+            ""
+         ],
+         "Rotate": [
+            ""
+         ],
+         "Could not edit image. %s": [
+            ""
+         ],
+         "Zoom": [
+            ""
+         ],
+         "Link To": [
+            ""
+         ],
+         "None": [
+            ""
+         ],
+         "Media File": [
+            ""
+         ],
+         "Attachment Page": [
+            ""
+         ],
+         "Custom URL": [
+            ""
+         ],
+         "Resolution": [
+            ""
+         ],
+         "Image size presets": [
+            ""
+         ],
+         "Blocks nested deeper than %d levels may not render properly in the mobile editor.": [
+            ""
+         ],
+         "For this reason, we recommend editing the block using your web browser.": [
+            ""
+         ],
+         "For this reason, we recommend editing the block using the web editor.": [
+            ""
+         ],
+         "Alternatively, you can flatten the content by ungrouping the block.": [
+            ""
+         ],
+         "Warning message": [
+            ""
+         ],
+         "Tap here to show more details.": [
+            ""
+         ],
+         "Block cannot be rendered because it is deeply nested. Tap here for more details.": [
+            ""
+         ],
+         "Deeply nested block": [
+            ""
+         ],
+         "Ungroup block": [
+            ""
+         ],
+         "Use left and right arrow keys to move through blocks": [
+            ""
+         ],
+         "%d pattern found": [
+            "",
+            "%d patterns found"
+         ],
+         "Block pattern categories": [
+            ""
+         ],
+         "Explore all patterns": [
+            ""
+         ],
+         "Pattern Directory": [
+            ""
+         ],
+         "Theme & Plugins": [
+            ""
+         ],
+         "User": [
+            ""
+         ],
+         "Patterns are available from the <Link>WordPress.org Pattern Directory</Link>, bundled in the active theme, or created by users on this site. Only patterns created on this site can be synced.": [
+            ""
+         ],
+         "https://wordpress.org/patterns/": [
+            ""
+         ],
+         "%d category button displayed.": [
+            "",
+            "%d category buttons displayed."
+         ],
+         "My patterns": [
+            ""
+         ],
+         "Uncategorized": [
+            ""
+         ],
+         "Blocks menu": [
+            ""
+         ],
+         "%d block added.": [
+            "",
+            "%d blocks added."
+         ],
+         "Block pattern \"%s\" inserted.": [
+            ""
+         ],
+         "Add a block": [
+            ""
+         ],
+         "%s block added": [
+            ""
+         ],
+         "Double tap to add a block": [
+            ""
+         ],
+         "Add Block Before": [
+            ""
+         ],
+         "Replace Current Block": [
+            ""
+         ],
+         "Add Block After": [
+            ""
+         ],
+         "Add To Beginning": [
+            ""
+         ],
+         "Add To End": [
+            ""
+         ],
+         "Scrollable block menu opened. Select a block.": [
+            ""
+         ],
+         "Scrollable block menu closed.": [
+            ""
+         ],
+         "Media List": [
+            ""
+         ],
+         "Report %s": [
+            ""
+         ],
+         "Insert external image": [
+            ""
+         ],
+         "This image cannot be uploaded to your Media Library, but it can still be inserted as an external image.": [
+            ""
+         ],
+         "External images can be removed by the external provider without warning and could even have legal compliance issues related to privacy legislation.": [
+            ""
+         ],
+         "Insert": [
+            ""
+         ],
+         "Image uploaded and inserted.": [
+            ""
+         ],
+         "Image inserted.": [
+            ""
+         ],
+         "Media categories": [
+            ""
+         ],
+         "Open Media Library": [
+            ""
+         ],
+         "A tip for using the block editor": [
+            ""
+         ],
+         "Search for blocks and patterns": [
+            ""
+         ],
+         "Navigate to the previous view": [
+            ""
+         ],
+         "Try another search term": [
+            ""
+         ],
+         "Browse all. This will open the main inserter panel in the editor toolbar.": [
+            ""
+         ],
+         "Browse all": [
+            ""
+         ],
+         "Reusable blocks are now synced patterns. A synced pattern will behave in exactly the same way as a reusable block.": [
+            ""
+         ],
+         "Dismiss hint": [
+            ""
+         ],
+         "Synced patterns": [
+            ""
+         ],
+         "Blocks": [
+            ""
+         ],
+         "Media": [
+            ""
+         ],
+         "While writing, you can press <kbd>/</kbd> to quickly insert new blocks.": [
+            ""
+         ],
+         "Indent a list by pressing <kbd>space</kbd> at the beginning of a line.": [
+            ""
+         ],
+         "Outdent a list by pressing <kbd>backspace</kbd> at the beginning of a line.": [
+            ""
+         ],
+         "Drag files into the editor to automatically insert media blocks.": [
+            ""
+         ],
+         "Change a block's type by pressing the block icon on the toolbar.": [
+            ""
+         ],
+         "Advanced": [
+            ""
+         ],
+         "Looking for other block settings? They've moved to the styles tab.": [
+            ""
+         ],
+         "List View": [
+            ""
+         ],
+         "Justify items left": [
+            ""
+         ],
+         "Justify items center": [
+            ""
+         ],
+         "Justify items right": [
+            ""
+         ],
+         "Space between items": [
+            ""
+         ],
+         "Stretch items": [
+            ""
+         ],
+         "Change items justification": [
+            ""
+         ],
+         "Duplicate the selected block(s).": [
+            ""
+         ],
+         "Remove the selected block(s).": [
+            ""
+         ],
+         "Insert a new block before the selected block(s).": [
+            ""
+         ],
+         "Insert a new block after the selected block(s).": [
+            ""
+         ],
+         "Delete selection.": [
+            ""
+         ],
+         "Select all text when typing. Press again to select all blocks.": [
+            ""
+         ],
+         "Clear selection.": [
+            ""
+         ],
+         "Select text across multiple blocks.": [
+            ""
+         ],
+         "Navigate to the nearest toolbar.": [
+            ""
+         ],
+         "Move the selected block(s) up.": [
+            ""
+         ],
+         "Move the selected block(s) down.": [
+            ""
+         ],
+         "Line Height": [
+            ""
+         ],
+         "Open in new tab": [
+            ""
+         ],
+         "Submit": [
+            ""
+         ],
+         "Currently selected": [
+            ""
+         ],
+         "Link is empty": [
+            ""
+         ],
+         "Unlink": [
+            ""
+         ],
+         "Create: <mark>%s</mark>": [
+            ""
+         ],
+         "Search or type url": [
+            ""
+         ],
+         "Press ENTER to add this link": [
+            ""
+         ],
+         "Suggestions": [
+            ""
+         ],
+         "Search results for \"%s\"": [
+            ""
+         ],
+         "An unknown error occurred during creation. Please try again.": [
+            ""
+         ],
+         "%s block inserted": [
+            ""
+         ],
+         "Append to %1$s block at position %2$d, Level %3$d": [
+            ""
+         ],
+         "Untitled": [
+            ""
+         ],
+         "%s (locked)": [
+            ""
+         ],
+         "Options for %s": [
+            ""
+         ],
+         "Block navigation structure": [
+            ""
+         ],
+         "%s deselected.": [
+            ""
+         ],
+         "%s blocks deselected.": [
+            ""
+         ],
+         "Block %1$d of %2$d, Level %3$d": [
+            ""
+         ],
+         "Paste or type URL": [
+            ""
+         ],
+         "Insert from URL": [
+            ""
+         ],
+         "To edit this block, you need permission to upload media.": [
+            ""
+         ],
+         "Upload a media file or pick one from your media library.": [
+            ""
+         ],
+         "Upload an audio file, pick one from your media library, or add one with a URL.": [
+            ""
+         ],
+         "Upload an image file, pick one from your media library, or add one with a URL.": [
+            ""
+         ],
+         "Upload a video file, pick one from your media library, or add one with a URL.": [
+            ""
+         ],
+         "Audio": [
+            ""
+         ],
+         "Image": [
+            ""
+         ],
+         "Video": [
+            ""
+         ],
+         "Use featured image": [
+            ""
+         ],
+         "Media Library": [
+            ""
+         ],
+         "Add audio": [
+            ""
+         ],
+         "Add image or video": [
+            ""
+         ],
+         "Double tap to select an image": [
+            ""
+         ],
+         "Double tap to select a video": [
+            ""
+         ],
+         "Double tap to select an audio file": [
+            ""
+         ],
+         "%s block. Empty": [
+            ""
+         ],
+         "The media file has been replaced": [
+            ""
+         ],
+         "Current media URL:": [
+            ""
+         ],
+         "Failed to insert media.\nTap for more info.": [
+            ""
+         ],
+         "Take a Video": [
+            ""
+         ],
+         "Take a Photo": [
+            ""
+         ],
+         "WordPress Media Library": [
+            ""
+         ],
+         "Choose from device": [
+            ""
+         ],
+         "Choose images": [
+            ""
+         ],
+         "Choose image": [
+            ""
+         ],
+         "Choose video": [
+            ""
+         ],
+         "Choose image or video": [
+            ""
+         ],
+         "Choose audio": [
+            ""
+         ],
+         "Choose file": [
+            ""
+         ],
+         "Type a URL": [
+            ""
+         ],
+         "%d Block": [
+            "",
+            "%d Blocks"
+         ],
+         "%d word selected.": [
+            "",
+            "%d words selected."
+         ],
+         "Publish": [
+            ""
+         ],
+         "Now": [
+            ""
+         ],
+         "Select the size of the source image.": [
+            ""
+         ],
+         "Small screens": [
+            ""
+         ],
+         "Medium screens": [
+            ""
+         ],
+         "Large screens": [
+            ""
+         ],
+         "Use the same %s on all screensizes.": [
+            ""
+         ],
+         "Toggle between using the same value for all screen sizes or using a unique value per screen size.": [
+            ""
+         ],
+         "Create embed": [
+            ""
+         ],
+         "Create link": [
+            ""
+         ],
+         "Format tools": [
+            ""
+         ],
+         "More": [
+            ""
+         ],
+         "Displays more block tools": [
+            ""
+         ],
+         "Insert crosspost": [
+            ""
+         ],
+         "Crosspost": [
+            ""
+         ],
+         "Skip to the selected block": [
+            ""
+         ],
+         "Custom (%s)": [
+            ""
+         ],
+         "Spacing control": [
+            ""
+         ],
+         "Horizontal & vertical": [
+            ""
+         ],
+         "Underline": [
+            ""
+         ],
+         "Strikethrough": [
+            ""
+         ],
+         "Uppercase": [
+            ""
+         ],
+         "Lowercase": [
+            ""
+         ],
+         "Capitalize": [
+            ""
+         ],
+         "Tools provide different interactions for selecting, navigating, and editing blocks. Toggle between select and edit by pressing Escape and Enter.": [
+            ""
+         ],
+         "Ungroup": [
+            ""
+         ],
+         "Edit using web editor": [
+            ""
+         ],
+         "Dismiss": [
+            ""
+         ],
+         "Insert link": [
+            ""
+         ],
+         "Link selected.": [
+            ""
+         ],
+         "Paste URL or type to search": [
+            ""
+         ],
+         "Paste URL": [
+            ""
+         ],
+         "Link rel": [
+            ""
+         ],
+         "Link CSS Class": [
+            ""
+         ],
+         "Group": [
+            ""
+         ],
+         "Sticky": [
+            ""
+         ],
+         "Unable to paste styles. This feature is only available on secure (https) sites in supporting browsers.": [
+            ""
+         ],
+         "Unable to paste styles. Please allow browser clipboard permissions before continuing.": [
+            ""
+         ],
+         "Unable to paste styles. Block styles couldn't be found within the copied content.": [
+            ""
+         ],
+         "Pasted styles to %s.": [
+            ""
+         ],
+         "Pasted styles to %d blocks.": [
+            ""
+         ],
+         "Problem opening the video": [
+            ""
+         ],
+         "No application can handle this request. Please install a Web browser.": [
+            ""
+         ],
+         "More options": [
+            ""
+         ],
+         "Multiple selected blocks": [
+            ""
+         ],
+         "HTML anchor": [
+            ""
+         ],
+         "Enter a word or two — without spaces — to make a unique web address just for this block, called an “anchor.” Then, you’ll be able to link directly to this section of your page.": [
+            ""
+         ],
+         "https://wordpress.org/documentation/article/page-jumps/": [
+            ""
+         ],
+         "Learn more about anchors": [
+            ""
+         ],
+         "Add an anchor": [
+            ""
+         ],
+         "Selected image: %s": [
+            ""
+         ],
+         "No image selected": [
+            ""
+         ],
+         "Only images can be used as a background image.": [
+            ""
+         ],
+         "Reset ": [
+            ""
+         ],
+         "Plugins": [
+            ""
+         ],
+         "Modify": [
+            ""
+         ],
+         "Additional CSS class(es)": [
+            ""
+         ],
+         "Connections": [
+            ""
+         ],
+         "Custom field meta_key": [
+            ""
+         ],
+         "Layout": [
+            ""
+         ],
+         "Inner blocks use content width": [
+            ""
+         ],
+         "Nested blocks use content width with options for full and wide widths.": [
+            ""
+         ],
+         "Nested blocks will fill the width of this container. Toggle to constrain.": [
+            ""
+         ],
+         "The block will stick to the top of the window instead of scrolling.": [
+            ""
+         ],
+         "The block will not move when the page is scrolled.": [
+            ""
+         ],
+         "The block will stick to the scrollable area of the parent %s block.": [
+            ""
+         ],
+         "Currently selected position: %s": [
+            ""
+         ],
+         "Constrained": [
+            ""
+         ],
+         "Customize the width for all elements that are assigned to the center or wide columns.": [
+            ""
+         ],
+         "Justification": [
+            ""
+         ],
+         "Flex": [
+            ""
+         ],
+         "Align items top": [
+            ""
+         ],
+         "Align items center": [
+            ""
+         ],
+         "Align items bottom": [
+            ""
+         ],
+         "Vertical alignment": [
+            ""
+         ],
+         "Allow to wrap to multiple lines": [
+            ""
+         ],
+         "Flow": [
+            ""
+         ],
+         "Grid": [
+            ""
+         ],
+         "Minimum column width": [
+            ""
+         ],
+         "Columns": [
+            ""
+         ],
+         "Max %s wide": [
+            ""
+         ],
+         "%s block selected.": [
+            "",
+            "%s blocks selected."
+         ],
+         "You are currently in navigation mode. Navigate blocks using the Tab key and Arrow keys. Use Left and Right Arrow keys to move between nesting levels. To exit navigation mode and edit the selected block, press Enter.": [
+            ""
+         ],
+         "You are currently in edit mode. To return to the navigation mode, press Escape.": [
+            ""
+         ],
+         "You are currently in zoom-out mode.": [
+            ""
+         ],
+         "Use the Tab key and Arrow keys to choose new block location. Use Left and Right Arrow keys to move between nesting levels. Once location is selected press Enter or Space to move the block.": [
+            ""
+         ],
+         "Black": [
+            ""
+         ],
+         "Cyan bluish gray": [
+            ""
+         ],
+         "White": [
+            ""
+         ],
+         "Pale pink": [
+            ""
+         ],
+         "Vivid red": [
+            ""
+         ],
+         "Luminous vivid orange": [
+            ""
+         ],
+         "Luminous vivid amber": [
+            ""
+         ],
+         "Light green cyan": [
+            ""
+         ],
+         "Vivid green cyan": [
+            ""
+         ],
+         "Pale cyan blue": [
+            ""
+         ],
+         "Vivid cyan blue": [
+            ""
+         ],
+         "Vivid purple": [
+            ""
+         ],
+         "Thumbnail": [
+            ""
+         ],
+         "Full Size": [
+            ""
+         ],
+         "Vivid cyan blue to vivid purple": [
+            ""
+         ],
+         "Light green cyan to vivid green cyan": [
+            ""
+         ],
+         "Luminous vivid amber to luminous vivid orange": [
+            ""
+         ],
+         "Luminous vivid orange to vivid red": [
+            ""
+         ],
+         "Very light gray to cyan bluish gray": [
+            ""
+         ],
+         "Cool to warm spectrum": [
+            ""
+         ],
+         "Blush light purple": [
+            ""
+         ],
+         "Blush bordeaux": [
+            ""
+         ],
+         "Luminous dusk": [
+            ""
+         ],
+         "Pale ocean": [
+            ""
+         ],
+         "Electric grass": [
+            ""
+         ],
+         "Midnight": [
+            ""
+         ],
+         "Copied \"%s\" to clipboard.": [
+            ""
+         ],
+         "Moved \"%s\" to clipboard.": [
+            ""
+         ],
+         "Copied %d block to clipboard.": [
+            "",
+            "Copied %d blocks to clipboard."
+         ],
+         "Moved %d block to clipboard.": [
+            "",
+            "Moved %d blocks to clipboard."
+         ],
+         "%1$s Block. Row %2$d. %3$s": [
+            ""
+         ],
+         "%1$s Block. Row %2$d": [
+            ""
+         ],
+         "%1$s Block. Column %2$d. %3$s": [
+            ""
+         ],
+         "%1$s Block. Column %2$d": [
+            ""
+         ],
+         "%1$s Block. %2$s": [
+            ""
+         ],
+         "%s Block": [
+            ""
+         ],
+         "Design": [
+            ""
+         ],
+         "Widgets": [
+            ""
+         ],
+         "Theme": [
+            ""
+         ],
+         "Embeds": [
+            ""
+         ],
+         "Reusable blocks": [
+            ""
+         ],
+         "Open the command palette.": [
+            ""
+         ],
+         "Command palette": [
+            ""
+         ],
+         "Preference deactivated - %s": [
+            ""
+         ],
+         "Preference activated - %s": [
+            ""
+         ],
+         "Base": [
+            ""
+         ],
+         "Site": [
+            ""
+         ],
+         "Site Title": [
+            ""
+         ],
+         "Taxonomy": [
+            ""
+         ],
+         "Widget areas": [
+            ""
+         ],
+         "Widget types": [
+            ""
+         ],
+         "Comment": [
+            ""
+         ],
+         "Menu": [
+            ""
+         ],
+         "Menu Item": [
+            ""
+         ],
+         "Menu Location": [
+            ""
+         ],
+         "Global Styles": [
+            ""
+         ],
+         "Themes": [
+            ""
+         ],
+         "Status": [
+            "Status"
+         ],
+         "(no title)": [
+            ""
+         ],
+         "$store must be an instance of WP_Style_Engine_CSS_Rules_Store": [
+            ""
+         ],
+         "Not enough non-option arguments: got %s, need at least %s": [
+            ""
+         ],
+         "Too many non-option arguments: got %s, maximum of %s": [
+            ""
+         ],
+         "Qyrr-Code": [
+            "Qyrr-Code"
+         ],
+         "https://patrickposner.dev/plugins/qyrr": [
+            "https://patrickposner.dev/plugins/qyrr"
+         ],
+         "QR-Code generation, management and tracking as it should be.": [
+            "QR-Code Generierung, Verwaltung und Tracking wie es sein sollte."
+         ],
+         "Patrick Posner": [
+            "Patrick Posner"
+         ],
+         "https://patrickposner.dev": [
+            "https://patrickposner.dev"
+         ],
+         "Size of a UI element\u0004None": [
+            ""
+         ],
+         "Size of a UI element\u0004Small": [
+            ""
+         ],
+         "Size of a UI element\u0004Medium": [
+            ""
+         ],
+         "Size of a UI element\u0004Large": [
+            ""
+         ],
+         "Size of a UI element\u0004Extra Large": [
+            ""
+         ],
+         "inline textinput cell\u0004%s. Empty": [
+            ""
+         ],
+         "inline textinput cell\u0004%1$s, %2$s. Empty": [
+            ""
+         ],
+         "inline textinput cell\u0004%1$s, %2$s": [
+            ""
+         ],
+         "inline textinput cell\u0004%1$s, %2$s, %3$s": [
+            ""
+         ],
+         "switch control\u0004%s. On": [
+            ""
+         ],
+         "switch control\u0004%s. Off": [
+            ""
+         ],
+         "switch control\u0004%1$s, %2$s. On": [
+            ""
+         ],
+         "switch control\u0004%1$s, %2$s. Off": [
+            ""
+         ],
+         "Button label to reveal tool panel options\u0004%s options": [
+            ""
+         ],
+         "Relative to parent font size (em)\u0004ems": [
+            ""
+         ],
+         "Relative to root font size (rem)\u0004rems": [
+            ""
+         ],
+         "text direction\u0004ltr": [
+            ""
+         ],
+         "verb\u0004feed": [
+            ""
+         ],
+         "verb\u0004Group": [
+            ""
+         ],
+         "verb\u0004Stack": [
+            ""
+         ],
+         "fruit\u0004%d apple": [
+            "",
+            "%d apples"
+         ],
+         "ctx\u0004hello": [
+            "",
+            "hellos"
+         ],
+         "context\u0004hello": [
+            "",
+            "hellos"
+         ],
+         "Post type general name\u0004Qyrr": [
+            "Qyrr"
+         ],
+         "Post type singular name\u0004QR Code": [
+            "QR Code"
+         ],
+         "Admin Menu text\u0004Qyrr": [
+            "Qyrr"
+         ],
+         "Add New on Toolbar\u0004QR Code": [
+            "QR Code"
+         ],
+         "The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4\u0004QR codes archives": [
+            "QR-Code Archive"
+         ],
+         "Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4\u0004Insert into QR Code": [
+            "In QR-Code einfügen"
+         ],
+         "Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4\u0004Uploaded to this QR Code": [
+            "Zu QR-Code hochladen"
+         ],
+         "Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4\u0004Filter QR codes list": [
+            "Filtere QR-Code Liste"
+         ],
+         "Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4\u0004QR list navigation": [
+            "QR Code Listen Navigation"
+         ],
+         "Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4\u0004QR codes list": [
+            "QR-Code Liste"
+         ],
+         "taxonomy general name\u0004Campaigns": [
+            "Kampagnen"
+         ],
+         "taxonomy singular name\u0004Campaign": [
+            "Kampagne"
+         ],
+         "Alignment option\u0004None": [
+            ""
+         ],
+         "imperative verb\u0004Resolve": [
+            ""
+         ],
+         "paging\u0004%1$s of %2$s": [
+            ""
+         ],
+         "block style\u0004Default": [
+            ""
+         ],
+         "Block vertical alignment setting\u0004Align top": [
+            ""
+         ],
+         "Block vertical alignment setting\u0004Align middle": [
+            ""
+         ],
+         "Block vertical alignment setting\u0004Align bottom": [
+            ""
+         ],
+         "Block vertical alignment setting\u0004Stretch to fill": [
+            ""
+         ],
+         "Block vertical alignment setting\u0004Space between": [
+            ""
+         ],
+         "Block vertical alignment setting label\u0004Change vertical alignment": [
+            ""
+         ],
+         "Generic label for block inserter button\u0004Add block": [
+            ""
+         ],
+         "Indicates this palette comes from the theme.\u0004Theme": [
+            ""
+         ],
+         "Indicates this palette comes from the theme.\u0004Custom": [
+            ""
+         ],
+         "Indicates this palette comes from WordPress.\u0004Default": [
+            ""
+         ],
+         "Indicates this palette is created by the user.\u0004Custom": [
+            ""
+         ],
+         "Ungrouping blocks from within a grouping block back into individual blocks within the Editor \u0004Ungroup": [
+            ""
+         ],
+         "Ungrouping blocks from within a grouping block back into individual blocks within the Editor\u0004Ungroup": [
+            ""
+         ],
+         "single horizontal line\u0004Row": [
+            ""
+         ],
+         "short date format\u0004n/j/Y": [
+            ""
+         ],
+         "short date format with time\u0004n/j/Y g:i A": [
+            ""
+         ],
+         "medium date format\u0004M j, Y": [
+            ""
+         ],
+         "medium date format with time\u0004M j, Y g:i A": [
+            ""
+         ],
+         "long date format\u0004F j, Y": [
+            ""
+         ],
+         "short date format without the year\u0004M j": [
+            ""
+         ],
+         "Aspect ratio option for dimensions control\u0004Original": [
+            ""
+         ],
+         "Aspect ratio option for dimensions control\u0004Square - 1:1": [
+            ""
+         ],
+         "Aspect ratio option for dimensions control\u0004Standard - 4:3": [
+            ""
+         ],
+         "Aspect ratio option for dimensions control\u0004Portrait - 3:4": [
+            ""
+         ],
+         "Aspect ratio option for dimensions control\u0004Classic - 3:2": [
+            ""
+         ],
+         "Aspect ratio option for dimensions control\u0004Classic Portrait - 2:3": [
+            ""
+         ],
+         "Aspect ratio option for dimensions control\u0004Wide - 16:9": [
+            ""
+         ],
+         "Aspect ratio option for dimensions control\u0004Tall - 9:16": [
+            ""
+         ],
+         "Aspect ratio option for dimensions control\u0004Custom": [
+            ""
+         ],
+         "Scale option for dimensions control\u0004Fill": [
+            ""
+         ],
+         "Scale option for dimensions control\u0004Contain": [
+            ""
+         ],
+         "Scale option for dimensions control\u0004Cover": [
+            ""
+         ],
+         "Scale option for dimensions control\u0004None": [
+            ""
+         ],
+         "Scale option for dimensions control\u0004Scale down": [
+            ""
+         ],
+         "font style\u0004Regular": [
+            ""
+         ],
+         "font style\u0004Italic": [
+            ""
+         ],
+         "font weight\u0004Thin": [
+            ""
+         ],
+         "font weight\u0004Extra Light": [
+            ""
+         ],
+         "font weight\u0004Light": [
+            ""
+         ],
+         "font weight\u0004Regular": [
+            ""
+         ],
+         "font weight\u0004Medium": [
+            ""
+         ],
+         "font weight\u0004Semi Bold": [
+            ""
+         ],
+         "font weight\u0004Bold": [
+            ""
+         ],
+         "font weight\u0004Extra Bold": [
+            ""
+         ],
+         "font weight\u0004Black": [
+            ""
+         ],
+         "Name for applying graphical effects\u0004Filters": [
+            ""
+         ],
+         "Option that shows all patterns\u0004All": [
+            ""
+         ],
+         "Option that shows all synchronized patterns\u0004Synced": [
+            ""
+         ],
+         "Option that shows all patterns that are not synchronized\u0004Not synced": [
+            ""
+         ],
+         "blocks\u0004Most used": [
+            ""
+         ],
+         "Additional link settings\u0004Advanced": [
+            ""
+         ],
+         "Image size option for resolution control\u0004Thumbnail": [
+            ""
+         ],
+         "Image size option for resolution control\u0004Medium": [
+            ""
+         ],
+         "Image size option for resolution control\u0004Large": [
+            ""
+         ],
+         "Image size option for resolution control\u0004Full Size": [
+            ""
+         ],
+         "Text labelling a interface as controlling a given layout property (eg: margin) for a given screen size.\u0004Controls the %1$s property for %2$s viewports.": [
+            ""
+         ],
+         "Button label to reveal side configuration options\u0004%s options": [
+            ""
+         ],
+         "Name for the value of the CSS position property\u0004Sticky": [
+            ""
+         ],
+         "Name for the value of the CSS position property\u0004Fixed": [
+            ""
+         ],
+         "font size name\u0004Small": [
+            ""
+         ],
+         "font size name\u0004Normal": [
+            ""
+         ],
+         "font size name\u0004Medium": [
+            ""
+         ],
+         "font size name\u0004Large": [
+            ""
+         ],
+         "font size name\u0004Huge": [
+            ""
+         ]
+      }
+   }
+}

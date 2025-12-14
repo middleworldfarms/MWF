@@ -1,0 +1,444 @@
+{
+  "domain": "qyrr-code",
+  "locale_data": {
+    "qyrr-code": {
+      "": {
+        "domain": "qyrr-code",
+        "plural_forms": "nplurals=2; plural=(n != 1);",
+        "lang": "de_DE"
+      },
+      "QR-Code": [
+        "QR-Code"
+      ],
+      "Select QR-Code": [
+        "QR-Codes auswählen"
+      ],
+      "No campaign": [
+        "Keine Kampagne"
+      ],
+      "Bulk Generation": [
+        "Stapelverarbeitung"
+      ],
+      "Type": [
+        "Typ"
+      ],
+      "Choose type of bulk processing you like to use. Use Unique ID for multiple QR-Codes with the same URL, otherwise use Add data per line.": [
+        "Wähle den Typ der Stapelverarbeitung. Nutze eine \"Einzigartige ID\" für mehrere QR-Codes mit der selben URL, andernfalls gebe die URLs je Zeile an."
+      ],
+      "Unique ID": [
+        "Einzigartige ID"
+      ],
+      "Add data per line": [
+        "Füge URLs je Zeile hinzu"
+      ],
+      "Campaign": [
+        "Kampagne"
+      ],
+      "Assign all generated QR-Codes to a campain for a better overview.": [
+        "Füge alle generierten QR-Codes einer Kampagne zu für eine bessere Übersicht."
+      ],
+      "How many QR-Codes should be generated?": [
+        "Wie viele QR-Codes möchtest du generieren?"
+      ],
+      "Add source data - one entry per line.": [
+        "Füge deine URLs hin - ein Eintrag pro Zeile."
+      ],
+      "Use a new line for each entry you like to create a QR-Code for.": [
+        "Nutze eine neue Zeile für jede URL aus der ein QR-Code generiert werden soll."
+      ],
+      "Generate QR-Codes": [
+        "QR-Codes generieren"
+      ],
+      "Download": [
+        "Download"
+      ],
+      "Download Format": [
+        "Download Format"
+      ],
+      "Shortcode": [
+        "Shortcode"
+      ],
+      "Copied!": [
+        "Kopiert!"
+      ],
+      "Copy Shortcode": [
+        "Shortcode kopieren"
+      ],
+      "General Settings": [
+        "Allgemeine Einstellungen"
+      ],
+      "Size (in px)": [
+        "Größe (in px)"
+      ],
+      "Background Color": [
+        "Hintergrundfarbe"
+      ],
+      "Fill Color": [
+        "Füllfarbe"
+      ],
+      "Min Version": [
+        "Minimale Version"
+      ],
+      "Quiet Zone": [
+        "Ruhe-Zone"
+      ],
+      "Corner Radius": [
+        "Abrundung"
+      ],
+      "Error Handling Level": [
+        "Fehler-Level"
+      ],
+      "Logo or Label": [
+        "Logo oder Text"
+      ],
+      "Render Mode": [
+        "Darstellungs-Modus"
+      ],
+      "Plain": [
+        "Nur QR-Code"
+      ],
+      "Label": [
+        "Text"
+      ],
+      "Logo": [
+        "Logo"
+      ],
+      "Label / Logo Size (%)": [
+        "Text / Logogröße (%)"
+      ],
+      "Position X (%)": [
+        "Position X-Achse (%)"
+      ],
+      "Position Y (%)": [
+        "Position Y-Achse (%)"
+      ],
+      "Label Text": [
+        "Text"
+      ],
+      "Select Font": [
+        "Schriftart auswählen"
+      ],
+      "You need to configure your Google Fonts API key in the settings to use other fonts.": [
+        "Du musst einen Google Fonts API Schlüssel in den Einstellungen hinterlegen um Schriftarten benutzen zu können."
+      ],
+      "Font Color": [
+        "Schriftfarbe"
+      ],
+      "Logo Upload": [
+        "Logo hochladen"
+      ],
+      "Post/Page": [
+        "Beitrag/Seite"
+      ],
+      "External URL": [
+        "Externe URL"
+      ],
+      "Text": [
+        "Text"
+      ],
+      "E-Mail": [
+        "E-Mail Adresse"
+      ],
+      "Phone": [
+        "Telefon"
+      ],
+      "SMS": [
+        "SMS"
+      ],
+      "WhatsApp": [
+        "WhatsApp"
+      ],
+      "GEO URI (Location)": [
+        "GEO URI (Standort)"
+      ],
+      "WiFi": [
+        "WiFi"
+      ],
+      "vCard": [
+        "vCard"
+      ],
+      "Source": [
+        "Quelle"
+      ],
+      "Select Post-Type": [
+        "Post-Type auswählen"
+      ],
+      "Select Post": [
+        "Beitrag auswählen"
+      ],
+      "Dynamic QR-Code": [
+        "Dynamischer QR-Code"
+      ],
+      "Use a dynamic QR code where the source can be changed without changing the QR-Code. This also enables tracking.": [
+        "Das Ziel eines dynamischen QR-Codes kann geändert werden ohne den QR-Code zu ändern. Dies aktiviert auch das Tracking."
+      ],
+      "Use a traditional QR code where the source can not be changed without changing the QR-Code.": [
+        "Ein normaler QR-Code ändert sich sobald das Ziel geändert wird."
+      ],
+      "Phone Number": [
+        "Telefon-Nummer"
+      ],
+      "WhatsApp Number": [
+        "WhatsApp Nummer"
+      ],
+      "Message": [
+        "Nachricht"
+      ],
+      "Latitude": [
+        "Latitude"
+      ],
+      "Longitude": [
+        "Longitude"
+      ],
+      "Select WiFi Type": [
+        "Wähle dem WiFi Typ"
+      ],
+      "SSID": [
+        "SSID"
+      ],
+      "Password": [
+        "Passwort"
+      ],
+      "First name": [
+        "Vorname"
+      ],
+      "Last name": [
+        "Nachname"
+      ],
+      "Company": [
+        "Firma"
+      ],
+      "Address": [
+        "Adresse"
+      ],
+      "URL": [
+        "URL"
+      ],
+      "Replace Image": [
+        "Bild ersetzen"
+      ],
+      "Remove Image": [
+        "Bild entfernen"
+      ],
+      "Settings": [
+        "Einstellungen"
+      ],
+      "System Status": [
+        "System Status"
+      ],
+      "Utilities": [
+        "Werkzeuge"
+      ],
+      "Documentation": [
+        "Dokumentation"
+      ],
+      "Changelog": [
+        "Changelog"
+      ],
+      "Google Fonts API Key": [
+        "Google Fonts API Schlüssel"
+      ],
+      "Add your Google Fonts API Key here": [
+        "Füge deinen Google Fonts API Schlüssel hier ein"
+      ],
+      "You need to add your Google Fonts API key if you want to use Google Fonts for the Label when creating QR-Codes.": [
+        "Du musst einen Google Fonts API Schlüssel hinzufügen wenn du Google Fonts innerhalb deines QR-Codes verwenden möchtest."
+      ],
+      "You can get your Google Fonts API key ": [
+        "Du bekommst deinen Google Fonts API Schlüssel "
+      ],
+      "here": [
+        "hier"
+      ],
+      "Settings saved successfully.": [
+        "Einstellungen erfolgreich gespeichert."
+      ],
+      "Save Settings": [
+        "Einstellungen speichern"
+      ],
+      "Export": [
+        "Export"
+      ],
+      "Export Settings": [
+        "Export Einstellungen"
+      ],
+      "Copy export data": [
+        "Export-Daten kopieren"
+      ],
+      "Import": [
+        "Import"
+      ],
+      "Paste in the JSON string you got from your export to import all settings for the plugin.": [
+        "Füge den JSON-Text hier ein den du beim Export erhalten hast um alle deine Einstellungen zu importieren."
+      ],
+      "Import Settings": [
+        "Import Einstellungen"
+      ],
+      "Reset Analytics Data": [
+        "Setze Tracking-Daten zurück"
+      ],
+      "By clicking the following button you will reset all tracking data for your QR-Codes.": [
+        "Sobald du diesen Button anklickst werden alle Trackingdaten für alle QR-Codes zurückgesetzt."
+      ],
+      "Analytics data resetted successfully.": [
+        "Tracking-Daten erfolgreich zurückgesetzt."
+      ],
+      "Reset Plugin Data": [
+        "Plugin-Einstellungen zurücksetzen"
+      ],
+      "By clicking the following button you will reset all plugin settings. This can be useful if you want to import a new set of settings or you want a fresh start for configuration.": [
+        "Sobald du diesen Button anklickst, werden alle Plugin-Einstellungen zurückgesetzt."
+      ],
+      "Reset Plugin Settings": [
+        "Plugin-Einstellungen zurücksetzen"
+      ],
+      "Settings imported successfully.": [
+        "Einstellungen erfolgreich importiert."
+      ],
+      "Settings resetted successfully.": [
+        "Einstellungen erfolgreich zurückgesetzt."
+      ],
+      "Add New": [
+        "Hinzufügen"
+      ],
+      "Add New QR Code": [
+        "Neuen QR-Code hinzufügen"
+      ],
+      "New QR Code": [
+        "Neuer QR-Code"
+      ],
+      "Edit QR Code": [
+        "QR-Code bearbeiten"
+      ],
+      "View QR Code": [
+        "QR-Code anzeigen"
+      ],
+      "All QR Codes": [
+        "Alle QR-Codes"
+      ],
+      "Search QR Codes": [
+        "QR-Codes durchsuchen"
+      ],
+      "Parent QR Codes:": [
+        "Eltern-QR-Codes:"
+      ],
+      "No QR codes found.": [
+        "Keine QR-Codes gefunden."
+      ],
+      "No QR codes found in Trash.": [
+        "Keine QR-Codes im Papierkorb gefunden."
+      ],
+      "Search Campaigns": [
+        "Durchsuche Kampagnen"
+      ],
+      "Popular Campaigns": [
+        "Beliebte Kampagnen"
+      ],
+      "All Campaigns": [
+        "Alle Kampagnen"
+      ],
+      "Edit Campaign": [
+        "Kampagne bearbeiten"
+      ],
+      "Update Campaign": [
+        "Kampagne aktualisieren"
+      ],
+      "Add New Campaign": [
+        "Neue Kampagne hinzufügen"
+      ],
+      "New Campaign Name": [
+        "Neuer Kampagnen Name"
+      ],
+      "Separate campaigns with commas": [
+        "Trenne Kampagnen mit Komma"
+      ],
+      "Add or remove campaigns": [
+        "Hinzufügen oder Entfernen von Kampagnen"
+      ],
+      "Choose from the most used campaigns": [
+        "Wähle aus den meist genutzten Kampagnen"
+      ],
+      "No campaigns found.": [
+        "Keine Kampagnen gefunden."
+      ],
+      "Campaigns": [
+        "Kampagnen"
+      ],
+      "Analytics": [
+        "Analyse"
+      ],
+      "Download QR-Code": [
+        "QR-Code herunterladen"
+      ],
+      "No preview available.": [
+        "Keine Vorschau verfügbar."
+      ],
+      "Clicks": [
+        "Klicks"
+      ],
+      "Click": [
+        "Klick"
+      ],
+      "No Clicks": [
+        "Keine Klicks"
+      ],
+      "Download QR-Codes": [
+        "QR-Code herunterladen"
+      ],
+      "Download the ZIP file %s (Contains %d QR-Codes)": [
+        "Zip-Datei %s herunterladen (Enthält %d QR-Codes)"
+      ],
+      "Qyrr-Code": [
+        "Qyrr-Code"
+      ],
+      "https://patrickposner.dev/plugins/qyrr": [
+        "https://patrickposner.dev/plugins/qyrr"
+      ],
+      "QR-Code generation, management and tracking as it should be.": [
+        "QR-Code Generierung, Verwaltung und Tracking wie es sein sollte."
+      ],
+      "Patrick Posner": [
+        "Patrick Posner"
+      ],
+      "https://patrickposner.dev": [
+        "https://patrickposner.dev"
+      ],
+      "Post type general name\u0004Qyrr": [
+        "Qyrr"
+      ],
+      "Post type singular name\u0004QR Code": [
+        "QR Code"
+      ],
+      "Admin Menu text\u0004Qyrr": [
+        "Qyrr"
+      ],
+      "Add New on Toolbar\u0004QR Code": [
+        "QR Code"
+      ],
+      "The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4\u0004QR codes archives": [
+        "QR-Code Archive"
+      ],
+      "Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4\u0004Insert into QR Code": [
+        "In QR-Code einfügen"
+      ],
+      "Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4\u0004Uploaded to this QR Code": [
+        "Zu QR-Code hochladen"
+      ],
+      "Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4\u0004Filter QR codes list": [
+        "Filtere QR-Code Liste"
+      ],
+      "Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4\u0004QR list navigation": [
+        "QR Code Listen Navigation"
+      ],
+      "Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4\u0004QR codes list": [
+        "QR-Code Liste"
+      ],
+      "taxonomy general name\u0004Campaigns": [
+        "Kampagnen"
+      ],
+      "taxonomy singular name\u0004Campaign": [
+        "Kampagne"
+      ]
+    }
+  }
+}

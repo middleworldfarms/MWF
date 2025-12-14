@@ -1,0 +1,21 @@
+<div data-class="header">
+	<div data-class="header_branding row row-cols-1 row-cols-sm-1 row-cols-md-2">
+		<div data-class="header_plugin_info">
+			<img data-if="plugin_logo" src="{{wbte-ds-attr-plugin_logo}}" data-class="header_plugin_logo">
+			<div data-class="header_plugin_name">{{plugin_name}}</div>
+		</div>
+		<div data-class="header_dev_by">
+			<span data-if="developed_by_txt">{{developed_by_txt}}</span><img src="{{wbte-ds-img-webtoffee-logo.svg}}" data-class="header_webtoffee_logo">
+		</div>
+	</div>
+	<div data-class="header_nav" data-if="menu">
+		<a data-for="menu_item in menu" class="{{wbte-ds-attr-menu_item.class}}" href="{{wbte-ds-attr-menu_item.href}}"> {{menu_item.title}}
+			<span data-class="header_nav_status" class="okay" data-if="'okay' === menu_item.status">
+				{{wbte-ds-icon-tick-mark}} 
+			</span>
+			<span data-class="header_nav_status" class="notokay" data-if="'notokay' === menu_item.status">
+				{{wbte-ds-icon-exclamation-mark}} 
+			</span>
+		</a>
+	</div>
+</div>

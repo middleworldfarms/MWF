@@ -1,0 +1,482 @@
+# Translation of YITH WooCommerce Name Your Price in Spanish (Spain)
+# This file is distributed under the same license as the YITH WooCommerce Name Your Price package.
+msgid ""
+msgstr ""
+"Project-Id-Version: YITH WooCommerce Name Your Price\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/yith-woocommerce-"
+"name-your-price.premium\n"
+"POT-Creation-Date: 2025-06-03 15:20:09+00:00\n"
+"PO-Revision-Date: 2020-05-08 14:34:51+0000\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+
+#: includes/classes/class.yith-wc-name-your-price-admin.php:152
+#: includes/classes/class.yith-wc-name-your-price-premium-admin.php:123
+#: plugin-options/general-settings-options.php:77
+#: plugin-options/general-settings-options.php:78
+#: templates/metaboxes/name_your_price_variation_option.php:29
+msgid "Name Your Price"
+msgstr "Name Your Price"
+
+#: includes/classes/class.yith-wc-name-your-price-admin.php:153
+msgid "Enable \"Name Your Price\" for this product"
+msgstr "Habilitar \"Ponle un precio\" para este producto"
+
+#: includes/classes/class.yith-wc-name-your-price-frontend.php:402
+#: plugin-options/general-settings-options.php:59
+#: plugin-options/general-settings-options.php:60
+msgid "Choose Price"
+msgstr "Elegir Precio"
+
+#. translators: %s is the url cart with a error message
+#: includes/classes/class.yith-wc-name-your-price-premium-frontend.php:242
+msgid "View Cart"
+msgstr "Ver Carrito"
+
+#: includes/classes/class.yith-wc-name-your-price-premium-frontend.php:242
+msgid "You cannot add another &quot;%s&quot; to your cart."
+msgstr "No puedes añadir otro &quot;%s&quot; a tu carrito."
+
+#: includes/classes/class.yith-wc-name-your-price-premium.php:175
+#: includes/classes/compatibility/class.yith-wc-name-your-price-multivendor-compatibility.php:111
+msgid "Active Rules"
+msgstr "Reglas activas"
+
+#: includes/classes/class.yith-wc-name-your-price.php:222
+msgid "General Settings"
+msgstr "Ajustes Generales"
+
+#: includes/classes/class.yith-wc-name-your-price.php:225
+msgid "Premium Version"
+msgstr "Versión Pemium"
+
+#: includes/classes/compatibility/class.yith-category-rule-vendor-table.php:79
+#: templates/admin/ywcnp-category-rules.php:147
+#: templates/admin/ywcnp-category-rules.php:153
+#: templates/admin/ywcnp-category-rules.php:160
+msgid "No Price"
+msgstr "Sin precio"
+
+#: includes/classes/compatibility/class.yith-category-rule-vendor-table.php:85
+#: includes/classes/compatibility/class.yith-category-rule-vendor-table.php:167
+#: templates/admin/ywcnp-category-rules.php:111
+#: templates/admin/ywcnp-category-rules.php:168
+msgid "Enabled"
+msgstr "Habilitado"
+
+#: includes/classes/compatibility/class.yith-category-rule-vendor-table.php:88
+#: templates/admin/ywcnp-category-rules.php:171
+msgid "Disabled"
+msgstr "Deshabilitado"
+
+#: includes/classes/compatibility/class.yith-category-rule-vendor-table.php:121
+#: includes/classes/compatibility/class.yith-category-rule-vendor-table.php:131
+#: templates/admin/ywcnp-category-rules.php:137
+#: templates/admin/ywcnp-category-rules.php:141
+msgid "Edit rule"
+msgstr "Editar regla"
+
+#: includes/classes/compatibility/class.yith-category-rule-vendor-table.php:122
+#: templates/admin/ywcnp-category-rules.php:138
+#: templates/admin/ywcnp-category-rules.php:180
+msgid "Remove rule from list"
+msgstr "Eliminar regla de la lista"
+
+#: includes/classes/compatibility/class.yith-category-rule-vendor-table.php:163
+#: templates/admin/ywcnp-category-rules.php:107
+msgid "Category"
+msgstr "Categoría"
+
+#: includes/classes/compatibility/class.yith-category-rule-vendor-table.php:164
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:316
+#: templates/admin/ywcnp-category-rules.php:108
+#: templates/admin/ywcnp-category-rules.php:419
+#: templates/metaboxes/name_your_price_tab.php:32
+#: templates/metaboxes/name_your_price_tab_variation.php:31
+#: templates/metaboxes/vendor/name_your_price_tab.php:32
+#: templates/metaboxes/vendor/name_your_price_tab_variation.php:35
+msgid "Suggested Price"
+msgstr "Precio sugerido"
+
+#: includes/classes/compatibility/class.yith-category-rule-vendor-table.php:165
+#: plugin-options/general-settings-options.php:112
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:328
+#: templates/admin/ywcnp-category-rules.php:109
+#: templates/admin/ywcnp-category-rules.php:431
+#: templates/metaboxes/name_your_price_tab.php:33
+#: templates/metaboxes/name_your_price_tab_variation.php:32
+#: templates/metaboxes/vendor/name_your_price_tab.php:33
+#: templates/metaboxes/vendor/name_your_price_tab_variation.php:36
+msgid "Minimum Price"
+msgstr "Precio mínimo"
+
+#: includes/classes/compatibility/class.yith-category-rule-vendor-table.php:166
+#: plugin-options/general-settings-options.php:121
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:339
+#: templates/admin/ywcnp-category-rules.php:110
+#: templates/admin/ywcnp-category-rules.php:442
+msgid "Maximum Price"
+msgstr "Precio máximo"
+
+#: includes/functions.yith-name-your-price-premium.php:293
+msgid "From Free!"
+msgstr "¡A partir de 0€!"
+
+#: includes/functions.yith-name-your-price.php:54
+#: plugin-options/general-settings-options.php:97
+msgid "Please enter a value greater or equal to 0"
+msgstr "Por favor, introduce un valor mayor o igual a 0"
+
+#: includes/functions.yith-name-your-price.php:55
+#: plugin-options/general-settings-options.php:106
+msgid "Please enter a valid price"
+msgstr "Por favor, introduce un precio válido"
+
+#: init.php:40
+msgid ""
+"YITH WooCommerce Name Your Price Premium is enabled but not effective. It "
+"requires WooCommerce in order to work."
+msgstr ""
+"YITH WooCommerce Name Your Price Premium está habilitado pero no es "
+"efectivo. Requiere WooCommerce para funcionar."
+
+#: plugin-options/general-settings-options.php:23
+msgid "Shop Label"
+msgstr "Etiquetas de tienda"
+
+#: plugin-options/general-settings-options.php:29
+msgid "Text before recommended price "
+msgstr "Texto antes del precio recomendado "
+
+#: plugin-options/general-settings-options.php:30
+msgid "This text is displayed before the suggested price"
+msgstr "Este texto se muestra antes del texto sugerido"
+
+#: plugin-options/general-settings-options.php:33
+#: plugin-options/general-settings-options.php:34
+msgid "Recommended Price"
+msgstr "Precio recomendado"
+
+#: plugin-options/general-settings-options.php:37
+msgid "Text before minimum price allowed "
+msgstr "Texto antes del precio mínimo permitido "
+
+#: plugin-options/general-settings-options.php:38
+msgid "This text is displayed before the minimum price"
+msgstr "Este texto se muestra antes del precio mínimo"
+
+#: plugin-options/general-settings-options.php:41
+#: plugin-options/general-settings-options.php:42
+msgid "Minimum price allowed"
+msgstr "Precio mínimo permitido"
+
+#: plugin-options/general-settings-options.php:46
+msgid "Text before maximum price allowed "
+msgstr "Texto antes del precio máximo permitido "
+
+#: plugin-options/general-settings-options.php:47
+msgid "This text is displayed before the maximum price"
+msgstr "Este texto se muestra antes del precio máximo"
+
+#: plugin-options/general-settings-options.php:50
+#: plugin-options/general-settings-options.php:51
+msgid "Maximum price allowed"
+msgstr "Máximo precio permitido"
+
+#: plugin-options/general-settings-options.php:55
+msgid "\"Add to Cart\" text in Shop page"
+msgstr "Texto de \"Añadir al carrito\" en la página de la tienda"
+
+#: plugin-options/general-settings-options.php:56
+msgid "Set the text of the \"Add to Cart\" button in the Shop page"
+msgstr ""
+"Establece el texto del botón \"Añadir al carrito\" en la página de la tienda"
+
+#: plugin-options/general-settings-options.php:64
+msgid "\"Add to Cart\" text in Single Product page"
+msgstr "Texto de \"Añadir al carrito\" en la página de producto"
+
+#: plugin-options/general-settings-options.php:65
+msgid "Set the text of the \"Add to Cart\" button in the Single Product page"
+msgstr ""
+"Selecciona el texto del botón \"Añadir al carrito\" en la página de producto"
+
+#: plugin-options/general-settings-options.php:68
+#: plugin-options/general-settings-options.php:69
+msgid "Add to Cart"
+msgstr "Añadir al carrito"
+
+#: plugin-options/general-settings-options.php:73
+msgid "\"Name Your Price\" text"
+msgstr "Texto de \"Ponle un precio\""
+
+#: plugin-options/general-settings-options.php:74
+msgid "This text is displayed before the price field"
+msgstr "Este texto se muestra antes del campo de precio"
+
+#: plugin-options/general-settings-options.php:87
+msgid "Message Label"
+msgstr "Etiqueta de mensaje"
+
+#: plugin-options/general-settings-options.php:94
+msgid "Negative Price"
+msgstr "Precio negativo"
+
+#: plugin-options/general-settings-options.php:95
+msgid "This message will be showed when users try to add a price lower than 0"
+msgstr ""
+"Este mensaje se mostrará cuando los usuarios intenten añadir un precio "
+"inferior a 0"
+
+#: plugin-options/general-settings-options.php:103
+msgid "Invalid Price"
+msgstr "Precio inválido"
+
+#: plugin-options/general-settings-options.php:104
+msgid ""
+"This message will be showed when users try to add a price with an invalid "
+"format"
+msgstr ""
+"Este mensaje se mostrará cuando los usuarios intenten añadir un precio con "
+"un formato inválido"
+
+#. translators: %s: Is the placeholder to show the minimum price
+#: plugin-options/general-settings-options.php:114
+msgid ""
+"This message will be showed when users try to add a price lower than the "
+"minimum price set. Use %s to show the minumum price allowed"
+msgstr ""
+"Este mensaje será mostrado cuando los usuarios intenten añadir un precio más "
+"bajo que el precio mínimo establecido. Usa %s para mostrar el precio mínimo "
+"permitido"
+
+#: plugin-options/general-settings-options.php:116
+msgid "Please enter a value greater or equal to minimum"
+msgstr "Por favor, introduce un valor mayor o igual al mínimo"
+
+#. translators: %s: Is the placeholder to show the maximum price
+#: plugin-options/general-settings-options.php:123
+msgid ""
+"This message will be showed when users try to add a price higher than the "
+"maximum price set. Use %s to show the maximum price allowed"
+msgstr ""
+"Este mensaje será mostrado cuando los usuarios intenten añadir un precio más "
+"alto que el precio máximo establecido. Usa %s para mostrar el precio máximo "
+"permitido"
+
+#: plugin-options/general-settings-options.php:125
+msgid "Please enter a value less or equal to maximum"
+msgstr "Por favor, introduce un valor menor o igual al máximo"
+
+#. translators: %s: Is the categories array added successfully
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:151
+#: templates/admin/ywcnp-category-rules.php:284
+msgid "%s rule added successfully"
+msgid_plural "%s rules added successfully"
+msgstr[0] "%s regla añadida con éxito"
+msgstr[1] "%s reglas añadidas con éxito"
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:177
+#: templates/admin/ywcnp-category-rules.php:288
+msgid "Rule updated successfully"
+msgstr "Regla actualizada satisfactoriamente"
+
+#. translators: %s: Is the categories array removed successfully
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:199
+msgid "%s rule removed successfully"
+msgid_plural "%s rules removed successfully"
+msgstr[0] "%s regla eliminada con éxito"
+msgstr[1] "%s reglas eliminadas con éxito"
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:228
+#: templates/admin/ywcnp-category-rules.php:330
+msgid "Category rule list"
+msgstr "Lista de reglas de categoría"
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:243
+#: templates/admin/ywcnp-category-rules.php:346
+msgid "Add rule"
+msgstr "Añadir regla"
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:272
+#: templates/admin/ywcnp-category-rules.php:375
+msgid "Select category"
+msgstr "Seleccionar categoría"
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:288
+#: templates/admin/ywcnp-category-rules.php:391
+msgid "Select Category"
+msgstr "Seleccionar categoría"
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:299
+#: templates/admin/ywcnp-category-rules.php:402
+msgid "Select the product categories to which you want to apply the rule"
+msgstr ""
+"Establecer las categorías de producto a las cuales quieres aplicar la regla"
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:305
+#: templates/admin/ywcnp-category-rules.php:408
+msgid "Rule behavior"
+msgstr "Regla de comportamiento"
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:311
+#: templates/admin/ywcnp-category-rules.php:414
+msgid ""
+"If selected, the rule will be applied to the products of the selected "
+"categories. If not, the rule will be just created but not applied."
+msgstr ""
+"Si se selecciona, la regla se aplicará a los productos de las categorías "
+"seleccionadas. Si no, la regla será creada pero no aplicada."
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:323
+#: templates/admin/ywcnp-category-rules.php:426
+msgid ""
+"Select the suggested price for your product, leave blank not to suggest a "
+"price"
+msgstr ""
+"Selecciona el precio sugerido para tu producto, déjalo en blanco para no "
+"sugerir precio"
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:334
+#: templates/admin/ywcnp-category-rules.php:437
+#: templates/metaboxes/name_your_price_tab.php:65
+#: templates/metaboxes/vendor/name_your_price_tab.php:65
+msgid ""
+"Set the minimum price for your product, leave blank not to set a minimum "
+"price"
+msgstr ""
+"Establece el precio mínimo para este producto, déjalo en blanco para no "
+"establecer un precio mínimo"
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:345
+#: templates/admin/ywcnp-category-rules.php:448
+#: templates/metaboxes/name_your_price_tab.php:77
+#: templates/metaboxes/vendor/name_your_price_tab.php:77
+msgid ""
+"Set the maximum price for your product, leave blank not to set a maximum "
+"price"
+msgstr ""
+"Selecciona el precio máximo para tu producto, déjalo en blanco para no "
+"establecer un precio máximo"
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:354
+#: templates/admin/ywcnp-category-rules.php:457
+msgid "Add category rule"
+msgstr "Añadir regla de categoría"
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:354
+#: templates/admin/ywcnp-category-rules.php:457
+msgid "Update category rule"
+msgstr "Actualizar regla de categoría"
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:358
+#: templates/admin/ywcnp-category-rules.php:461
+msgid "Return to rule list"
+msgstr "Volver a la lista de reglas"
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:388
+#: templates/admin/ywcnp-category-rules.php:490
+msgid "Select at least one category"
+msgstr "Selecciona al menos una categoría"
+
+#: templates/admin/vendor/ywcnp-category-vendor-rules.php:413
+#: templates/admin/ywcnp-category-rules.php:514
+msgid "Categories"
+msgstr "Categorías"
+
+#: templates/admin/ywcnp-category-rules.php:74
+msgid "category"
+msgstr "categoría"
+
+#: templates/admin/ywcnp-category-rules.php:75
+msgid "categories"
+msgstr "categorías"
+
+#. translators: %s: Is the categories array removes successfully
+#: templates/admin/ywcnp-category-rules.php:308
+msgid "%s category removed successfully"
+msgid_plural "%s categories removed successfully"
+msgstr[0] "%s categoría eliminada satisfactoriamente"
+msgstr[1] "%s categorías eliminadas satisfactoriamente"
+
+#: templates/metaboxes/general_product_data_name_your_price_enabled.php:29
+msgid ""
+"These fields have been disabled because you have activated the \"Name Your "
+"Price\" option"
+msgstr ""
+"Estos campos han sido desactivados porque has activado la opción \"Ponle un "
+"precio\""
+
+#: templates/metaboxes/name_your_price_tab.php:34
+#: templates/metaboxes/name_your_price_tab_variation.php:33
+#: templates/metaboxes/vendor/name_your_price_tab.php:34
+#: templates/metaboxes/vendor/name_your_price_tab_variation.php:37
+msgid "MaximumPrice"
+msgstr "Precio Máximo"
+
+#: templates/metaboxes/name_your_price_tab.php:53
+#: templates/metaboxes/vendor/name_your_price_tab.php:53
+msgid ""
+"Set the suggested price for your product, leave blank not to suggest a price"
+msgstr ""
+"Establece un precio sugerido para tu producto, déjalo en blanco para no "
+"sugerir un precio"
+
+#: templates/metaboxes/name_your_price_tab.php:96
+#: templates/metaboxes/name_your_price_tab_variation.php:66
+#: templates/metaboxes/vendor/name_your_price_tab.php:96
+#: templates/metaboxes/vendor/name_your_price_tab_variation.php:70
+msgid "Overwrite this rule"
+msgstr "Sobrescribir esta regla"
+
+#: templates/metaboxes/name_your_price_tab.php:98
+#: templates/metaboxes/name_your_price_tab_variation.php:68
+#: templates/metaboxes/vendor/name_your_price_tab.php:98
+#: templates/metaboxes/vendor/name_your_price_tab_variation.php:72
+msgid ""
+"These fields have been disabled because you have set a general rule for this "
+"category"
+msgstr ""
+"Estos campos han sido desactivados porque has establecido una regla general "
+"para esta categoría"
+
+#: templates/metaboxes/name_your_price_variation_option.php:31
+msgid "Check this option to enable \"Name Your Price\" for this variation"
+msgstr "Marca esta opción para activar ‘’Name Your Price’’ para esta variación"
+
+#. Description of the plugin/theme
+msgid ""
+"<code><strong>YITH WooCommerce Name Your Price Premium</strong></code> "
+"allows your users to choose how much they want to pay for your products and "
+"offers the possibility to set a minimum and a maximum price that your "
+"customer can choose on the product page. <a href =\"https://yithemes."
+"com\">Get more plugins for your e-commerce shop on <strong>YITH</strong></a>"
+msgstr ""
+"<code><strong>YITH WooCommerce Name Your Price Premium</strong></code> "
+"permite a los usuarios elegir cuanto quieren pagar por tus productos y "
+"ofrece la posibilidad de establecer un precio mínimo y máximo que tus "
+"clientes pueden elegir en la página del producto. <a href =\"https://"
+"yithemes.com\">Obtén más plugins para tu comercio electrónico en "
+"<strong>YITH</strong></a>"
+
+#: includes/classes/class.yith-wc-name-your-price-premium.php:286
+msgctxt "Price range: from-to"
+msgid "%1$s&ndash;%2$s"
+msgstr "%1$s&ndash;%2$s"
+
+#: includes/classes/compatibility/class.yith-category-rule-vendor-table.php:55
+msgctxt "yith-woocommerce-name-your-price"
+msgid "rule"
+msgstr "regla"
+
+#: includes/classes/compatibility/class.yith-category-rule-vendor-table.php:56
+msgctxt "yith-woocommerce-name-your-price"
+msgid "rules"
+msgstr "reglas"
+
+#~ msgid "Add Rule"
+#~ msgstr "Añadir Regla"

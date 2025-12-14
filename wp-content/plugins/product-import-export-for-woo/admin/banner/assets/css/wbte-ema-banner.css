@@ -1,0 +1,109 @@
+/* EMA Banner Analytics Page Styles */
+
+.wbte_ema_banner_analytics_page {
+    background: #ffffff;
+    border: 1px solid #e2e4e7;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    color: #1d2327;
+    padding: 0px !important;
+    position: relative;
+    border-radius: 8px;
+    margin: 15px 40px 5px;
+}
+
+.wbte_ema_banner_analytics_page .wbte_ema_box{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    word-spacing: 1px;
+    gap: 24px;
+}
+
+.wbte_ema_banner_analytics_page .wbte_ema_text img {
+    flex-shrink: 0;
+}
+
+.wbte_ema_banner_analytics_page .wbte_ema_text .wbte_ema_title {
+    font-weight: bold;
+    color: #5454A5;
+    margin-right: 2px;
+}
+
+.wbte_ema_banner_analytics_page .wbte_ema_actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.wbte_ema_banner_analytics_page .wbte_ema_actions .btn-primary {
+    width: 100%;
+    margin-right: 27px;
+    padding: 8px 16px;
+    background: #5454A5;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1.5;
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+.wbte_ema_banner_analytics_page .wbte_ema_actions .btn-primary:hover,
+.wbte_ema_banner_analytics_page .wbte_ema_actions .btn-primary:focus {
+    background: #3046c9;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.wbte_ema_banner_analytics_page .wbte_ema_actions .btn-primary:hover::after {
+    transform: translateX(4px);
+}
+
+.wbte_ema_banner_analytics_page .wbte_ema_actions .wbte_ema_banner_analytics_page_dismiss {
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #50575e;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+    margin-left: 8px;
+}
+
+.wbte_ema_banner_analytics_page .wbte_ema_actions .wbte_ema_banner_analytics_page_dismiss:hover {
+    opacity: 1;
+    color: #000;
+}
+
+.wbte_ema_banner_analytics_page .wbte_ema_actions .wbte_ema_banner_analytics_page_dismiss .screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+/* WordPress notice-dismiss styling */
+.wbte_ema_banner_analytics_page .wbte_ema_actions .wbte_ema_banner_analytics_page_dismiss.notice-dismiss {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 9px;
+    border: none;
+    box-shadow: none;
+}
+
+.wbte_ema_banner_analytics_page .wbte_ema_actions .wbte_ema_banner_analytics_page_dismiss.notice-dismiss::before {
+    font-size: 16px;
+    line-height: 1.2;
+}

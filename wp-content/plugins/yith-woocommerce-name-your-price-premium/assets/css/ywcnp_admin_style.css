@@ -1,0 +1,58 @@
+.widefat .column-enabled_rule,
+.widefat .column-enabled{
+    width: 20%;
+    text-align: center;
+}
+
+.widefat .column-enabled_rule mark,
+.widefat .column-enabled mark{
+    display: block;
+    text-indent: -9999px;
+    position: relative;
+    height: 1em;
+    width: 1em;
+    background: 0 0;
+    font-size: 1.4em;
+    margin: 0 auto;
+}
+
+.widefat .column-enabled_rule mark.show:after,
+.widefat .column-enabled_rule mark.hide:after,
+.widefat .column-enabled mark.show:after,
+.widefat .column-enabled mark.hide:after{
+    font-family: WooCommerce;
+    speak: none;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    text-indent: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.widefat .column-enabled_rule mark.hide:after,
+.widefat .column-enabled mark.hide:after{
+    content: "\e013";
+    color: #a00000;
+}
+
+.widefat .column-enabled_rule mark.show:after,
+.widefat .column-enabled mark.show:after{
+    content: "\e015";
+    color: #2ea2cc;
+}
+
+.form-table.ywcnp_product_list {
+    border:0!important;;
+}
+
+.form-table.ywcnp_product_list span.description {
+    display: block;
+}

@@ -1,0 +1,85 @@
+# WordPress Configuration (sensitive)
+wp-config.php
+wp-config.php.bak
+.htaccess.wpt-backup
+.wp-toolkit-site
+
+# Cache and Performance Files  
+wp-content/cache/
+wp-content/et-cache/
+wp-content/boost-cache/
+wp-content/w3tc-config/
+wp-content/wps-cache/
+wp-content/smush-webp/
+
+# Log Files
+wp-content/debug.log
+*.log
+mwf-switch-debug.log
+permission-changes.log
+wp-content/site-check-*.log
+wp-content/wflogs/
+
+# Backup Files
+*.sql
+*.sql.gz
+*.tar.gz
+*.zip
+wp-content/ai1wm-backups/
+wp-content/backup-migration-*/
+wp-content/updraft/
+
+# Uploads (large files)
+wp-content/uploads/
+
+# Temporary and Lock Files
+wp-content/temp/
+wp-content/.controllerlock-*
+wp-content/.scheduleworkerlock-*
+wp-content/.wps-slots
+wp-content/temp-dir.php
+
+# Maintenance and Private
+wp-content/maintenance/
+wp-content/private/
+wp-content/jetpack-waf/
+
+# Export/Import Working Directories
+wp-content/webtoffee_export/
+wp-content/webtoffee_iew_log/
+wp-content/webtoffee_import/
+
+# JetPack CRM Storage
+wp-content/jpcrm-storage/
+
+# Server Configuration (sensitive)
+.php-ini
+php.ini
+user.ini
+.php-version
+.metadata/
+
+# SSH Keys (sensitive)
+ssh/
+
+# OS and System Files
+.DS_Store
+.thumbs.db
+Thumbs.db
+.well-known/
+
+# Security and System Status
+Sefcurity Status
+root-test.txt
+
+# Test files (keep your custom test files)
+simple-test.html
+test-combined-pdf-js.html
+test-pdf-functions.html
+email-validation-test.html
+
+# Downloaded files
+downloads/
+
+# System images
+wpt-hotlinked-image-stub.png

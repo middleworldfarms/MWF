@@ -1,0 +1,47 @@
+# Increase File Upload Limits
+<IfModule mod_php.c>
+    php_value upload_max_filesize 2500M
+    php_value post_max_size 2500M
+    php_value memory_limit 1024M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+# Force HTTPS (but not when coming from nginx proxy)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Don't redirect if request is already HTTPS via proxy
+    RewriteCond %{HTTP:X-Forwarded-Proto} https [OR]
+    RewriteCond %{HTTPS} on
+    RewriteRule ^ - [S=1]
+    
+    # Redirect HTTP to HTTPS
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Enable REST API Authorization
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>
+
+# Basic UTF-8 encoding
+AddDefaultCharset UTF-8
+
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress

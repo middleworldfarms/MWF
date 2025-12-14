@@ -1,0 +1,42 @@
+<div data-class="horizontal_submenu_container" data-main="1">
+	<div data-class="horizontal_submenu_head">
+		<div data-class="horizontal_submenu_head_text" data-if="menu_title">{{menu_title}}</div>
+		<div data-class="horizontal_submenu" data-if="menu">			
+			<ul data-class="submenu_main horizontal_submenu_main" data-target-id="{{wbte-ds-attr-menu_id}}">						
+				<li data-for="menu_item in menu">
+					<a data-class="submenu_item horizontal_submenu_main_item" data-bind-class="{ has_submenu: menu_item.submenu, active: menu_item.is_active }" data-bind-href="menu_item.href" data-bind-target="menu_item.target" data-target-id="{{wbte-ds-attr-menu_item.target_id}}">
+						{{wbte-ds-icon-((menu_item.icon))}} 
+						<span data-class="submenu_text">{{menu_item.title}}</span>
+						<span data-if="menu_item.submenu" data-class="submenu_arrow">
+							{{wbte-ds-icon-down-arrow-1}} 
+						</span>
+					</a>
+					<ul data-if="menu_item.submenu" data-class="horizontal_subsubmenu">
+						<li data-for="sub_menu_item in menu_item.submenu">
+							<a data-class="submenu_item horizontal_subsubmenu_item" data-target-id="{{wbte-ds-attr-sub_menu_item.target_id}}" data-bind-class="{ active: sub_menu_item.is_active }" data-bind-href="sub_menu_item.href" data-bind-target="sub_menu_item.target">
+								<span data-class="submenu_text">{{sub_menu_item.title}}</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div data-class="submenu_head_right">{{html:head_right}}</div>
+	</div>
+	<div data-class="horizontal_submenu_content">
+		<!-- Content area:start -->
+		<div data-class="submenu_content_main" data-if="menu" data-id="{{wbte-ds-attr-menu_id}}">
+			<div data-for="menu_item in menu" data-if="!menu_item.href">
+				<div data-class="submenu_content" data-id="{{wbte-ds-attr-menu_item.target_id}}">
+					{{filter:tab_content menu_item}}
+				</div>
+				<div data-if="menu_item.submenu && !sub_menu_item.href" data-for="sub_menu_item in menu_item.submenu">
+					<div data-class="submenu_content" data-id="{{wbte-ds-attr-sub_menu_item.target_id}}">
+						{{filter:tab_content sub_menu_item}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Content area:end -->
+	</div>
+</div>
